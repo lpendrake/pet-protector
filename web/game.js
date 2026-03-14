@@ -60,33 +60,7 @@ export function tick(state) {
     return state;
 }
 
-export function simulateTimePassed(state) {
-    const now = Date.now();
-    const diffMs = now - state.lastTick;
-    const hoursPassed = diffMs / (1000 * 60 * 60);
 
-    if (hoursPassed > 0.01) {
-        const pet = state.pet;
-        // In simulation, we'll assume ~100 per hour decay if not specified
-        // But let's tie it to the tick rate. 
-        // 1 tick = 3s = 0.00083 hours. 2.5 decay per 3s.
-        // So ~3000 decay per hour? That's too fast for long-term.
-        // User said half-life of 1 min = 100 decay in 2 mins = 3000 in 1 hour.
-        const decayPerTick = 2.5;
-        const tickRateMs = 3000;
-        const ticksPassed = diffMs / tickRateMs;
-        const decayAmount = ticksPassed * decayPerTick;
-
-        pet.nutrition = clamp(pet.nutrition - decayAmount, 0, 100);
-        pet.energy = clamp(pet.energy - decayAmount, 0, 100);
-        pet.hydration = clamp(pet.hydration - decayAmount, 0, 100);
-
-        addEvent(state, `Time passed: ${hoursPassed.toFixed(2)}h`);
-    }
-
-    state.lastTick = now;
-    return state;
-}
 
 export function addEvent(state, message) {
     if (!state.events) state.events = [];

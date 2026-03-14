@@ -3,7 +3,6 @@ import { GameScreen } from './screens/GameScreen.js';
 import { SettingsScreen } from './screens/SettingsScreen.js';
 import { LogScreen } from './screens/LogScreen.js';
 import { loadState, saveState, createNewState } from './state.js';
-import { simulateTimePassed } from './game.js';
 
 const { Application } = PIXI;
 
@@ -54,7 +53,7 @@ class App {
                 console.log('App: Tab became visible. Re-syncing state from storage...');
                 const latest = loadState();
                 if (latest) {
-                    this.state = simulateTimePassed(latest);
+                    this.state = latest;
                     if (this.currentScreen && this.currentScreen.onStateSync) {
                         this.currentScreen.onStateSync(this.state);
                     }
@@ -84,7 +83,7 @@ class App {
         if (!state) {
             state = createNewState('Buddy', 'Bear');
         }
-        this.state = simulateTimePassed(state);
+        this.state = state;
         saveState(this.state);
         this.switchScreen('game');
     }
