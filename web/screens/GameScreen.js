@@ -444,10 +444,11 @@ export class GameScreen extends Screen {
             this.world.mapData.tiles[py][px] = 'G'; // Consume the apple
             this.world._buildTiles();
             
-            // Calculate respawn time minus 2 ticks for breathing room
+            // Calculate respawn time: Target 4 minutes (80 ticks)
+            // 50 nutrition / 0.25 decay = 200 ticks (10 mins). 200 * 0.4 = 80 ticks (4 mins).
             if (!state.cooldowns) state.cooldowns = {};
             const replenishAmount = 50;
-            const respawnTicks = Math.max(1, Math.floor(replenishAmount / DECAY_RATES.nutrition) - 2);
+            const respawnTicks = Math.floor((replenishAmount / DECAY_RATES.nutrition) * 0.4);
             state.cooldowns[`apple_${px}_${py}`] = respawnTicks;
         }
     }

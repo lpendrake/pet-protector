@@ -1,7 +1,7 @@
 export const DECAY_RATES = {
-    nutrition: 2.5,
-    energy: 2.5,
-    hydration: 2.5
+    nutrition: 0.25, // 100 to 50 in 10 minutes (600s / 3s per tick = 200 ticks. 50/200 = 0.25)
+    energy: 0.25,
+    hydration: 0.25
 };
 
 function clamp(val, min, max) {
