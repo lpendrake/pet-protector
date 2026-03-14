@@ -12,9 +12,20 @@ class App {
         this.state = null;
         this.currentScreen = null;
         this.screens = {};
+        this.config = {};
     }
 
     async init() {
+        // Load config
+        try {
+            const resp = await fetch('./config.json');
+            this.config = await resp.json();
+            console.log('App: Config loaded', this.config);
+        } catch (err) {
+            console.error('App: Failed to load config', err);
+            this.config = { version: '0.0.1', build: 'unknown' };
+        }
+
         this.pixiApp = new Application({
             width: window.innerWidth,
             height: window.innerHeight,

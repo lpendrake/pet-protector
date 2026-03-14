@@ -105,7 +105,8 @@ export class GameScreen extends Screen {
         this.ui.addChild(this.hintText);
 
         // Version in game
-        const ver = new Text(`v${CURRENT_VERSION}`, {
+        const verStr = `v${this.app.config.version || '0.0.1'}+${this.app.config.build || 'unknown'}`;
+        const ver = new Text(verStr, {
             fontFamily: '"VT323", monospace', fontSize: 12, fill: 0x444444
         });
         ver.anchor.set(1, 1);

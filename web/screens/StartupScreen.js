@@ -1,5 +1,4 @@
 import { Screen } from './Screen.js';
-import { CURRENT_VERSION } from '../state.js';
 
 const { Text, Graphics } = PIXI;
 
@@ -52,7 +51,8 @@ export class StartupScreen extends Screen {
         this.container.addChild(this._subtitle);
 
         // Version
-        const ver = new Text(`v${CURRENT_VERSION}`, {
+        const verStr = `v${this.app.config.version || '0.0.1'}+${this.app.config.build || 'unknown'}`;
+        const ver = new Text(verStr, {
             fontFamily: '"VT323", monospace',
             fontSize: 16,
             fill: 0x444444,
