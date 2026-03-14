@@ -74,7 +74,7 @@ Each screen is a `PIXI.Container` that draws text and handles input. Menus are `
 
 A minimal 10×10 tile map to test movement, camera, and scale before committing to real art.
 
-- [x] **4.1** Create `web/maps/test.json` — 10×10 grid, mostly grassland (`G`) with a clump of forest (`F`) in the centre
+- [x] **4.1** Create `web/maps/world.json` — 30×30 grid, with orchard, river, and caves.
 - [x] **4.2** Create `web/world.js` — loads map JSON, renders tiles as coloured rectangles with a letter label:
   - Grassland: light green background, "G" text
   - Forest: dark green background, "F" text

@@ -79,13 +79,29 @@ These abilities will help the pet survive in the world, and also help the player
 ### Skills to be gained
 
 - Climbing
-- Swimming
+- Swimming / Water Crossing (to cross rivers and deep water)
 - Claws for breaking through supernatural thickets
 - Eyes that can see through some obstacle that normally blocks progression
 - Super jump to bypass large gaps.
 - The ability to shrink to fit through small gaps.
 - A superior sense of smell that can detect magical auras, allowing the pet to find crucial items.
 - Courage to face things that used to scare it.
+
+## New Mechanics
+
+### Spirit Anchoring
+The spirit is typically bound to the pet (Buddy). However, there are specific "Anchor Points" in the world (ancient pillars, magical groves, etc.) where the spirit can bind itself. While anchored to a point, the spirit can only venture a short distance from that point, but Buddy is free to roam (or stay) independently.
+
+### Fear & Dragging
+Buddy is not always brave. Certain environmental triggers or creatures can cause Fear.
+- When **Scared**, Buddy will bolt in the opposite direction.
+- If the spirit is currently anchored to Buddy, it is **dragged along** for the ride, forced to follow Buddy's panicked flight.
+- Befriending certain creatures or gaining the "Courage" skill can mitigate this.
+
+### Stale Fog of War
+The world is only "live" where the spirit can see. 
+- **Vision Range**: Current tiles within 3 units of the spirit update in real-time.
+- **Fog of History**: Tiles previously visited but no longer in range remain visible (not black), but their state is "frozen" in time (grayed out) until the spirit returns. You won't see apples regrow, creatures move, or Buddy's position update in these stale areas.
 
 ## The gameplay loop
 

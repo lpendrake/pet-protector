@@ -2,12 +2,16 @@ import { Screen } from './Screen.js';
 import { World, TILE_SIZE, TILE_DEFS } from '../world.js';
 import { tick, addNotification, DECAY_RATES } from '../game.js';
 import { saveState, CURRENT_VERSION } from '../state.js';
+import { PetPip } from '../ui/PetPip.js';
+import { ZoneManager } from '../systems/ZoneManager.js';
+import { VisionSystem } from '../systems/VisionSystem.js';
+import { InteractionSystem } from '../systems/InteractionSystem.js';
+import { PetMovementSystem } from '../systems/PetMovementSystem.js';
 
-const { Container, Graphics, Text, Sprite, Assets } = PIXI;
+const { Container, Graphics, Text, Sprite, Assets, AnimatedSprite, Texture, Rectangle } = PIXI;
 
 const LEASH = 3;
 const VISION = 3;
-const CALL_STEP_MS = 1000;
 
 export class GameScreen extends Screen {
     constructor(app) {
@@ -16,23 +20,35 @@ export class GameScreen extends Screen {
         this.spiritPos = { x: 0, y: 0 };
         this.petPos = { x: 0, y: 0 };
         this.tickAccum = 0;
-        this.petAccum = 0;
         this.petCalling = false;
         this.showScene = false;
         this._built = false;
         this._loaded = false;
         this.buddyTexture = null;
+        this.grassTextures = [];
+        this.zoneManager = new ZoneManager(this.world);
+        this.interactionSystem = new InteractionSystem(this.world);
+        this.petMovementSystem = new PetMovementSystem(this.world);
     }
 
     async enter() {
         if (!this._built) { this._build(); this._built = true; }
         if (!this._loaded) {
             // Load map and textures
-            const [mapData, texture] = await Promise.all([
-                this.world.load('./assets/test.json'),
-                Assets.load('./assets/buddy.avif')
+            const [mapData, texture, grassSheet] = await Promise.all([
+                this.world.load('./maps/world.json'),
+                Assets.load('./assets/buddy.avif'),
+                Assets.load('./assets/sprite_grass_32x32.avif')
             ]);
             this.buddyTexture = texture;
+            
+            // Slice grass sheet (32x32 frames, assume 3 frames horizontally)
+            for (let i = 0; i < 3; i++) {
+                const rect = new Rectangle(i * 32, 0, 32, 32);
+                this.grassTextures.push(new Texture(grassSheet.baseTexture, rect));
+            }
+
+            this.petPip.setupGrass(this.grassTextures);
             
             // Apply texture to markers
             if (this.petSprite) {
@@ -70,8 +86,8 @@ export class GameScreen extends Screen {
                 this._petPip();
             }
 
+            this.visionSystem = new VisionSystem(this.world, this.worldLayer, VISION);
             this.worldLayer.addChildAt(this.world.container, 0);
-            this._buildFog();
             this._loaded = true;
         }
         this._cam();
@@ -122,7 +138,7 @@ export class GameScreen extends Screen {
         this.ui = new Container();
         this.container.addChild(this.ui);
 
-        this._mkPetPip();
+        this.petPip = new PetPip(this.ui, this.app.pixiApp.screen.width, this.app.pixiApp.screen.height);
         this._mkCreaturePip();
         this._mkDescBox();
         this._mkScenePip();
@@ -145,147 +161,8 @@ export class GameScreen extends Screen {
         this.ui.addChild(ver);
     }
 
-    // ── FOG ───────────────────────────────────────────────
-
-    _buildFog() {
-        this.fogLayer = new Container();
-        // Insert between world tiles (index 0) and markers
-        this.worldLayer.addChildAt(this.fogLayer, 1);
-
-        this.fogCells = [];
-        const pad = 6;
-        const x0 = -pad, y0 = -pad;
-        const x1 = this.world.width + pad;
-        const y1 = this.world.height + pad;
-
-        for (let y = y0; y < y1; y++) {
-            for (let x = x0; x < x1; x++) {
-                const fog = new Graphics();
-                fog.beginFill(0x6b7b6b);
-                fog.drawRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-                fog.endFill();
-                this.fogLayer.addChild(fog);
-                this.fogCells.push({ x, y, gfx: fog });
-            }
-        }
-    }
-
-    _updateFog() {
-        if (!this.fogCells) return;
-        const state = this.app.state;
-        if (!state.seenTiles) state.seenTiles = {};
-
-        const sx = this.spiritPos.x, sy = this.spiritPos.y;
-        
-        // Mark current live vision
-        for (let dy = -VISION; dy <= VISION; dy++) {
-            for (let dx = -VISION; dx <= VISION; dx++) {
-                const tx = sx + dx, ty = sy + dy;
-                if (this._dist({x: tx, y: ty}, this.spiritPos) <= VISION) {
-                    if (tx >= 0 && tx < this.world.width && ty >= 0 && ty < this.world.height) {
-                        state.seenTiles[`${tx},${ty}`] = true;
-                    }
-                }
-            }
-        }
-
-        for (const cell of this.fogCells) {
-            const outside = cell.x < 0 || cell.y < 0 ||
-                            cell.x >= this.world.width || cell.y >= this.world.height;
-            const dist = this._dist(cell, this.spiritPos);
-            const isSeen = state.seenTiles[`${cell.x},${cell.y}`];
-
-            if (outside) {
-                cell.gfx.alpha = 1;
-            } else if (dist <= 1) {
-                cell.gfx.alpha = 0; // Live
-            } else if (dist <= 2) {
-                cell.gfx.alpha = 0.1; // Live
-            } else if (dist <= VISION) {
-                cell.gfx.alpha = 0.3; // Live
-            } else if (isSeen) {
-                cell.gfx.alpha = 0.75; // Stale (Memory)
-            } else {
-                cell.gfx.alpha = 1.0; // Hidden
-            }
-            
-            // Interaction: Pet and Creatures only visible in live vision
-            const isLive = dist <= VISION;
-            const tid = this.world.getTile(cell.x, cell.y);
-            const ts = this.world.tileSprites && this.world.tileSprites[cell.y] && this.world.tileSprites[cell.y][cell.x];
-            
-            if (ts) {
-                // Background tiles always visible if seen
-                ts.bg.visible = isSeen || isLive;
-                ts.label.visible = isSeen || isLive;
-                
-                // Dim stale tiles
-                ts.bg.alpha = isLive ? 1.0 : 0.4;
-            }
-
-            // Hide Buddy if out of live vision
-            const petDist = this._dist(cell, { x: Math.round(this.petPos.x), y: Math.round(this.petPos.y) });
-            if (petDist === 0) {
-                this.petGfx.visible = isLive;
-            }
-        }
-    }
-
-    // ── PET PiP (bottom-left) ─────────────────────────────
-
-    _mkPetPip() {
-        const ph = this.app.pixiApp.screen.height * 0.4;
-        const pw = ph * 1.5;
-        this.ppip = new Container();
-        this.ppip.x = 20; this.ppip.y = this.app.pixiApp.screen.height - ph - 20;
-        this.ui.addChild(this.ppip);
-
-        // -- Masked Content (Background + Buddy) --
-        this.ppipContent = new Container();
-        this.ppip.addChild(this.ppipContent);
-
-        this.ppipBg = new Graphics();
-        this.ppipContent.addChild(this.ppipBg);
-
-        const mask = new Graphics();
-        mask.beginFill(0xffffff);
-        mask.drawRoundedRect(0, 0, pw, ph, 12);
-        mask.endFill();
-        this.ppipContent.addChild(mask);
-        this.ppipContent.mask = mask;
-
-        this.ppipSprite = new Sprite();
-        this.ppipSprite.anchor.set(0.5);
-        this.ppipSprite.x = pw / 2;
-        this.ppipSprite.y = ph * 0.65;
-        this.ppipContent.addChild(this.ppipSprite);
-
-        // -- Unmasked UI (Border + Bubble) --
-        const border = new Graphics();
-        border.lineStyle(3, 0x7ec8e3, 0.8);
-        border.drawRoundedRect(0, 0, pw, ph, 12);
-        this.ppip.addChild(border);
-
-        this.thoughtBox = new Container();
-        this.thoughtBox.visible = false;
-        this.ppip.addChild(this.thoughtBox);
-
-        this.tbBg = new Graphics();
-        this.thoughtBox.addChild(this.tbBg);
-
-        this.thoughtText = new Text('', {
-            fontFamily: 'Arial, sans-serif',
-            fontSize: 48,
-            fill: 0xffffff,
-            padding: 30
-        });
-        // Remove anchor to use top-left positioning reliably
-        this.thoughtText.x = 15;
-        this.thoughtText.y = 10;
-        this.thoughtBox.addChild(this.thoughtText);
-    }
-
     // ── CREATURE PiP (bottom-right, icon only) ────────────
+
 
     _mkCreaturePip() {
         const ph = this.app.pixiApp.screen.height * 0.3;
@@ -388,7 +265,11 @@ export class GameScreen extends Screen {
         this.spip.addChild(hint);
     }
 
-    // ── UPDATES ───────────────────────────────────────────
+    _updateFog() {
+        if (this.visionSystem) {
+            this.visionSystem.update(this.app.state, this.spiritPos, this.petPos, this.petGfx);
+        }
+    }
 
     _cam() {
         this.worldLayer.x = this.app.pixiApp.screen.width / 2 - (this.petPos.x + 0.5) * TILE_SIZE;
@@ -424,159 +305,34 @@ export class GameScreen extends Screen {
     }
 
     _petPip() {
-        if (!this._loaded || !this.app.state) return;
-        const st = this.app.state;
-        const p = st.pet;
-
-        const ph = this.app.pixiApp.screen.height * 0.4;
-        const pw = ph * 1.5;
-
-        // Diegetic Needs: if a need is high (meaning nutrition/energy/hydration is LOW), show an emoji
-        let thought = '';
-        if (p.nutrition < 30) thought = '🥩';
-        else if (p.energy < 30) thought = '💤';
-        else if (p.hydration < 30) thought = '💧';
-        
-        // Priority: 1. Interaction Lock, 2. Responding to Call, 3. Basic Needs
-        if (this.lockEmoji) {
-            thought = this.lockEmoji;
-        } else if (this.petCalling) {
-            thought = '🐾';
-        }
-
-        if (thought) {
-            this.thoughtText.text = thought;
-            this.thoughtBox.visible = true;
-
-            // Enforce min-size (at least a square)
-            const tw = Math.max(this.thoughtText.width + 30, 80);
-            const th = Math.max(this.thoughtText.height + 20, 80);
-
-            this.tbBg.clear();
-            this.tbBg.lineStyle(3, 0x7ec8e3, 0.8);
-            this.tbBg.beginFill(0x0d1117, 0.95);
-            this.tbBg.drawRoundedRect(0, 0, tw, th, 15);
-            
-            // Triangle tail (centered under the bubble)
-            this.tbBg.beginFill(0x0d1117, 0.95);
-            this.tbBg.lineStyle(3, 0x7ec8e3, 0.8);
-            const mid = tw / 2;
-            this.tbBg.moveTo(mid - 10, th);
-            this.tbBg.lineTo(mid, th + 15);
-            this.tbBg.lineTo(mid + 10, th);
-            this.tbBg.endFill();
-
-            // Position text inside bubble
-            this.thoughtText.x = (tw - this.thoughtText.width) / 2;
-            this.thoughtText.y = (th - this.thoughtText.height) / 2;
-
-            // Reposition the box to stay above buddy
-            this.thoughtBox.x = pw / 2 - tw / 2 + 60; 
-        } else {
-            this.thoughtBox.visible = false;
-        }
-
-        this.ppipBg.clear();
-        const tid = this.world.getTile?.(Math.round(this.petPos.x), Math.round(this.petPos.y));
-        const tc = (tid && TILE_DEFS[tid]) ? TILE_DEFS[tid].color : 0x555555;
-        
-        this.ppipBg.beginFill(tc);
-        this.ppipBg.drawRoundedRect(0, 0, pw, ph, 12);
-        this.ppipBg.endFill();
-
-        if (this.buddyTexture) {
-            this.ppipSprite.texture = this.buddyTexture;
-            // Scale buddy to fill about 75% of the PiP's height
-            const scale = (ph * 0.75) / this.buddyTexture.height;
-            this.ppipSprite.scale.set(scale);
+        if (this.petPip) {
+            this.petPip.update(
+                this.app.state,
+                this.petPos,
+                this.world,
+                this.buddyTexture,
+                this.lockEmoji,
+                this.petCalling
+            );
         }
     }
 
     _spiritTriggers() {
-        if (!this._loaded) return;
-        const t = this.world.getTile(this.spiritPos.x, this.spiritPos.y);
-        if (t === 'R' && !this.showScene) {
-            this.showScene = true;
-            this.spip.visible = true;
-        }
-
-        // Creature proximity
-        let near = false;
-        this.cpip.visible = near;
-        this.descBox.visible = near;
-        if (near) {
-            this.descText.text = 'A magical wolf, flowing fur made of moonlight.\nIt watches you warily...';
-        }
+        this.interactionSystem.updateSpirit(this.spiritPos, {
+            showMural: () => {
+                if (!this.showScene) {
+                    this.showScene = true;
+                    this.spip.visible = true;
+                }
+            }
+        });
     }
 
     _petTriggers() {
-        if (!this._loaded || !this.app.state || this.interactionLock > 0) return;
-        const state = this.app.state;
-        const pet = state.pet;
-        const px = Math.round(this.petPos.x);
-        const py = Math.round(this.petPos.y);
-
-        // -- DRINKING (On stream or adjacent to deep water/river) --
-        const isWater = (x, y) => {
-            const t = this.world.getTile(x, y);
-            return t === 'W' || t === 'S' || t === 'D' || t === 'I';
-        };
-
-        const adjacentWater = isWater(px, py) || isWater(px+1, py) || isWater(px-1, py) || isWater(px, py+1) || isWater(px, py-1);
-
-        if (adjacentWater && pet.hydration < 60) {
-            pet.hydration = 100;
-            this._lockBuddy(5000, '🥃');
-            addNotification(state, `${pet.name} is rehydrating.`);
-            return;
-        }
-
-        // -- EATING (On apple tile or fish) --
-        const pt = this.world.getTile(px, py);
-        
-        // Check for active fish in state
-        if (state.activeSpawns) {
-            const fishIndex = state.activeSpawns.findIndex(s => s.x === px && s.y === py && s.type === 'fish');
-            if (fishIndex !== -1 && pet.nutrition < 60) {
-                const fish = state.activeSpawns[fishIndex];
-                pet.nutrition = Math.min(100, pet.nutrition + 30);
-                this._lockBuddy(5000, '🍴🐟');
-                addNotification(state, `${pet.name} caught and ate a delicious fish!`);
-                
-                // Set zone on cooldown
-                if (fish.zoneId) {
-                    if (!state.zoneCooldowns) state.zoneCooldowns = {};
-                    const zone = this.world.zones.find(z => z.id === fish.zoneId);
-                    state.zoneCooldowns[fish.zoneId] = zone ? (zone.cooldown || 60) : 60;
-                }
-                
-                state.activeSpawns.splice(fishIndex, 1);
-                return;
-            }
-        }
-
-        if (pt === 'A' && pet.nutrition < 60) {
-            pet.nutrition = Math.min(100, pet.nutrition + 50);
-            this._lockBuddy(5000, '🍴🍎');
-            addNotification(state, `${pet.name} ate a magical apple!`);
-            this.world.mapData.tiles[py][px] = 'G'; // Consume
-            this.world._buildTiles();
-            
-            // Cooldown logic
-            if (!state.cooldowns) state.cooldowns = {};
-            const respawnTicks = Math.floor((50 / DECAY_RATES.nutrition) * 0.4);
-            state.cooldowns[`apple_${px}_${py}`] = respawnTicks;
-            return;
-        }
-
-        // -- SLEEPING (In cave) --
-        if (pt === 'V' && pet.energy < 60) {
-            pet.energy = 100;
-            this._lockBuddy(5000, 'zzZ');
-            addNotification(state, `${pet.name} is taking a deep nap.`);
-            this._fadeEffect();
-            return;
-        }
+        this.interactionSystem.updatePet(this.app.state, this.petPos, this.interactionLock, {
+            lockBuddy: (d, e) => this._lockBuddy(d, e),
+            fadeEffect: () => this._fadeEffect()
+        });
     }
 
     _lockBuddy(duration, emoji) {
@@ -610,56 +366,7 @@ export class GameScreen extends Screen {
     }
 
     _updateZones(deltaMS) {
-        if (!this._loaded || !this.app.state) return;
-        const state = this.app.state;
-        if (!state.activeSpawns) state.activeSpawns = [];
-        if (!state.zoneCooldowns) state.zoneCooldowns = {};
-
-        // Update TTLs
-        state.activeSpawns = state.activeSpawns.filter(s => {
-            if (s.ttl !== undefined) {
-                s.ttl -= deltaMS / 1000;
-                return s.ttl > 0;
-            }
-            return true;
-        });
-
-        // Update Cooldowns
-        for (const zid in state.zoneCooldowns) {
-            if (state.zoneCooldowns[zid] > 0) {
-                state.zoneCooldowns[zid] -= deltaMS / 1000;
-                if (state.zoneCooldowns[zid] <= 0) delete state.zoneCooldowns[zid];
-            }
-        }
-
-        // Try spawning
-        for (const zone of this.world.zones) {
-            if (state.zoneCooldowns[zone.id]) continue;
-
-            const activeInZone = state.activeSpawns.filter(s => s.zoneId === zone.id).length;
-            if (activeInZone >= (zone.maxActive || 1)) continue;
-
-            // Random chance per tick (adjusted for tick rate)
-            if (Math.random() < (zone.rate || 0.05)) {
-                const tiles = zone.tiles || [];
-                if (tiles.length === 0) continue;
-
-                const pos = tiles[Math.floor(Math.random() * tiles.length)];
-                
-                // Don't spawn on top of an existing one
-                if (state.activeSpawns.some(s => s.x === pos.x && s.y === pos.y)) continue;
-
-                state.activeSpawns.push({
-                    type: zone.spawns[0] || 'fish',
-                    x: pos.x,
-                    y: pos.y,
-                    zoneId: zone.id,
-                    ttl: zone.ttl || 5
-                });
-                
-                console.log(`Spawned ${zone.spawns[0]} in ${zone.id} at ${pos.x},${pos.y}`);
-            }
-        }
+        this.zoneManager.update(this.app.state, deltaMS);
     }
 
     _dist(a, b) {
@@ -691,34 +398,6 @@ export class GameScreen extends Screen {
         this._petTriggers();
     }
 
-    _runAway() {
-        if (!this.app.state.pet.scareSource) return;
-        const src = this.app.state.pet.scareSource;
-        
-        // Find adjacent tiles and pick the one farthest from source
-        const neighbors = [
-            { x: Math.round(this.petPos.x)+1, y: Math.round(this.petPos.y) },
-            { x: Math.round(this.petPos.x)-1, y: Math.round(this.petPos.y) },
-            { x: Math.round(this.petPos.x),   y: Math.round(this.petPos.y)+1 },
-            { x: Math.round(this.petPos.x),   y: Math.round(this.petPos.y)-1 }
-        ];
-
-        let best = null;
-        let bestDist = -1;
-
-        for (const n of neighbors) {
-            if (!this.world.isPassable(n.x, n.y, 'pet')) continue;
-            const d = Math.pow(n.x - src.x, 2) + Math.pow(n.y - src.y, 2);
-            if (d > bestDist) {
-                bestDist = d;
-                best = n;
-            }
-        }
-
-        if (best) {
-            this._movePetTo(best.x, best.y);
-        }
-    }
 
     // ── INPUT ─────────────────────────────────────────────
 
@@ -745,14 +424,27 @@ export class GameScreen extends Screen {
                 this.partialPath = (last.x !== this.spiritPos.x || last.y !== this.spiritPos.y);
                 
                 this._petPip();
-            } else if (this._dist(this.petPos, this.spiritPos) > 0) {
-                // Already at closest possible point but can't reach spirit
-                this._lockBuddy(1500, '!');
-                setTimeout(() => {
-                    if (this.interactionLock <= 0 || this.lockEmoji === '!') {
-                        this._lockBuddy(3500, '😢');
+            } else {
+                const dist = this._dist(this.petPos, this.spiritPos);
+                if (dist > 0) {
+                    // Already at closest possible point but can't reach spirit
+                    this._lockBuddy(1500, '!');
+                    setTimeout(() => {
+                        if (this.interactionLock <= 0 || this.lockEmoji === '!') {
+                            this._lockBuddy(3500, '😢');
+                        }
+                    }, 1500);
+                } else {
+                    // Already at spirit - Heart or Paw reaction
+                    const now = Date.now();
+                    const lastHeart = this.app.state.lastHeartTime || 0;
+                    if (now - lastHeart > 120000) {
+                        this.app.state.lastHeartTime = now;
+                        this._lockBuddy(3000, '❤️');
+                    } else {
+                        this._lockBuddy(1000, '🐾');
                     }
-                }, 1500);
+                }
             }
             return;
         }
@@ -803,34 +495,20 @@ export class GameScreen extends Screen {
 
     // ── LOOP ──────────────────────────────────────────────
 
-    update(deltaMS) {
-        if (!this._loaded || !this.app.state) return;
-
-        // Pet travelling to spirit when called
-        if (this.interactionLock > 0) {
-            this.interactionLock -= deltaMS;
-            if (this.interactionLock <= 0) {
-                this.interactionLock = 0;
-                this.lockEmoji = null;
-                this._petPip();
-            }
-            return; // No movement while locked
-        }
-
-        if (this.petCalling && this.petPath.length > 0) {
-            this.petAccum += deltaMS;
-            if (this.petAccum >= CALL_STEP_MS) {
-                this.petAccum -= CALL_STEP_MS;
-                
-                const next = this.petPath.shift();
-                this._movePetTo(next.x, next.y);
-
-                if (this.petPath.length === 0) {
+    _updateMovement(deltaMS) {
+        this.petMovementSystem.update(deltaMS, {
+            state: this.app.state,
+            petPos: this.petPos,
+            petPath: this.petPath,
+            petCalling: this.petCalling,
+            interactionLock: this.interactionLock,
+            callbacks: {
+                movePetTo: (x, y) => this._movePetTo(x, y),
+                onRepaintPip: () => this._petPip(),
+                onPathComplete: () => {
                     this.petCalling = false;
-                    
                     if (this.partialPath) {
                         this.partialPath = false;
-                        // Start failure sequence
                         this._lockBuddy(1500, '!');
                         setTimeout(() => {
                             if (this.interactionLock <= 0 || this.lockEmoji === '!') {
@@ -838,7 +516,6 @@ export class GameScreen extends Screen {
                             }
                         }, 1500);
                     } else {
-                        // Reached spirit! Heart check (every 2m)
                         const now = Date.now();
                         const lastHeart = this.app.state.lastHeartTime || 0;
                         if (now - lastHeart > 120000) {
@@ -846,28 +523,26 @@ export class GameScreen extends Screen {
                             this._lockBuddy(3000, '❤️');
                         }
                     }
-
                     this._petPip();
                 }
             }
-        }
+        });
+    }
 
-        // Fear Mechanic
-        if (this.app.state.pet.scaredTimer > 0) {
-            this.app.state.pet.scaredTimer -= deltaMS;
-            if (this.app.state.pet.scaredTimer <= 0) {
-                this.app.state.pet.scaredTimer = 0;
-                addNotification(this.app.state, `${this.app.state.pet.name} has calmed down.`);
+    update(deltaMS) {
+        if (!this._loaded || !this.app.state) return;
+
+        // Interaction Lock decay
+        if (this.interactionLock > 0) {
+            this.interactionLock -= deltaMS;
+            if (this.interactionLock <= 0) {
+                this.interactionLock = 0;
+                this.lockEmoji = null;
                 this._petPip();
-            } else {
-                // Bolt away!
-                this.petAccum += deltaMS;
-                if (this.petAccum >= CALL_STEP_MS * 0.5) { // Run faster!
-                    this.petAccum = 0;
-                    this._runAway();
-                }
             }
         }
+
+        this._updateMovement(deltaMS);
         // Game tick
         this.tickAccum += deltaMS;
         const rate = this.app.state.settings?.tickRate || 3000;
