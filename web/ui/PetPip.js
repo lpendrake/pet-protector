@@ -1,5 +1,6 @@
 const { Container, Graphics, Text, Sprite, AnimatedSprite } = PIXI;
 import { TILE_DEFS } from '../world.js';
+import { SpriteUtils } from '../utils/SpriteUtils.js';
 
 export class PetPip {
     constructor(parentContainer, screenWidth, screenHeight) {
@@ -68,6 +69,12 @@ export class PetPip {
         this.thoughtText.x = 15;
         this.thoughtText.y = 10;
         this.thoughtBox.addChild(this.thoughtText);
+    }
+
+    setupGrassFromSheet(sheetTexture, frameSize = 32) {
+        if (!sheetTexture) return;
+        const textures = SpriteUtils.sliceHorizontal(sheetTexture, frameSize);
+        this.setupGrass(textures);
     }
 
     setupGrass(textures) {

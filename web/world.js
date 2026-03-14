@@ -27,7 +27,12 @@ export class World {
 
     async load(url) {
         const resp = await fetch(url);
-        this.mapData = await resp.json();
+        const data = await resp.json();
+        this.init(data);
+    }
+
+    init(mapData) {
+        this.mapData = mapData;
         this.width = this.mapData.width;
         this.height = this.mapData.height;
         this.zones = this.mapData.zones || [];

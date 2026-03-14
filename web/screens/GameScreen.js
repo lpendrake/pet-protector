@@ -7,6 +7,7 @@ import { ZoneManager } from '../systems/ZoneManager.js';
 import { VisionSystem } from '../systems/VisionSystem.js';
 import { InteractionSystem } from '../systems/InteractionSystem.js';
 import { PetMovementSystem } from '../systems/PetMovementSystem.js';
+import { AssetLoader } from '../systems/AssetLoader.js';
 
 const { Container, Graphics, Text, Sprite, Assets, AnimatedSprite, Texture, Rectangle } = PIXI;
 
@@ -25,44 +26,24 @@ export class GameScreen extends Screen {
         this._built = false;
         this._loaded = false;
         this.buddyTexture = null;
-        this.grassTextures = [];
         this.zoneManager = new ZoneManager(this.world);
         this.interactionSystem = new InteractionSystem(this.world);
         this.petMovementSystem = new PetMovementSystem(this.world);
+        this.assetLoader = new AssetLoader();
     }
 
     async enter() {
         if (!this._built) { this._build(); this._built = true; }
         if (!this._loaded) {
-            // Load map and textures with cache busting
-            const cb = `?v=${Date.now()}`;
-            const [mapData, texture, grassSheet] = await Promise.all([
-                this.world.load(`./maps/world.json${cb}`),
-                Assets.load(`./assets/buddy.avif${cb}`),
-                Assets.load(`./assets/sprite_grass_32x32.avif${cb}`)
-            ]);
-            this.buddyTexture = texture;
+            const { mapData, textures } = await this.assetLoader.loadAll();
             
-            // Slice grass sheet based on its actual dimensions
-            const frameSize = 32;
-            const cols = Math.floor(grassSheet.width / frameSize);
-            
-            for (let i = 0; i < cols; i++) {
-                const rect = new Rectangle(i * frameSize, 0, frameSize, frameSize);
-                const tex = new Texture(grassSheet.baseTexture, rect);
-                this.grassTextures.push(tex);
-            }
-
-            if (this.grassTextures.length > 0) {
-                this.petPip.setupGrass(this.grassTextures);
-            }
+            this.world.init(mapData);
+            this.buddyTexture = textures.buddy;
+            this.petPip.setupGrassFromSheet(textures.grassSheet, 32);
             
             // Apply texture to markers
             if (this.petSprite) {
-                this.petSprite.texture = texture;
-            }
-            if (this.ppipSprite) {
-                // Remove this block if ppipSprite is gone
+                this.petSprite.texture = this.buddyTexture;
             }
 
             const st = this.app.state;
