@@ -8,7 +8,9 @@ const defaultState = {
         developmentStage: 1,
         nutrition: 100,
         energy: 100,
-        hydration: 100
+        hydration: 100,
+        scaredTimer: 0,
+        scareSource: null
     },
     settings: {
         tickRate: 3000,
@@ -20,7 +22,8 @@ const defaultState = {
     lastTick: Date.now(),
     spiritPos: null,
     petPos: null,
-    version: CURRENT_VERSION
+    version: CURRENT_VERSION,
+    seenTiles: {}
 };
 
 export function loadState() {

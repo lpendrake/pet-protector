@@ -3,11 +3,11 @@ import { World, TILE_SIZE, TILE_DEFS } from '../world.js';
 import { tick, addNotification, DECAY_RATES } from '../game.js';
 import { saveState, CURRENT_VERSION } from '../state.js';
 
-const { Container, Graphics, Text } = PIXI;
+const { Container, Graphics, Text, Sprite, Assets } = PIXI;
 
 const LEASH = 3;
 const VISION = 3;
-const CALL_STEP_MS = 100;
+const CALL_STEP_MS = 1000;
 
 export class GameScreen extends Screen {
     constructor(app) {
@@ -21,12 +21,27 @@ export class GameScreen extends Screen {
         this.showScene = false;
         this._built = false;
         this._loaded = false;
+        this.buddyTexture = null;
     }
 
     async enter() {
         if (!this._built) { this._build(); this._built = true; }
         if (!this._loaded) {
-            await this.world.load('./maps/test.json');
+            // Load map and textures
+            const [mapData, texture] = await Promise.all([
+                this.world.load('./assets/test.json'),
+                Assets.load('./assets/buddy.avif')
+            ]);
+            this.buddyTexture = texture;
+            
+            // Apply texture to markers
+            if (this.petSprite) {
+                this.petSprite.texture = texture;
+            }
+            if (this.ppipSprite) {
+                this.ppipSprite.texture = texture;
+            }
+
             const st = this.app.state;
             console.log('GameScreen: Enter. App state:', st);
             
@@ -35,15 +50,24 @@ export class GameScreen extends Screen {
                 this.spiritPos = { ...st.spiritPos };
                 this.petPos = { ...st.petPos };
             } else {
-                const s = this.world.startPosition;
-                console.log('GameScreen: No saved positions found or state missing. Starting at:', s);
-                this.spiritPos = { ...s };
-                this.petPos = { ...s };
-                if (st) {
-                    st.spiritPos = { ...this.spiritPos };
-                    st.petPos = { ...this.petPos };
-                    saveState(st);
-                }
+                this.spiritPos = this.world.startPosition;
+                this.petPos = this.app.state.petPos || { ...this.spiritPos };
+                
+                this.petPath = []; // A* path to follow
+                this.petAccum = 0;
+                this.tickAccum = 0;
+                this.interactionLock = 0; // ms remaining in lock
+                this.spiritAnchor = 'buddy'; // 'buddy' or {x, y}
+                this.lockEmoji = null;
+                
+                this._loaded = true;
+                this.ui.visible = true;
+                this.app.pixiApp.stage.addChild(this.ui);
+                
+                this._cam();
+                this._markers();
+                this._updateFog();
+                this._petPip();
             }
 
             this.worldLayer.addChildAt(this.world.container, 0);
@@ -79,14 +103,20 @@ export class GameScreen extends Screen {
         this.spiritGfx.endFill();
         this.worldLayer.addChild(this.spiritGfx);
 
-        // Pet marker — dark square
-        this.petGfx = new Graphics();
-        this.petGfx.beginFill(0x1a1a1a);
-        this.petGfx.drawRect(-12, -12, 24, 24);
-        this.petGfx.endFill();
-        this.petGfx.lineStyle(2, 0x000000);
-        this.petGfx.drawRect(-12, -12, 24, 24);
+        // Pet marker — Sprite
+        this.petGfx = new Container();
+        this.petSprite = new Sprite();
+        this.petSprite.anchor.set(0.5);
+        // Desired size on map is roughly 0.6 of a tile
+        this.petSprite.width = TILE_SIZE * 0.6;
+        this.petSprite.height = TILE_SIZE * 0.6;
+        this.petGfx.addChild(this.petSprite);
+        this.petGfx.addChild(this.petSprite);
         this.worldLayer.addChild(this.petGfx);
+
+        // -- Spawns Layer (Fish, Apples, etc.) --
+        this.spawnGfx = new Container();
+        this.worldLayer.addChild(this.spawnGfx);
 
         // Fixed UI layer
         this.ui = new Container();
@@ -142,33 +172,61 @@ export class GameScreen extends Screen {
 
     _updateFog() {
         if (!this.fogCells) return;
+        const state = this.app.state;
+        if (!state.seenTiles) state.seenTiles = {};
+
         const sx = this.spiritPos.x, sy = this.spiritPos.y;
+        
+        // Mark current live vision
+        for (let dy = -VISION; dy <= VISION; dy++) {
+            for (let dx = -VISION; dx <= VISION; dx++) {
+                const tx = sx + dx, ty = sy + dy;
+                if (this._dist({x: tx, y: ty}, this.spiritPos) <= VISION) {
+                    if (tx >= 0 && tx < this.world.width && ty >= 0 && ty < this.world.height) {
+                        state.seenTiles[`${tx},${ty}`] = true;
+                    }
+                }
+            }
+        }
+
         for (const cell of this.fogCells) {
             const outside = cell.x < 0 || cell.y < 0 ||
                             cell.x >= this.world.width || cell.y >= this.world.height;
             const dist = this._dist(cell, this.spiritPos);
+            const isSeen = state.seenTiles[`${cell.x},${cell.y}`];
 
             if (outside) {
                 cell.gfx.alpha = 1;
             } else if (dist <= 1) {
-                cell.gfx.alpha = 0;
+                cell.gfx.alpha = 0; // Live
             } else if (dist <= 2) {
-                cell.gfx.alpha = 0.2;
+                cell.gfx.alpha = 0.1; // Live
             } else if (dist <= VISION) {
-                cell.gfx.alpha = 0.5;
+                cell.gfx.alpha = 0.3; // Live
+            } else if (isSeen) {
+                cell.gfx.alpha = 0.75; // Stale (Memory)
             } else {
-                cell.gfx.alpha = 0.85;
+                cell.gfx.alpha = 1.0; // Hidden
             }
             
-            // Hide Apple if out of spirit's sight
+            // Interaction: Pet and Creatures only visible in live vision
+            const isLive = dist <= VISION;
             const tid = this.world.getTile(cell.x, cell.y);
-            if (tid === 'A') {
-                const ts = this.world.tileSprites && this.world.tileSprites[cell.y] && this.world.tileSprites[cell.y][cell.x];
-                if (ts) {
-                    const visible = dist <= VISION;
-                    ts.bg.visible = visible;
-                    ts.label.visible = visible;
-                }
+            const ts = this.world.tileSprites && this.world.tileSprites[cell.y] && this.world.tileSprites[cell.y][cell.x];
+            
+            if (ts) {
+                // Background tiles always visible if seen
+                ts.bg.visible = isSeen || isLive;
+                ts.label.visible = isSeen || isLive;
+                
+                // Dim stale tiles
+                ts.bg.alpha = isLive ? 1.0 : 0.4;
+            }
+
+            // Hide Buddy if out of live vision
+            const petDist = this._dist(cell, { x: Math.round(this.petPos.x), y: Math.round(this.petPos.y) });
+            if (petDist === 0) {
+                this.petGfx.visible = isLive;
             }
         }
     }
@@ -177,62 +235,52 @@ export class GameScreen extends Screen {
 
     _mkPetPip() {
         const ph = this.app.pixiApp.screen.height * 0.4;
-        const pw = ph * 1.5; // Maintain a good aspect ratio
+        const pw = ph * 1.5;
         this.ppip = new Container();
         this.ppip.x = 20; this.ppip.y = this.app.pixiApp.screen.height - ph - 20;
         this.ui.addChild(this.ppip);
 
-        const bg = new Graphics();
-        bg.lineStyle(3, 0x7ec8e3, 0.8);
-        bg.beginFill(0x0d1117, 0.92);
-        bg.drawRoundedRect(0, 0, pw, ph, 12);
-        bg.endFill();
-        this.ppip.addChild(bg);
+        // -- Masked Content (Background + Buddy) --
+        this.ppipContent = new Container();
+        this.ppip.addChild(this.ppipContent);
 
-        this.ppipTitle = new Text('🐾 Buddy', {
-            fontFamily: '"VT323", monospace', fontSize: 24, fill: 0x7ec8e3, fontWeight: 'bold'
-        });
-        this.ppipTitle.x = 20; this.ppipTitle.y = 12;
-        this.ppip.addChild(this.ppipTitle);
+        this.ppipBg = new Graphics();
+        this.ppipContent.addChild(this.ppipBg);
 
-        this.ppipBars = new Container();
-        this.ppipBars.x = 20; this.ppipBars.y = 50;
-        this.ppip.addChild(this.ppipBars);
+        const mask = new Graphics();
+        mask.beginFill(0xffffff);
+        mask.drawRoundedRect(0, 0, pw, ph, 12);
+        mask.endFill();
+        this.ppipContent.addChild(mask);
+        this.ppipContent.mask = mask;
 
-        this.ppipStatus = new Text('Idle', {
-            fontFamily: '"VT323", monospace', fontSize: 18, fill: 0xaaaaaa
-        });
-        this.ppipStatus.x = 20; this.ppipStatus.y = ph - 40;
-        this.ppip.addChild(this.ppipStatus);
+        this.ppipSprite = new Sprite();
+        this.ppipSprite.anchor.set(0.5);
+        this.ppipSprite.x = pw / 2;
+        this.ppipSprite.y = ph * 0.65;
+        this.ppipContent.addChild(this.ppipSprite);
 
-        this.ppipPreview = new Graphics();
-        // Position preview on the right side of the large PiP
-        this.ppipPreview.x = pw - (ph * 0.8) - 20; this.ppipPreview.y = 50;
-        this.ppip.addChild(this.ppipPreview);
+        // -- Unmasked UI (Border + Bubble) --
+        const border = new Graphics();
+        border.lineStyle(3, 0x7ec8e3, 0.8);
+        border.drawRoundedRect(0, 0, pw, ph, 12);
+        this.ppip.addChild(border);
 
-        // Thought bubble box emerging from the top right, above the preview
         this.thoughtBox = new Container();
-        this.thoughtBox.y = -60; 
-        this.thoughtBox.x = pw - 80;
         this.thoughtBox.visible = false;
         this.ppip.addChild(this.thoughtBox);
 
-        const tbBg = new Graphics();
-        tbBg.lineStyle(3, 0x7ec8e3, 0.8);
-        tbBg.beginFill(0x0d1117, 0.95);
-        tbBg.drawRoundedRect(0, 0, 70, 70, 12);
-        
-        // Larger triangle tail
-        tbBg.beginFill(0x0d1117, 0.95);
-        tbBg.lineStyle(3, 0x7ec8e3, 0.8);
-        tbBg.moveTo(25, 70);
-        tbBg.lineTo(35, 85);
-        tbBg.lineTo(45, 70);
-        tbBg.endFill();
-        this.thoughtBox.addChild(tbBg);
+        this.tbBg = new Graphics();
+        this.thoughtBox.addChild(this.tbBg);
 
-        this.thoughtText = new Text('', { fontFamily: '"VT323", monospace', fontSize: 42 });
-        this.thoughtText.x = 14;
+        this.thoughtText = new Text('', {
+            fontFamily: 'Arial, sans-serif',
+            fontSize: 48,
+            fill: 0xffffff,
+            padding: 30
+        });
+        // Remove anchor to use top-left positioning reliably
+        this.thoughtText.x = 15;
         this.thoughtText.y = 10;
         this.thoughtBox.addChild(this.thoughtText);
     }
@@ -352,53 +400,96 @@ export class GameScreen extends Screen {
         this.spiritGfx.y = (this.spiritPos.y + 0.5) * TILE_SIZE;
         this.petGfx.x = (this.petPos.x + 0.5) * TILE_SIZE;
         this.petGfx.y = (this.petPos.y + 0.5) * TILE_SIZE;
+
+        // Draw Spawns
+        this.spawnGfx.removeChildren();
+        if (this.app.state && this.app.state.activeSpawns) {
+            for (const s of this.app.state.activeSpawns) {
+                const marker = new Container();
+                marker.x = (s.x + 0.5) * TILE_SIZE;
+                marker.y = (s.y + 0.5) * TILE_SIZE;
+
+                const emoji = s.type === 'fish' ? '🐟' : '🍎';
+                const txt = new Text(emoji, { fontSize: 32 });
+                txt.anchor.set(0.5);
+                marker.addChild(txt);
+
+                // Hide if out of vision
+                const dist = this._dist({x: s.x, y: s.y}, this.spiritPos);
+                marker.visible = dist <= VISION;
+                
+                this.spawnGfx.addChild(marker);
+            }
+        }
     }
 
     _petPip() {
+        if (!this._loaded || !this.app.state) return;
         const st = this.app.state;
-        if (!st) return;
         const p = st.pet;
-        this.ppipTitle.text = `🐾 ${p.name}`;
 
-        let status = 'Idle';
-        if (this.petCalling) status = 'Coming to you...';
-        else if (p.nutrition < 20) status = 'Starving!';
-        else if (p.nutrition < 50) status = 'Hungry...';
-        else if (p.energy < 20) status = 'Exhausted';
-        else if (p.energy < 40) status = 'Sleepy';
-        this.ppipStatus.text = status;
+        const ph = this.app.pixiApp.screen.height * 0.4;
+        const pw = ph * 1.5;
 
-        // Remove old stat bars
-        this.ppipBars.removeChildren();
-        
         // Diegetic Needs: if a need is high (meaning nutrition/energy/hydration is LOW), show an emoji
         let thought = '';
         if (p.nutrition < 30) thought = '🥩';
         else if (p.energy < 30) thought = '💤';
         else if (p.hydration < 30) thought = '💧';
         
+        // Priority: 1. Interaction Lock, 2. Responding to Call, 3. Basic Needs
+        if (this.lockEmoji) {
+            thought = this.lockEmoji;
+        } else if (this.petCalling) {
+            thought = '🐾';
+        }
+
         if (thought) {
             this.thoughtText.text = thought;
             this.thoughtBox.visible = true;
+
+            // Enforce min-size (at least a square)
+            const tw = Math.max(this.thoughtText.width + 30, 80);
+            const th = Math.max(this.thoughtText.height + 20, 80);
+
+            this.tbBg.clear();
+            this.tbBg.lineStyle(3, 0x7ec8e3, 0.8);
+            this.tbBg.beginFill(0x0d1117, 0.95);
+            this.tbBg.drawRoundedRect(0, 0, tw, th, 15);
+            
+            // Triangle tail (centered under the bubble)
+            this.tbBg.beginFill(0x0d1117, 0.95);
+            this.tbBg.lineStyle(3, 0x7ec8e3, 0.8);
+            const mid = tw / 2;
+            this.tbBg.moveTo(mid - 10, th);
+            this.tbBg.lineTo(mid, th + 15);
+            this.tbBg.lineTo(mid + 10, th);
+            this.tbBg.endFill();
+
+            // Position text inside bubble
+            this.thoughtText.x = (tw - this.thoughtText.width) / 2;
+            this.thoughtText.y = (th - this.thoughtText.height) / 2;
+
+            // Reposition the box to stay above buddy
+            this.thoughtBox.x = pw / 2 - tw / 2 + 60; 
         } else {
             this.thoughtBox.visible = false;
         }
 
-        this.ppipPreview.clear();
+        this.ppipBg.clear();
         const tid = this.world.getTile?.(Math.round(this.petPos.x), Math.round(this.petPos.y));
         const tc = (tid && TILE_DEFS[tid]) ? TILE_DEFS[tid].color : 0x555555;
         
-        const ph = this.app.pixiApp.screen.height * 0.4;
-        const preSize = ph * 0.6;
-        
-        this.ppipPreview.beginFill(tc);
-        this.ppipPreview.drawRect(0, 0, preSize, preSize * 1.2);
-        this.ppipPreview.endFill();
-        
-        this.ppipPreview.beginFill(0x1a1a1a);
-        const petSize = preSize * 0.3;
-        this.ppipPreview.drawRect((preSize - petSize)/2, (preSize * 1.2 - petSize)/2, petSize, petSize);
-        this.ppipPreview.endFill();
+        this.ppipBg.beginFill(tc);
+        this.ppipBg.drawRoundedRect(0, 0, pw, ph, 12);
+        this.ppipBg.endFill();
+
+        if (this.buddyTexture) {
+            this.ppipSprite.texture = this.buddyTexture;
+            // Scale buddy to fill about 75% of the PiP's height
+            const scale = (ph * 0.75) / this.buddyTexture.height;
+            this.ppipSprite.scale.set(scale);
+        }
     }
 
     _spiritTriggers() {
@@ -411,11 +502,6 @@ export class GameScreen extends Screen {
 
         // Creature proximity
         let near = false;
-        for (const [dx, dy] of [[0,0],[1,0],[-1,0],[0,1],[0,-1]]) {
-            if (this.world.getTile(this.spiritPos.x + dx, this.spiritPos.y + dy) === 'C') {
-                near = true; break;
-            }
-        }
         this.cpip.visible = near;
         this.descBox.visible = near;
         if (near) {
@@ -424,33 +510,155 @@ export class GameScreen extends Screen {
     }
 
     _petTriggers() {
-        if (!this._loaded) return;
-        
-        // Pet interactions with the environment
-        const pt = this.world.getTile(Math.round(this.petPos.x), Math.round(this.petPos.y));
-        const px = Math.round(this.petPos.x), py = Math.round(this.petPos.y);
+        if (!this._loaded || !this.app.state || this.interactionLock > 0) return;
         const state = this.app.state;
+        const pet = state.pet;
+        const px = Math.round(this.petPos.x);
+        const py = Math.round(this.petPos.y);
+
+        // -- DRINKING (On stream or adjacent to deep water/river) --
+        const isWater = (x, y) => {
+            const t = this.world.getTile(x, y);
+            return t === 'W' || t === 'S' || t === 'D' || t === 'I';
+        };
+
+        const adjacentWater = isWater(px, py) || isWater(px+1, py) || isWater(px-1, py) || isWater(px, py+1) || isWater(px, py-1);
+
+        if (adjacentWater && pet.hydration < 60) {
+            pet.hydration = 100;
+            this._lockBuddy(5000, '🥃');
+            addNotification(state, `${pet.name} is rehydrating.`);
+            return;
+        }
+
+        // -- EATING (On apple tile or fish) --
+        const pt = this.world.getTile(px, py);
         
-        if (pt === 'W' && state.pet.hydration < 100) {
-            state.pet.hydration = 100; // Max out hydration
-            addNotification(state, `${state.pet.name} drank from the crystal clear water.`);
+        // Check for active fish in state
+        if (state.activeSpawns) {
+            const fishIndex = state.activeSpawns.findIndex(s => s.x === px && s.y === py && s.type === 'fish');
+            if (fishIndex !== -1 && pet.nutrition < 60) {
+                const fish = state.activeSpawns[fishIndex];
+                pet.nutrition = Math.min(100, pet.nutrition + 30);
+                this._lockBuddy(5000, '🍴🐟');
+                addNotification(state, `${pet.name} caught and ate a delicious fish!`);
+                
+                // Set zone on cooldown
+                if (fish.zoneId) {
+                    if (!state.zoneCooldowns) state.zoneCooldowns = {};
+                    const zone = this.world.zones.find(z => z.id === fish.zoneId);
+                    state.zoneCooldowns[fish.zoneId] = zone ? (zone.cooldown || 60) : 60;
+                }
+                
+                state.activeSpawns.splice(fishIndex, 1);
+                return;
+            }
         }
-        if (pt === 'V' && state.pet.energy < 100) {
-            state.pet.energy = 100; // Max out energy
-            addNotification(state, `${state.pet.name} rested deeply in the cave.`);
-        }
-        if (pt === 'A' && state.pet.nutrition < 100) {
-            state.pet.nutrition = Math.min(100, state.pet.nutrition + 50);
-            addNotification(state, `${state.pet.name} ate a magical apple!`);
-            this.world.mapData.tiles[py][px] = 'G'; // Consume the apple
+
+        if (pt === 'A' && pet.nutrition < 60) {
+            pet.nutrition = Math.min(100, pet.nutrition + 50);
+            this._lockBuddy(5000, '🍴🍎');
+            addNotification(state, `${pet.name} ate a magical apple!`);
+            this.world.mapData.tiles[py][px] = 'G'; // Consume
             this.world._buildTiles();
             
-            // Calculate respawn time: Target 4 minutes (80 ticks)
-            // 50 nutrition / 0.25 decay = 200 ticks (10 mins). 200 * 0.4 = 80 ticks (4 mins).
+            // Cooldown logic
             if (!state.cooldowns) state.cooldowns = {};
-            const replenishAmount = 50;
-            const respawnTicks = Math.floor((replenishAmount / DECAY_RATES.nutrition) * 0.4);
+            const respawnTicks = Math.floor((50 / DECAY_RATES.nutrition) * 0.4);
             state.cooldowns[`apple_${px}_${py}`] = respawnTicks;
+            return;
+        }
+
+        // -- SLEEPING (In cave) --
+        if (pt === 'V' && pet.energy < 60) {
+            pet.energy = 100;
+            this._lockBuddy(5000, 'zzZ');
+            addNotification(state, `${pet.name} is taking a deep nap.`);
+            this._fadeEffect();
+            return;
+        }
+    }
+
+    _lockBuddy(duration, emoji) {
+        this.interactionLock = duration;
+        this.lockEmoji = emoji;
+        this.petCalling = false;
+        this.petPath = [];
+        this._petPip();
+    }
+
+    async _fadeEffect() {
+        const overlay = new Graphics();
+        overlay.beginFill(0x000000);
+        overlay.drawRect(0, 0, this.app.pixiApp.screen.width, this.app.pixiApp.screen.height);
+        overlay.endFill();
+        overlay.alpha = 0;
+        this.ui.addChild(overlay);
+
+        // Fade out
+        for (let i = 0; i <= 10; i++) {
+            overlay.alpha = i / 10;
+            await new Promise(r => setTimeout(r, 100));
+        }
+        await new Promise(r => setTimeout(r, 1000));
+        // Fade in
+        for (let i = 10; i >= 0; i--) {
+            overlay.alpha = i / 10;
+            await new Promise(r => setTimeout(r, 100));
+        }
+        this.ui.removeChild(overlay);
+    }
+
+    _updateZones(deltaMS) {
+        if (!this._loaded || !this.app.state) return;
+        const state = this.app.state;
+        if (!state.activeSpawns) state.activeSpawns = [];
+        if (!state.zoneCooldowns) state.zoneCooldowns = {};
+
+        // Update TTLs
+        state.activeSpawns = state.activeSpawns.filter(s => {
+            if (s.ttl !== undefined) {
+                s.ttl -= deltaMS / 1000;
+                return s.ttl > 0;
+            }
+            return true;
+        });
+
+        // Update Cooldowns
+        for (const zid in state.zoneCooldowns) {
+            if (state.zoneCooldowns[zid] > 0) {
+                state.zoneCooldowns[zid] -= deltaMS / 1000;
+                if (state.zoneCooldowns[zid] <= 0) delete state.zoneCooldowns[zid];
+            }
+        }
+
+        // Try spawning
+        for (const zone of this.world.zones) {
+            if (state.zoneCooldowns[zone.id]) continue;
+
+            const activeInZone = state.activeSpawns.filter(s => s.zoneId === zone.id).length;
+            if (activeInZone >= (zone.maxActive || 1)) continue;
+
+            // Random chance per tick (adjusted for tick rate)
+            if (Math.random() < (zone.rate || 0.05)) {
+                const tiles = zone.tiles || [];
+                if (tiles.length === 0) continue;
+
+                const pos = tiles[Math.floor(Math.random() * tiles.length)];
+                
+                // Don't spawn on top of an existing one
+                if (state.activeSpawns.some(s => s.x === pos.x && s.y === pos.y)) continue;
+
+                state.activeSpawns.push({
+                    type: zone.spawns[0] || 'fish',
+                    x: pos.x,
+                    y: pos.y,
+                    zoneId: zone.id,
+                    ttl: zone.ttl || 5
+                });
+                
+                console.log(`Spawned ${zone.spawns[0]} in ${zone.id} at ${pos.x},${pos.y}`);
+            }
         }
     }
 
@@ -458,6 +666,58 @@ export class GameScreen extends Screen {
         const dx = Math.abs(a.x - b.x);
         const dy = Math.abs(a.y - b.y);
         return Math.max(dx, dy) + Math.floor(Math.min(dx, dy) / 2);
+    }
+
+    _movePetTo(x, y) {
+        const dx = x - this.petPos.x;
+        const dy = y - this.petPos.y;
+        this.petPos.x = x;
+        this.petPos.y = y;
+
+        if (this.spiritAnchor === 'buddy') {
+            this.spiritPos.x += dx;
+            this.spiritPos.y += dy;
+        }
+
+        if (this.app.state) {
+            this.app.state.petPos = { ...this.petPos };
+            this.app.state.spiritPos = { ...this.spiritPos };
+            saveState(this.app.state);
+        }
+
+        this._markers();
+        this._petPip();
+        this._cam();
+        this._petTriggers();
+    }
+
+    _runAway() {
+        if (!this.app.state.pet.scareSource) return;
+        const src = this.app.state.pet.scareSource;
+        
+        // Find adjacent tiles and pick the one farthest from source
+        const neighbors = [
+            { x: Math.round(this.petPos.x)+1, y: Math.round(this.petPos.y) },
+            { x: Math.round(this.petPos.x)-1, y: Math.round(this.petPos.y) },
+            { x: Math.round(this.petPos.x),   y: Math.round(this.petPos.y)+1 },
+            { x: Math.round(this.petPos.x),   y: Math.round(this.petPos.y)-1 }
+        ];
+
+        let best = null;
+        let bestDist = -1;
+
+        for (const n of neighbors) {
+            if (!this.world.isPassable(n.x, n.y, 'pet')) continue;
+            const d = Math.pow(n.x - src.x, 2) + Math.pow(n.y - src.y, 2);
+            if (d > bestDist) {
+                bestDist = d;
+                best = n;
+            }
+        }
+
+        if (best) {
+            this._movePetTo(best.x, best.y);
+        }
     }
 
     // ── INPUT ─────────────────────────────────────────────
@@ -473,9 +733,26 @@ export class GameScreen extends Screen {
         // Call pet to spirit
         if (e.key === ' ') {
             e.preventDefault();
-            if (this._dist(this.petPos, this.spiritPos) > 0) {
+            if (this.interactionLock > 0) return;
+            
+            const path = this.world.getPath(this.petPos, this.spiritPos, 'pet');
+            if (path && path.length > 0) {
+                this.petPath = path;
                 this.petCalling = true;
+                
+                // Check if path actually reaches the spirit
+                const last = path[path.length - 1];
+                this.partialPath = (last.x !== this.spiritPos.x || last.y !== this.spiritPos.y);
+                
                 this._petPip();
+            } else if (this._dist(this.petPos, this.spiritPos) > 0) {
+                // Already at closest possible point but can't reach spirit
+                this._lockBuddy(1500, '!');
+                setTimeout(() => {
+                    if (this.interactionLock <= 0 || this.lockEmoji === '!') {
+                        this._lockBuddy(3500, '😢');
+                    }
+                }, 1500);
             }
             return;
         }
@@ -499,7 +776,7 @@ export class GameScreen extends Screen {
         e.preventDefault();
 
         const nx = this.spiritPos.x + dx, ny = this.spiritPos.y + dy;
-        if (!this.world.isPassable(nx, ny)) return;
+        if (!this.world.isPassable(nx, ny, 'spirit')) return;
         if (this._dist({ x: nx, y: ny }, this.petPos) > LEASH) return;
 
         this.spiritPos.x = nx;
@@ -507,15 +784,21 @@ export class GameScreen extends Screen {
         if (this.app.state) {
             this.app.state.spiritPos = { ...this.spiritPos };
             this.app.state.petPos = { ...this.petPos }; 
-            console.log('GameScreen: Spirit moved. Saving state:', this.app.state.spiritPos);
             saveState(this.app.state);
         }
 
+        this._syncSpiritWithAnchor(); // Move anchor if needed
         this._cam();
         this._markers();
         this._updateFog();
         this._spiritTriggers();
         this._petTriggers();
+    }
+
+    _syncSpiritWithAnchor() {
+        if (this.spiritAnchor === 'buddy') {
+            // This is handled in the pet movement loop
+        }
     }
 
     // ── LOOP ──────────────────────────────────────────────
@@ -524,38 +807,67 @@ export class GameScreen extends Screen {
         if (!this._loaded || !this.app.state) return;
 
         // Pet travelling to spirit when called
-        if (this.petCalling) {
+        if (this.interactionLock > 0) {
+            this.interactionLock -= deltaMS;
+            if (this.interactionLock <= 0) {
+                this.interactionLock = 0;
+                this.lockEmoji = null;
+                this._petPip();
+            }
+            return; // No movement while locked
+        }
+
+        if (this.petCalling && this.petPath.length > 0) {
             this.petAccum += deltaMS;
             if (this.petAccum >= CALL_STEP_MS) {
                 this.petAccum -= CALL_STEP_MS;
-                if (this._dist(this.petPos, this.spiritPos) > 0) {
-                    const ddx = this.spiritPos.x - this.petPos.x;
-                    const ddy = this.spiritPos.y - this.petPos.y;
-                    if (Math.abs(ddx) >= Math.abs(ddy)) this.petPos.x += Math.sign(ddx);
-                    else this.petPos.y += Math.sign(ddy);
+                
+                const next = this.petPath.shift();
+                this._movePetTo(next.x, next.y);
+
+                if (this.petPath.length === 0) {
+                    this.petCalling = false;
                     
-                    if (this.app.state) {
-                        this.app.state.petPos = { ...this.petPos };
-                        this.app.state.spiritPos = { ...this.spiritPos };
-                        saveState(this.app.state);
+                    if (this.partialPath) {
+                        this.partialPath = false;
+                        // Start failure sequence
+                        this._lockBuddy(1500, '!');
+                        setTimeout(() => {
+                            if (this.interactionLock <= 0 || this.lockEmoji === '!') {
+                                this._lockBuddy(3500, '😢');
+                            }
+                        }, 1500);
+                    } else {
+                        // Reached spirit! Heart check (every 2m)
+                        const now = Date.now();
+                        const lastHeart = this.app.state.lastHeartTime || 0;
+                        if (now - lastHeart > 120000) {
+                            this.app.state.lastHeartTime = now;
+                            this._lockBuddy(3000, '❤️');
+                        }
                     }
 
-                    this._markers();
                     this._petPip();
-                    this._cam();
-                    this._petTriggers();
-                } else {
-                    this.petCalling = false;
-                    if (this.app.state) {
-                        this.app.state.petPos = { ...this.petPos };
-                        saveState(this.app.state);
-                    }
-                    this._petPip();
-                    this._petTriggers();
                 }
             }
         }
 
+        // Fear Mechanic
+        if (this.app.state.pet.scaredTimer > 0) {
+            this.app.state.pet.scaredTimer -= deltaMS;
+            if (this.app.state.pet.scaredTimer <= 0) {
+                this.app.state.pet.scaredTimer = 0;
+                addNotification(this.app.state, `${this.app.state.pet.name} has calmed down.`);
+                this._petPip();
+            } else {
+                // Bolt away!
+                this.petAccum += deltaMS;
+                if (this.petAccum >= CALL_STEP_MS * 0.5) { // Run faster!
+                    this.petAccum = 0;
+                    this._runAway();
+                }
+            }
+        }
         // Game tick
         this.tickAccum += deltaMS;
         const rate = this.app.state.settings?.tickRate || 3000;
@@ -563,6 +875,8 @@ export class GameScreen extends Screen {
             this.tickAccum -= rate;
             this.app.state = tick(this.app.state);
             
+            this._updateZones(rate); // Update spawning logic every tick
+
             // Synchronize positions into state for persistence
             if (this.app.state) {
                 this.app.state.spiritPos = { ...this.spiritPos };
