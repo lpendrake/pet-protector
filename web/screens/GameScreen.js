@@ -175,93 +175,96 @@ export class GameScreen extends Screen {
     // ── PET PiP (bottom-left) ─────────────────────────────
 
     _mkPetPip() {
-        const pw = 200, ph = 140;
+        const ph = this.app.pixiApp.screen.height * 0.4;
+        const pw = ph * 1.5; // Maintain a good aspect ratio
         this.ppip = new Container();
-        this.ppip.x = 10; this.ppip.y = this.app.pixiApp.screen.height - ph - 10;
+        this.ppip.x = 20; this.ppip.y = this.app.pixiApp.screen.height - ph - 20;
         this.ui.addChild(this.ppip);
 
         const bg = new Graphics();
-        bg.lineStyle(2, 0x7ec8e3, 0.8);
+        bg.lineStyle(3, 0x7ec8e3, 0.8);
         bg.beginFill(0x0d1117, 0.92);
-        bg.drawRoundedRect(0, 0, pw, ph, 6);
+        bg.drawRoundedRect(0, 0, pw, ph, 12);
         bg.endFill();
         this.ppip.addChild(bg);
 
         this.ppipTitle = new Text('🐾 Buddy', {
-            fontFamily: '"VT323", monospace', fontSize: 14, fill: 0x7ec8e3, fontWeight: 'bold'
+            fontFamily: '"VT323", monospace', fontSize: 24, fill: 0x7ec8e3, fontWeight: 'bold'
         });
-        this.ppipTitle.x = 10; this.ppipTitle.y = 6;
+        this.ppipTitle.x = 20; this.ppipTitle.y = 12;
         this.ppip.addChild(this.ppipTitle);
 
         this.ppipBars = new Container();
-        this.ppipBars.x = 10; this.ppipBars.y = 28;
+        this.ppipBars.x = 20; this.ppipBars.y = 50;
         this.ppip.addChild(this.ppipBars);
 
         this.ppipStatus = new Text('Idle', {
-            fontFamily: '"VT323", monospace', fontSize: 11, fill: 0xaaaaaa
+            fontFamily: '"VT323", monospace', fontSize: 18, fill: 0xaaaaaa
         });
-        this.ppipStatus.x = 10; this.ppipStatus.y = ph - 25;
+        this.ppipStatus.x = 20; this.ppipStatus.y = ph - 40;
         this.ppip.addChild(this.ppipStatus);
 
         this.ppipPreview = new Graphics();
-        this.ppipPreview.x = 140; this.ppipPreview.y = 30;
+        // Position preview on the right side of the large PiP
+        this.ppipPreview.x = pw - (ph * 0.8) - 20; this.ppipPreview.y = 50;
         this.ppip.addChild(this.ppipPreview);
 
         // Thought bubble box emerging from the top right, above the preview
         this.thoughtBox = new Container();
-        this.thoughtBox.y = -35; 
-        this.thoughtBox.x = 150;
+        this.thoughtBox.y = -60; 
+        this.thoughtBox.x = pw - 80;
         this.thoughtBox.visible = false;
         this.ppip.addChild(this.thoughtBox);
 
         const tbBg = new Graphics();
-        tbBg.lineStyle(2, 0x7ec8e3, 0.8);
+        tbBg.lineStyle(3, 0x7ec8e3, 0.8);
         tbBg.beginFill(0x0d1117, 0.95);
-        tbBg.drawRoundedRect(0, 0, 44, 44, 8);
+        tbBg.drawRoundedRect(0, 0, 70, 70, 12);
         
-        // Small triangle tail pointing down to the pip
+        // Larger triangle tail
         tbBg.beginFill(0x0d1117, 0.95);
-        tbBg.lineStyle(2, 0x7ec8e3, 0.8);
-        tbBg.moveTo(15, 44);
-        tbBg.lineTo(20, 52);
-        tbBg.lineTo(25, 44);
+        tbBg.lineStyle(3, 0x7ec8e3, 0.8);
+        tbBg.moveTo(25, 70);
+        tbBg.lineTo(35, 85);
+        tbBg.lineTo(45, 70);
         tbBg.endFill();
         this.thoughtBox.addChild(tbBg);
 
-        this.thoughtText = new Text('', { fontFamily: '"VT323", monospace', fontSize: 24 });
-        this.thoughtText.x = 10;
-        this.thoughtText.y = 6;
+        this.thoughtText = new Text('', { fontFamily: '"VT323", monospace', fontSize: 42 });
+        this.thoughtText.x = 14;
+        this.thoughtText.y = 10;
         this.thoughtBox.addChild(this.thoughtText);
     }
 
     // ── CREATURE PiP (bottom-right, icon only) ────────────
 
     _mkCreaturePip() {
-        const pw = 140, ph = 140;
+        const ph = this.app.pixiApp.screen.height * 0.3;
+        const pw = ph; // Square for now
         this.cpip = new Container();
-        this.cpip.x = this.app.pixiApp.screen.width - pw - 10;
-        this.cpip.y = this.app.pixiApp.screen.height - ph - 10;
+        this.cpip.x = this.app.pixiApp.screen.width - pw - 20;
+        this.cpip.y = this.app.pixiApp.screen.height - ph - 20;
         this.cpip.visible = false;
         this.ui.addChild(this.cpip);
 
         const bg = new Graphics();
-        bg.lineStyle(2, 0x9370DB, 0.8);
+        bg.lineStyle(3, 0x9370DB, 0.8);
         bg.beginFill(0x0d1117, 0.92);
-        bg.drawRoundedRect(0, 0, pw, ph, 6);
+        bg.drawRoundedRect(0, 0, pw, ph, 12);
         bg.endFill();
         this.cpip.addChild(bg);
 
         this.cpip.addChild(Object.assign(new Text('🐺 ???', {
-            fontFamily: '"VT323", monospace', fontSize: 14, fill: 0x9370DB, fontWeight: 'bold'
-        }), { x: 10, y: 6 }));
+            fontFamily: '"VT323", monospace', fontSize: 24, fill: 0x9370DB, fontWeight: 'bold'
+        }), { x: 20, y: 12 }));
 
-        // Creature icon — just the visual, description goes in descBox
+        // Creature icon
         const icon = new Graphics();
         icon.beginFill(0xc8c8ff, 0.3);
-        icon.drawCircle(pw / 2, 85, 35);
+        icon.drawCircle(pw / 2, ph * 0.6, ph * 0.25);
         icon.endFill();
         icon.beginFill(0xe0e0ff, 0.6);
-        icon.drawCircle(pw / 2, 85, 15);
+        icon.drawCircle(pw / 2, ph * 0.6, ph * 0.1);
         icon.endFill();
         this.cpip.addChild(icon);
     }
@@ -269,25 +272,25 @@ export class GameScreen extends Screen {
     // ── DESCRIPTION BOX (bottom-centre, between PiPs) ─────
 
     _mkDescBox() {
-        const bw = 350, bh = 100;
+        const bw = 600, bh = 150;
         this.descBox = new Container();
         this.descBox.x = (this.app.pixiApp.screen.width - bw) / 2;
-        this.descBox.y = this.app.pixiApp.screen.height - bh - 30;
+        this.descBox.y = this.app.pixiApp.screen.height - bh - 40;
         this.descBox.visible = false;
         this.ui.addChild(this.descBox);
 
         const bg = new Graphics();
-        bg.lineStyle(1, 0x888888, 0.5);
+        bg.lineStyle(2, 0x888888, 0.5);
         bg.beginFill(0x0d1117, 0.94);
-        bg.drawRoundedRect(0, 0, bw, bh, 6);
+        bg.drawRoundedRect(0, 0, bw, bh, 10);
         bg.endFill();
         this.descBox.addChild(bg);
 
         this.descText = new Text('', {
-            fontFamily: '"VT323", monospace', fontSize: 13, fill: 0xcccccc,
-            wordWrap: true, wordWrapWidth: bw - 30, lineHeight: 20
+            fontFamily: '"VT323", monospace', fontSize: 24, fill: 0xcccccc,
+            wordWrap: true, wordWrapWidth: bw - 60, lineHeight: 32
         });
-        this.descText.x = 15; this.descText.y = 12;
+        this.descText.x = 30; this.descText.y = 25;
         this.descBox.addChild(this.descText);
     }
 
@@ -383,11 +386,17 @@ export class GameScreen extends Screen {
         this.ppipPreview.clear();
         const tid = this.world.getTile?.(Math.round(this.petPos.x), Math.round(this.petPos.y));
         const tc = (tid && TILE_DEFS[tid]) ? TILE_DEFS[tid].color : 0x555555;
+        
+        const ph = this.app.pixiApp.screen.height * 0.4;
+        const preSize = ph * 0.6;
+        
         this.ppipPreview.beginFill(tc);
-        this.ppipPreview.drawRect(0, 0, 50, 70);
+        this.ppipPreview.drawRect(0, 0, preSize, preSize * 1.2);
         this.ppipPreview.endFill();
+        
         this.ppipPreview.beginFill(0x1a1a1a);
-        this.ppipPreview.drawRect(15, 35, 20, 20);
+        const petSize = preSize * 0.3;
+        this.ppipPreview.drawRect((preSize - petSize)/2, (preSize * 1.2 - petSize)/2, petSize, petSize);
         this.ppipPreview.endFill();
     }
 
