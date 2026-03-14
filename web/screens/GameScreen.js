@@ -34,28 +34,35 @@ export class GameScreen extends Screen {
     async enter() {
         if (!this._built) { this._build(); this._built = true; }
         if (!this._loaded) {
-            // Load map and textures
+            // Load map and textures with cache busting
+            const cb = `?v=${Date.now()}`;
             const [mapData, texture, grassSheet] = await Promise.all([
-                this.world.load('./maps/world.json'),
-                Assets.load('./assets/buddy.avif'),
-                Assets.load('./assets/sprite_grass_32x32.avif')
+                this.world.load(`./maps/world.json${cb}`),
+                Assets.load(`./assets/buddy.avif${cb}`),
+                Assets.load(`./assets/sprite_grass_32x32.avif${cb}`)
             ]);
             this.buddyTexture = texture;
             
-            // Slice grass sheet (32x32 frames, assume 3 frames horizontally)
-            for (let i = 0; i < 3; i++) {
-                const rect = new Rectangle(i * 32, 0, 32, 32);
-                this.grassTextures.push(new Texture(grassSheet.baseTexture, rect));
+            // Slice grass sheet based on its actual dimensions
+            const frameSize = 32;
+            const cols = Math.floor(grassSheet.width / frameSize);
+            
+            for (let i = 0; i < cols; i++) {
+                const rect = new Rectangle(i * frameSize, 0, frameSize, frameSize);
+                const tex = new Texture(grassSheet.baseTexture, rect);
+                this.grassTextures.push(tex);
             }
 
-            this.petPip.setupGrass(this.grassTextures);
+            if (this.grassTextures.length > 0) {
+                this.petPip.setupGrass(this.grassTextures);
+            }
             
             // Apply texture to markers
             if (this.petSprite) {
                 this.petSprite.texture = texture;
             }
             if (this.ppipSprite) {
-                this.ppipSprite.texture = texture;
+                // Remove this block if ppipSprite is gone
             }
 
             const st = this.app.state;
@@ -126,7 +133,6 @@ export class GameScreen extends Screen {
         // Desired size on map is roughly 0.6 of a tile
         this.petSprite.width = TILE_SIZE * 0.6;
         this.petSprite.height = TILE_SIZE * 0.6;
-        this.petGfx.addChild(this.petSprite);
         this.petGfx.addChild(this.petSprite);
         this.worldLayer.addChild(this.petGfx);
 
