@@ -372,7 +372,7 @@ export class GameScreen extends Screen {
         
         // Diegetic Needs: if a need is high (meaning nutrition/energy/hydration is LOW), show an emoji
         let thought = '';
-        if (p.nutrition < 30) thought = '🍎';
+        if (p.nutrition < 30) thought = '🥩';
         else if (p.energy < 30) thought = '💤';
         else if (p.hydration < 30) thought = '💧';
         
