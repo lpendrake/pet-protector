@@ -1,0 +1,116 @@
+# Pet Protector Map Maker - Project Plan
+
+This document contains the finalized implementation plan and task list for the Map Maker tool.
+
+---
+
+# Implementation Plan
+
+Create a dedicated web-based map editor to support infinite-scale, layered maps with decoupled item definitions.
+
+## Proposed Changes
+
+### Data Architecture
+We will transition from a single JSON map to a modular, chunk-based system.
+
+#### [items.json](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/web/data/items.json)
+Definitions for all items in the game.
+- Decouples emoji/name from logic effects.
+- **Effects**: Can affect `hydration`, `energy`, and `nutrition`.
+- **Example**: `apple: { name: "Apple", emoji: "🍎", effects: { nutrition: 20, hydration: -5 } }`.
+
+#### [Map Config](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/web/maps/manifest.json)
+Global map settings.
+- **Version**: Increments on manual save.
+- **Spawn Points**: A list of `{ name, id, x, y }` (defaults to "Spawner #").
+- **Zones**: A list of `{ name, id, tiles[] }` with behavior settings.
+- **Warps**: Transition points `{ name, id, targetMap, targetPos }`.
+
+#### [Map Chunks](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/web/maps/chunks/chunk_0_0.json)
+Layered tile data (32x32 blocks).
+- **Tile Structure**: `{ base, item, zone, warp }`.
+- **Base Tile**: ID referencing an asset-ready definition (e.g., "grass_v1" which maps to a sprite/color).
+
+---
+
+### Robust Persistence System
+To prevent data loss and allow easy restoration.
+
+#### Auto-Save (Action-Based)
+- Every edit is automatically saved to `<map_name>_tmp/` (a directory containing the current chunks and manifest).
+- UI displays "Time since last auto-save".
+
+#### Manual Save (Atomic Safe Promotion)
+To ensure zero data loss from failed renames/deletes:
+1.  **Version Bump**: Increment the `version` number in the manifest.
+2.  **Preparation**: If `<map_name>_old_del/` exists, delete it.
+3.  **Backup**: If `<map_name>_old/` exists, rename it to `<map_name>_old_del/`.
+4.  **Rotation**: Rename current `<map_name>/` (the master) to `<map_name>_old/`.
+5.  **Promotion**: Rename `<map_name>_tmp/` to `<map_name>/`.
+6.  **Initialization**: Create a new `<map_name>_tmp/` directory based on the new master for future edits.
+7.  **Cleanup**: Delete `<map_name>_old_del/`.
+
+> [!IMPORTANT]
+> **Unit Testing**: All save/rotation logic must be covered by unit tests to guarantee safety.
+
+### Map Maker Application
+A separate web app located in `pet-protector/map-maker/`.
+
+#### UI Component
+- Sidebar with tool palettes (Ground, Items, Zones).
+- Main viewport using PIXI.js for high-performance rendering of many tiles.
+- Property editor for selected tiles/zones.
+- **Search & Snap UI**: Sidebar lists for Spawners, Zones, and Warps with a "Snap" button to center the viewport on them.
+- **Status Bar**: "Time since last auto-save" display.
+
+#### Map Maker Logic
+- Viewport management (pan/zoom).
+- Painting logic (single click, drag, fill).
+- Item Definition editor (ability to add new items like "Fish" or "Golden Apple").
+- Zone drawing tool.
+- **Transition Point (Warp) Tool.**
+- **Action History**: Implementation of Command pattern for `Undo/Redo` (Ctrl+Z/Ctrl+Y) support.
+- **Deployed Maps Manager**: 
+    - Lists all maps in `map-maker/maps/`.
+    - Shows "Current Version", "Old Version", and "Deployed Version".
+    - Highlights maps where "Current" > "Deployed".
+    - "Deployed" checkbox to sync with `pet-protector/web/maps/`.
+- Export to JSON (Chunks + Manifest + Items).
+
+---
+
+### Game Engine Updates (Phase 2)
+The game engine will be updated to fetch chunks dynamically based on camera position.
+
+---
+
+# Task List
+
+## Planning
+- [x] Research and design data structures for chunked infinite map and decoupled items
+- [x] Create implementation plan
+- [x] Get user approval for the plan
+
+## Core Infrastructure
+- [ ] Initialize `map-maker` directory and structure
+- [ ] Implement atomic safe save system (Old_Del -> Old -> Master) + Version Bumping
+- [ ] Implement unit tests for save/versioning logic
+- [ ] Implement Action History (Undo/Redo)
+- [ ] Implement asset-ready `item_defs.json` and basic editor
+- [ ] Implement chunked map state management
+
+## UI Implementation (The Map Maker)
+- [ ] Build map viewport (panning/zooming)
+- [ ] Implement Tile Palette (Asset-ready structure)
+- [ ] Implement Item Palette (Nutrition/Hydration/Energy effects)
+- [ ] Implement Painting Tools (Brush, Fill, Erase)
+- [ ] Implement Zone Editor (Named zones)
+- [ ] Implement Transition Point (Warp) Editor (Named warps)
+- [ ] Implement Multiple Spawn Point Editor (Named spawners)
+- [ ] Implement "Search & Snap" navigation for entities
+- [ ] Implement Deployed Maps Manager (Version comparison & Sync)
+- [ ] Add "Time since last save" status indicator
+
+## Persistence & Integration
+- [ ] Implement Save/Load functionality (JSON export/import)
+- [ ] Design migration path for the main game to support the new format

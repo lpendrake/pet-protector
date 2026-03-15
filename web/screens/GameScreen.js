@@ -30,6 +30,13 @@ export class GameScreen extends Screen {
         this.interactionSystem = new InteractionSystem(this.world);
         this.petMovementSystem = new PetMovementSystem(this.world);
         this.assetLoader = new AssetLoader();
+        
+        this.petPath = [];
+        this.petAccum = 0;
+        this.interactionLock = 0;
+        this.spiritAnchor = 'buddy';
+        this.lockEmoji = null;
+        this.partialPath = false;
     }
 
     async enter() {
@@ -56,23 +63,10 @@ export class GameScreen extends Screen {
             } else {
                 this.spiritPos = this.world.startPosition;
                 this.petPos = this.app.state.petPos || { ...this.spiritPos };
-                
-                this.petPath = []; // A* path to follow
-                this.petAccum = 0;
-                this.tickAccum = 0;
-                this.interactionLock = 0; // ms remaining in lock
-                this.spiritAnchor = 'buddy'; // 'buddy' or {x, y}
-                this.lockEmoji = null;
-                
-                this._loaded = true;
-                this.ui.visible = true;
-                this.app.pixiApp.stage.addChild(this.ui);
-                
-                this._cam();
-                this._markers();
-                this._updateFog();
-                this._petPip();
             }
+
+            this.ui.visible = true;
+            this.app.pixiApp.stage.addChild(this.ui);
 
             this.visionSystem = new VisionSystem(this.world, this.worldLayer, VISION);
             this.worldLayer.addChildAt(this.world.container, 0);
@@ -362,13 +356,36 @@ export class GameScreen extends Screen {
         return Math.max(dx, dy) + Math.floor(Math.min(dx, dy) / 2);
     }
 
-    _movePetTo(x, y) {
+    _getNearestAdjacent(target, from) {
+        const neighbors = [];
+        for (let dx = -1; dx <= 1; dx++) {
+            for (let dy = -1; dy <= 1; dy++) {
+                if (dx === 0 && dy === 0) continue;
+                neighbors.push({ x: target.x + dx, y: target.y + dy });
+            }
+        }
+        
+        let best = null;
+        let minDist = Infinity;
+        
+        for (const n of neighbors) {
+            if (!this.world.isPassable(n.x, n.y, 'pet')) continue;
+            const d = this._dist(n, from);
+            if (d < minDist) {
+                minDist = d;
+                best = n;
+            }
+        }
+        return best;
+    }
+
+    _movePetTo(x, y, skipMirror = false) {
         const dx = x - this.petPos.x;
         const dy = y - this.petPos.y;
         this.petPos.x = x;
         this.petPos.y = y;
 
-        if (this.spiritAnchor === 'buddy') {
+        if (!skipMirror && this.spiritAnchor === 'buddy') {
             this.spiritPos.x += dx;
             this.spiritPos.y += dy;
         }
@@ -456,6 +473,23 @@ export class GameScreen extends Screen {
 
         const nx = this.spiritPos.x + dx, ny = this.spiritPos.y + dy;
         if (!this.world.isPassable(nx, ny, 'spirit')) return;
+
+        // Automatic Follow Mechanic
+        const nextDist = this._dist({ x: nx, y: ny }, this.petPos);
+        if (nextDist >= 3) {
+            if (this.app.state && this.app.state.pet && this.app.state.pet.scaredTimer <= 0) {
+                const adj = this._getNearestAdjacent({ x: nx, y: ny }, this.petPos);
+                if (adj) {
+                    const path = this.world.getPath(this.petPos, adj, 'pet');
+                    if (path && path.length > 0) {
+                        this.petPath = path;
+                        this.petCalling = false; // Auto-follow doesn't trigger "calling" state
+                        this._petPip();
+                    }
+                }
+            }
+        }
+
         if (this._dist({ x: nx, y: ny }, this.petPos) > LEASH) return;
 
         this.spiritPos.x = nx;
@@ -490,24 +524,29 @@ export class GameScreen extends Screen {
             petCalling: this.petCalling,
             interactionLock: this.interactionLock,
             callbacks: {
-                movePetTo: (x, y) => this._movePetTo(x, y),
+                movePetTo: (x, y, skipMirror) => this._movePetTo(x, y, skipMirror),
                 onRepaintPip: () => this._petPip(),
                 onPathComplete: () => {
+                    const wasCalling = this.petCalling;
                     this.petCalling = false;
-                    if (this.partialPath) {
-                        this.partialPath = false;
-                        this._lockBuddy(1500, '!');
-                        setTimeout(() => {
-                            if (this.interactionLock <= 0 || this.lockEmoji === '!') {
-                                this._lockBuddy(3500, '😢');
+                    if (wasCalling) {
+                        if (this.partialPath) {
+                            this.partialPath = false;
+                            this._lockBuddy(1500, '!');
+                            setTimeout(() => {
+                                if (this.interactionLock <= 0 || this.lockEmoji === '!') {
+                                    this._lockBuddy(3500, '😢');
+                                }
+                            }, 1500);
+                        } else {
+                            const now = Date.now();
+                            const lastHeart = this.app.state.lastHeartTime || 0;
+                            if (now - lastHeart > 120000) {
+                                this.app.state.lastHeartTime = now;
+                                this._lockBuddy(3000, '❤️');
+                            } else {
+                                this._lockBuddy(1000, '🐾');
                             }
-                        }, 1500);
-                    } else {
-                        const now = Date.now();
-                        const lastHeart = this.app.state.lastHeartTime || 0;
-                        if (now - lastHeart > 120000) {
-                            this.app.state.lastHeartTime = now;
-                            this._lockBuddy(3000, '❤️');
                         }
                     }
                     this._petPip();

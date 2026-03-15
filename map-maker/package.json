@@ -1,0 +1,22 @@
+{
+  "name": "map-maker",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "server": "node src/server/server.js",
+    "dev:all": "concurrently \"npm run server\" \"npm run dev\"",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "vite": "^8.0.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "pixi.js": "^8.17.0"
+  }
+}

@@ -5,7 +5,7 @@ export class PetMovementSystem {
     constructor(world) {
         this.world = world;
         this.petAccum = 0;
-        this.CALL_STEP_MS = 150; 
+        this.CALL_STEP_MS = 1000; 
     }
 
     update(deltaMS, context) {
@@ -24,21 +24,21 @@ export class PetMovementSystem {
             } else {
                 this.petAccum += deltaMS;
                 if (this.petAccum >= this.CALL_STEP_MS * 0.5) {
-                    this.petAccum = 0;
+                    this.petAccum -= this.CALL_STEP_MS * 0.5;
                     this._runAway(petPos, state.pet.scareSource, callbacks.movePetTo);
                 }
             }
             return;
         }
 
-        // 2. Traveling when called
-        if (petCalling && petPath.length > 0) {
+        // 2. Traveling (manual call or auto-follow)
+        if (petPath && petPath.length > 0) {
             this.petAccum += deltaMS;
             if (this.petAccum >= this.CALL_STEP_MS) {
                 this.petAccum -= this.CALL_STEP_MS;
                 
                 const next = petPath.shift();
-                callbacks.movePetTo(next.x, next.y);
+                callbacks.movePetTo(next.x, next.y, true);
 
                 if (petPath.length === 0) {
                     callbacks.onPathComplete();
