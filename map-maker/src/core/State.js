@@ -15,6 +15,7 @@ export class MapState {
         this.history = new ActionHistory();
         this.lastSaveTime = 0;
         this.dirty = false;
+        this.needsRedraw = true;
     }
 
     getChunkId(x, y) {
@@ -27,6 +28,7 @@ export class MapState {
         const id = this.getChunkId(x, y);
         if (!this.chunks[id]) {
             this.chunks[id] = this._createEmptyChunk();
+            this.needsRedraw = true;
         }
         return this.chunks[id];
     }
@@ -55,20 +57,24 @@ export class MapState {
         const ly = ((y % CHUNK_SIZE) + CHUNK_SIZE) % CHUNK_SIZE;
         chunk.tiles[ly][lx][layer] = value;
         this.dirty = true;
+        this.needsRedraw = true;
     }
 
     // Call this for user actions to support Undo
     applyAction(action) {
         this.history.push(action, this);
         this.dirty = true;
+        this.needsRedraw = true;
     }
 
     undo() {
         this.history.undo(this);
+        this.needsRedraw = true;
     }
 
     redo() {
         this.history.redo(this);
+        this.needsRedraw = true;
     }
 }
 

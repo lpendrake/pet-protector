@@ -6,34 +6,55 @@ export const TILE_SIZE = 32;
 
 export class Renderer {
     constructor(container) {
-        this.app = new PIXI.Application({
-            resizeTo: container,
+        this.app = new PIXI.Application();
+        this.container = container;
+        this.world = new PIXI.Container();
+        this.spawnerLayer = new PIXI.Container();
+        this.chunks = new Map(); // id -> PIXI.Container
+        this.initialized = false;
+    }
+
+    async init() {
+        await this.app.init({
+            resizeTo: this.container,
             backgroundColor: 0x222222,
             antialias: true
         });
-        container.appendChild(this.app.view);
-
-        this.world = new PIXI.Container();
+        this.container.appendChild(this.app.canvas);
         this.app.stage.addChild(this.world);
-
-        this.chunks = new Map(); // id -> PIXI.Container
-        this.lastCameraPos = { x: 0, y: 0 };
+        this.world.addChild(this.spawnerLayer);
+        this.initialized = true;
     }
 
     update() {
-        // Culling and chunk loading logic
-        const camera = this.app.stage.pivot;
-        // ... simple for now
+        if (!this.initialized) return;
         this._renderVisibleChunks();
+        this._renderSpawners();
+        GlobalState.needsRedraw = false;
+    }
+
+    _renderSpawners() {
+        this.spawnerLayer.removeChildren();
+        GlobalState.manifest.spawnPoints.forEach(s => {
+            const g = new PIXI.Graphics();
+            g.rect(s.x * TILE_SIZE + 4, s.y * TILE_SIZE + 4, TILE_SIZE-8, TILE_SIZE-8);
+            g.fill({ color: 0xFF0000, alpha: 0.8 });
+            
+            const txt = new PIXI.Text('🚩', { fontSize: 16 });
+            txt.x = s.x * TILE_SIZE + TILE_SIZE / 2;
+            txt.y = s.y * TILE_SIZE + TILE_SIZE / 2;
+            txt.anchor.set(0.5);
+            
+            this.spawnerLayer.addChild(g);
+            this.spawnerLayer.addChild(txt);
+        });
     }
 
     _renderVisibleChunks() {
-        // In a real infinite setup, we'd only render chunks around the camera
-        // For the initial MVP, we'll render a few chunks
         for (const [id, chunk] of Object.entries(GlobalState.chunks)) {
             if (!this.chunks.has(id)) {
                 this._createChunkGraphics(id, chunk);
-            } else {
+            } else if (GlobalState.needsRedraw) {
                 this._updateChunkGraphics(id, chunk);
             }
         }
@@ -74,12 +95,10 @@ export class Renderer {
 
     _updateChunkGraphics(id, chunk) {
         const container = this.chunks.get(id);
-        if (GlobalState.dirty) {
-            for (let y = 0; y < CHUNK_SIZE; y++) {
-                for (let x = 0; x < CHUNK_SIZE; x++) {
-                    const tileContainer = container.getChildByName(`tile_${x}_${y}`);
-                    this._drawTile(tileContainer, chunk.tiles[y][x]);
-                }
+        for (let y = 0; y < CHUNK_SIZE; y++) {
+            for (let x = 0; x < CHUNK_SIZE; x++) {
+                const tileContainer = container.getChildByName(`tile_${x}_${y}`);
+                this._drawTile(tileContainer, chunk.tiles[y][x]);
             }
         }
     }
@@ -89,12 +108,25 @@ export class Renderer {
         const item = tileContainer.getChildByName('item');
 
         bg.clear();
+        console.log(`[Renderer] Drawing tile ${data.base} at position`);
         const color = this._getBaseColor(data.base);
-        bg.beginFill(color);
-        bg.drawRect(0, 0, TILE_SIZE, TILE_SIZE);
-        bg.endFill();
-        bg.lineStyle(1, 0xFFFFFF, 0.05);
-        bg.drawRect(0, 0, TILE_SIZE, TILE_SIZE);
+        bg.rect(0, 0, TILE_SIZE, TILE_SIZE);
+        bg.fill(color);
+        
+        // Zone overlay
+        if (data.zone) {
+            bg.rect(0, 0, TILE_SIZE, TILE_SIZE);
+            bg.fill({ color: 0xFF00FF, alpha: 0.2 }); // Semi-transparent magenta for zones
+        }
+
+        // Warp indicator
+        if (data.warp) {
+            bg.stroke({ color: 0x00FFFF, width: 2, alpha: 0.8 });
+            bg.circle(TILE_SIZE/2, TILE_SIZE/2, TILE_SIZE/3);
+        }
+
+        bg.stroke({ color: 0xFFFFFF, width: 1, alpha: 0.05 });
+        bg.rect(0, 0, TILE_SIZE, TILE_SIZE);
 
         if (data.item) {
             const itemDef = Registry.getItem(data.item);

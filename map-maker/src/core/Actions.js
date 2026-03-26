@@ -11,7 +11,7 @@ export class PaintTileAction extends Action {
         super();
         this.x = x;
         this.y = y;
-        this.layer = layer; // 'base', 'item', 'zone', 'warp'
+        this.layer = layer;
         this.newValue = newValue;
         this.oldValue = oldValue;
     }
@@ -25,31 +25,34 @@ export class PaintTileAction extends Action {
     }
 }
 
-export class ActionHistory {
-    constructor(maxSize = 100) {
-        this.undoStack = [];
-        this.redoStack = [];
-        this.maxSize = maxSize;
+export class PlaceEntityAction extends Action {
+    constructor(type, data) {
+        super();
+        this.type = type;
+        this.data = data;
     }
 
-    push(action, state) {
-        action.execute(state);
-        this.undoStack.push(action);
-        if (this.undoStack.length > this.maxSize) this.undoStack.shift();
-        this.redoStack = []; // Clear redo on new action
+    execute(state) {
+        state.addEntity(this.type, this.data);
     }
 
     undo(state) {
-        if (this.undoStack.length === 0) return;
-        const action = this.undoStack.pop();
-        action.undo(state);
-        this.redoStack.push(action);
+        state.removeEntity(this.type, this.data.id);
+    }
+}
+
+export class RemoveEntityAction extends Action {
+    constructor(type, data) {
+        super();
+        this.type = type;
+        this.data = data;
     }
 
-    redo(state) {
-        if (this.redoStack.length === 0) return;
-        const action = this.redoStack.pop();
-        action.execute(state);
-        this.undoStack.push(action);
+    execute(state) {
+        state.removeEntity(this.type, this.data.id);
+    }
+
+    undo(state) {
+        state.addEntity(this.type, this.data);
     }
 }

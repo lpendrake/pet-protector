@@ -6,17 +6,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pet Protector Map Maker</title>
     <style>
-      body { margin: 0; padding: 0; overflow: hidden; background: #111; font-family: sans-serif; color: white; }
+      :root {
+        --bg-dark: #0d0d0f;
+        --bg-panel: #1a1a1d;
+        --bg-hover: #2a2a2e;
+        --accent: #3d8c40;
+        --accent-glow: rgba(61, 140, 64, 0.3);
+        --text: #e0e0e0;
+        --text-muted: #888;
+        --border: #333;
+      }
+      body { margin: 0; padding: 0; overflow: hidden; background: var(--bg-dark); font-family: 'Inter', system-ui, sans-serif; color: var(--text); }
       #app { display: flex; width: 100vw; height: 100vh; }
-      #sidebar { width: 300px; background: #222; border-right: 1px solid #444; display: flex; flex-direction: column; }
-      #viewport-container { flex: 1; position: relative; }
-      #status-bar { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.5); padding: 5px 10px; font-size: 12px; }
-      .palette-section { padding: 10px; border-bottom: 1px solid #444; }
-      .palette-title { font-weight: bold; margin-bottom: 10px; font-size: 14px; text-transform: uppercase; color: #888; }
-      .tile-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
-      .tile-item { aspect-ratio: 1; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; background: #333; }
-      .tile-item:hover { background: #444; }
-      .tile-item.active { border-color: #3d8c40; }
+      #sidebar { 
+        width: 280px; 
+        background: var(--bg-panel); 
+        border-right: 1px solid var(--border); 
+        display: flex; 
+        flex-direction: column; 
+        box-shadow: 10px 0 20px rgba(0,0,0,0.5);
+        z-index: 10;
+      }
+      #viewport-container { flex: 1; position: relative; background: #111; }
+      #status-bar { 
+        position: absolute; bottom: 0; left: 0; right: 0; 
+        background: rgba(13, 13, 15, 0.9); 
+        backdrop-filter: blur(8px);
+        padding: 6px 15px; 
+        font-size: 11px; 
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--text-muted);
+        z-index: 100;
+      }
+      .status-item { display: flex; align-items: center; gap: 5px; }
+      .status-label { color: #555; text-transform: uppercase; font-size: 9px; font-weight: bold; }
+      .status-value { color: var(--text); }
+      .palette-section { padding: 15px; border-bottom: 1px solid var(--border); }
+      .palette-title { font-weight: 600; margin-bottom: 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+      .tile-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+      .tile-item { 
+        aspect-ratio: 1; 
+        border: 2px solid transparent; 
+        border-radius: 6px;
+        cursor: pointer; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        background: var(--bg-hover); 
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        font-size: 18px;
+      }
+      .tile-item:hover { background: #3a3a40; transform: scale(1.05); }
+      .tile-item.active { border-color: var(--accent); box-shadow: 0 0 10px var(--accent-glow); background: var(--bg-panel); }
+      
+      button { 
+        transition: all 0.2s;
+        border-radius: 6px;
+        border: 1px solid rgba(255,255,255,0.1);
+        font-size: 12px;
+      }
+      button:hover { filter: brightness(1.2); transform: translateY(-1px); }
+      button:active { transform: translateY(0); }
+      
+      input[type="text"] {
+        background: #111;
+        border: 1px solid var(--border);
+        color: white;
+        padding: 5px;
+        border-radius: 4px;
+        margin-top: 5px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+        box-sizing: border-box;
+      }
+      
+      #toast-container {
+        position: fixed; top: 20px; right: 20px; z-index: 1000;
+        display: flex; flex-direction: column; gap: 10px;
+      }
+      .toast {
+        background: #333; color: white; padding: 12px 20px; border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.5); border-left: 4px solid var(--accent);
+        font-size: 13px; animation: slideIn 0.3s ease-out;
+      }
+      .toast.error { border-left-color: #ff4444; }
+      @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
     </style>
   </head>
   <body>
@@ -35,8 +113,25 @@
           <div class="tile-grid" id="item-grid"></div>
         </div>
         <div class="palette-section" id="entity-palette">
-          <div class="palette-title">Entities (Search & Snap)</div>
-          <div id="entity-list" style="max-height: 200px; overflow-y: auto;"></div>
+          <div class="palette-title">Entity Tools</div>
+          <div id="entity-tools" class="tile-grid">
+            <div class="tile-item" id="tool-brush" title="Brush (B): Paint single tiles">🖌️</div>
+            <div class="tile-item" id="tool-erase" title="Eraser (E): Remove tiles/entities">🧹</div>
+            <div class="tile-item" id="tool-fill" title="Fill (F): Flood fill area">🪣</div>
+            <div class="tile-item" id="tool-spawner" title="Spawner (S): Place player start">🚩</div>
+            <div class="tile-item" id="tool-warp" title="Warp (W): Map transition">🌀</div>
+            <div class="tile-item" id="tool-zone" title="Zone (Z): Define special areas">🗺️</div>
+          </div>
+        </div>
+        <div class="palette-section" id="property-editor">
+          <div class="palette-title">Properties</div>
+          <div id="property-panel" style="font-size: 11px;">
+            <p style="color: #666;">No entity selected</p>
+          </div>
+        </div>
+        <div class="palette-section" id="navigation">
+          <div class="palette-title">Search & Snap</div>
+          <div id="entity-list" style="max-height: 150px; overflow-y: auto;"></div>
         </div>
         <div class="palette-section" id="maps-manager">
           <div class="palette-title">Deployed Maps Manager</div>
@@ -45,10 +140,20 @@
       </div>
       <div id="viewport-container">
         <div id="status-bar">
-          Time since last auto-save: <span id="auto-save-timer">Never</span> | 
-          Version: <span id="map-version">0</span>
+          <div class="status-item">
+            <span class="status-label">Auto-save:</span>
+            <span id="auto-save-timer" class="status-value">Never</span>
+          </div>
+          <div class="status-item">
+            <span id="cursor-coords" class="status-value">0, 0</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">v</span>
+            <span id="map-version" class="status-value">0</span>
+          </div>
         </div>
       </div>
+      <div id="toast-container"></div>
     </div>
     <script type="module" src="/src/main.js"></script>
   </body>

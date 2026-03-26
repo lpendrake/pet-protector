@@ -1,0 +1,11 @@
+{
+  "empty": { "name": "Empty", "category": "system", "walkable": true },
+  "grass_v1": { "name": "Grass", "category": "natural", "walkable": true },
+  "forest_v1": { "name": "Forest", "category": "natural", "walkable": true },
+  "dirt_path": { "name": "Dirt Path", "category": "path", "walkable": true },
+  "water_shallow": { "name": "Shallow Water", "category": "water", "walkable": false },
+  "water_deep": { "name": "Deep Water", "category": "water", "walkable": false },
+  "rock_v1": { "name": "Rock", "category": "natural", "walkable": false },
+  "cave_v1": { "name": "Cave floor", "category": "dungeon", "walkable": true },
+  "ruins_v1": { "name": "Ruins", "category": "dungeon", "walkable": true }
+}

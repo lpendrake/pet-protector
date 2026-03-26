@@ -92,24 +92,24 @@ The game engine will be updated to fetch chunks dynamically based on camera posi
 - [x] Get user approval for the plan
 
 ## Core Infrastructure
-- [ ] Initialize `map-maker` directory and structure
-- [ ] Implement atomic safe save system (Old_Del -> Old -> Master) + Version Bumping
-- [ ] Implement unit tests for save/versioning logic
-- [ ] Implement Action History (Undo/Redo)
-- [ ] Implement asset-ready `item_defs.json` and basic editor
-- [ ] Implement chunked map state management
+- [x] Initialize `map-maker` directory and structure
+- [x] Implement atomic safe save system (Old_Del -> Old -> Master) + Version Bumping
+- [x] Implement unit tests for save/versioning logic
+- [x] Implement Action History (Undo/Redo)
+- [ ] Implement asset-ready `item_defs.json` and basic editor (Currently hardcoded)
+- [x] Implement chunked map state management
 
 ## UI Implementation (The Map Maker)
-- [ ] Build map viewport (panning/zooming)
-- [ ] Implement Tile Palette (Asset-ready structure)
-- [ ] Implement Item Palette (Nutrition/Hydration/Energy effects)
-- [ ] Implement Painting Tools (Brush, Fill, Erase)
-- [ ] Implement Zone Editor (Named zones)
-- [ ] Implement Transition Point (Warp) Editor (Named warps)
-- [ ] Implement Multiple Spawn Point Editor (Named spawners)
-- [ ] Implement "Search & Snap" navigation for entities
-- [ ] Implement Deployed Maps Manager (Version comparison & Sync)
-- [ ] Add "Time since last save" status indicator
+- [x] Build map viewport (panning/zooming)
+- [x] Implement Tile Palette (Populated and selectable)
+- [x] Implement Item Palette (Populated and selectable)
+- [ ] Implement Painting Tools (Brush verified, Fill/Erase pending)
+- [x] Implement Zone Editor (Painting verified)
+- [x] Implement Transition Point (Warp) Editor (Verified placement and properties)
+- [x] Implement Multiple Spawn Point Editor (Verified placement)
+- [x] Implement "Search & Snap" navigation (Sidebar list verified)
+- [x] Implement Deployed Maps Manager (Sidebar UI verified)
+- [x] Add "Time since last save" status indicator (Verified working)
 
 ## Persistence & Integration
 - [ ] Implement Save/Load functionality (JSON export/import)

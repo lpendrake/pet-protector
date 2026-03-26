@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "spawnPoints": [
+    {
+      "id": "spawn_1774502739739",
+      "name": "Spawner 9739",
+      "x": 38,
+      "y": 16
+    },
+    {
+      "id": "spawn_1774502744836",
+      "name": "Spawner 4836",
+      "x": 38,
+      "y": 16
+    }
+  ],
+  "zones": [],
+  "warps": [
+    {
+      "id": "warp_1774497379700",
+      "name": "New Warp",
+      "x": 38,
+      "y": 25,
+      "targetMap": "main",
+      "targetPos": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "warp_1774503367601",
+      "name": "Warp 7601",
+      "x": 22,
+      "y": 8,
+      "targetMap": "main",
+      "targetPos": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "warp_1774503396639",
+      "name": "Warp 6639",
+      "x": 14,
+      "y": 8,
+      "targetMap": "main",
+      "targetPos": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  ]
+}

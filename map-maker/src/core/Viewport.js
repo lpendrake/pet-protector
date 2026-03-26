@@ -7,12 +7,10 @@ export class Viewport {
         this.zoom = 1;
         this.isPanning = false;
         this.lastPos = { x: 0, y: 0 };
-
-        this._setupEvents();
     }
 
-    _setupEvents() {
-        const view = this.app.view;
+    initEvents() {
+        const view = this.app.canvas;
 
         view.addEventListener('wheel', (e) => {
             e.preventDefault();

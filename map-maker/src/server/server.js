@@ -54,17 +54,37 @@ app.post('/api/save-master', async (req, res) => {
             }
         } catch (e) {}
 
-        // 5. Promotion: Rename tmp to master
-        // Note: For simplicity in the API, we first write manifest to tmp before promotion
+        // 5. Promotion: Move tmp to master
         await fs.writeFile(path.join(tmpDir, 'manifest.json'), JSON.stringify(manifest, null, 2));
-        await fs.rename(tmpDir, masterDir);
+        
+        try {
+            await fs.rename(tmpDir, masterDir);
+        } catch (renameErr) {
+            console.warn('Rename failed, using copy fallback (Windows EPERM?):', renameErr.message);
+            await ensureDir(masterDir);
+            const filesToPromote = await fs.readdir(tmpDir, { recursive: true });
+            for (const file of filesToPromote) {
+                const src = path.join(tmpDir, file);
+                const dest = path.join(masterDir, file);
+                try {
+                    const stat = await fs.stat(src);
+                    if (stat.isDirectory()) {
+                        await ensureDir(dest);
+                    } else {
+                        await fs.copyFile(src, dest);
+                    }
+                } catch (copyErr) {
+                    console.warn(`Could not promote ${file}:`, copyErr.message);
+                }
+            }
+            // Optional: try to clean tmp but don't fail if locked
+            await fs.rm(tmpDir, { recursive: true, force: true }).catch(e => console.warn('Could not clean tmp:', e.message));
+        }
 
-        // 6. Initialization: Create new tmp for future edits
+        // 6. Finalization: Ensure tmp exists and matches master
         await ensureDir(tmpDir);
-        await ensureDir(path.join(tmpDir, 'chunks'));
-        // Copy everything from master to new tmp
-        const files = await fs.readdir(masterDir, { recursive: true });
-        for (const file of files) {
+        const filesToSync = await fs.readdir(masterDir, { recursive: true });
+        for (const file of filesToSync) {
             const src = path.join(masterDir, file);
             const dest = path.join(tmpDir, file);
             const stat = await fs.stat(src);
@@ -75,13 +95,13 @@ app.post('/api/save-master', async (req, res) => {
             }
         }
 
-        // 7. Cleanup
+        // 7. Cleanup OLD_DEL
         try { await fs.rm(oldDelDir, { recursive: true, force: true }); } catch (e) {}
 
         res.json({ success: true, version: manifest.version });
     } catch (err) {
-        console.error(err);
-        res.status(500).send(err.message);
+        console.error('Save master failed:', err);
+        res.status(500).json({ success: false, error: err.message });
     }
 });
 
@@ -174,6 +194,63 @@ app.get('/api/maps', async (req, res) => {
         res.json(Object.values(maps));
     } catch (err) {
         res.status(500).send(err.message);
+    }
+});
+
+app.post('/api/create-map', async (req, res) => {
+    const { name } = req.body;
+    if (!name) return res.status(400).send('Name required');
+
+    const tmpDir = path.join(MAPS_DIR, `${name}_tmp`);
+    const chunksDir = path.join(tmpDir, 'chunks');
+
+    try {
+        await ensureDir(tmpDir);
+        await ensureDir(chunksDir);
+        
+        const manifest = { version: 0, spawnPoints: [], zones: [], warps: [] };
+        await fs.writeFile(path.join(tmpDir, 'manifest.json'), JSON.stringify(manifest, null, 2));
+        
+        res.json({ success: true, name });
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+});
+
+app.get('/api/load-map/:name', async (req, res) => {
+    const { name } = req.params;
+    const masterDir = path.join(MAPS_DIR, name);
+    const tmpDir = path.join(MAPS_DIR, `${name}_tmp`);
+    
+    // Favor tmp if it exists (active edits), otherwise master
+    let targetDir = tmpDir;
+    try {
+        await fs.access(tmpDir);
+    } catch {
+        targetDir = masterDir;
+    }
+
+    try {
+        const manifest = JSON.parse(await fs.readFile(path.join(targetDir, 'manifest.json'), 'utf8'));
+        const chunks = {};
+        const chunksDir = path.join(targetDir, 'chunks');
+        
+        try {
+            const files = await fs.readdir(chunksDir);
+            for (const file of files) {
+                if (file.endsWith('.json')) {
+                    const chunkId = path.basename(file, '.json');
+                    const chunkData = JSON.parse(await fs.readFile(path.join(chunksDir, file), 'utf8'));
+                    chunks[chunkId] = chunkData;
+                }
+            }
+        } catch (e) {
+            // No chunks yet, that's fine
+        }
+
+        res.json({ mapName: name, manifest, chunks });
+    } catch (err) {
+        res.status(500).send(`Map not found: ${err.message}`);
     }
 });
 
