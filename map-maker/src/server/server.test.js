@@ -64,6 +64,46 @@ test('Atomic Save - Promotion Sequence', async (t) => {
     await fs.rm(TEST_DIR, { recursive: true, force: true });
 });
 
+test('Deploy - copies master files to deploy directory', async (t) => {
+    await ensureDir(TEST_DIR);
+    const mapName = 'deploy_test';
+    const masterDir = path.join(TEST_DIR, mapName);
+    const deployDir = path.join(TEST_DIR, `${mapName}_deployed`);
+
+    await ensureDir(path.join(masterDir, 'chunks'));
+    await fs.writeFile(path.join(masterDir, 'manifest.json'), JSON.stringify({ version: 3 }));
+    await fs.writeFile(path.join(masterDir, 'chunks', 'chunk_0_0.json'), JSON.stringify({ tiles: [] }));
+
+    // Simulate deploy: clean dest, then copy all files from master
+    const runDeploy = async (src, dest) => {
+        await fs.rm(dest, { recursive: true, force: true });
+        await ensureDir(dest);
+        const files = await fs.readdir(src, { recursive: true });
+        for (const file of files) {
+            const srcPath = path.join(src, file);
+            const destPath = path.join(dest, file);
+            const stat = await fs.stat(srcPath);
+            if (stat.isDirectory()) {
+                await ensureDir(destPath);
+            } else {
+                await fs.copyFile(srcPath, destPath);
+            }
+        }
+    };
+
+    await runDeploy(masterDir, deployDir);
+
+    const deployedManifest = JSON.parse(await fs.readFile(path.join(deployDir, 'manifest.json'), 'utf8'));
+    assert.strictEqual(deployedManifest.version, 3);
+    assert.ok(await fs.stat(path.join(deployDir, 'chunks', 'chunk_0_0.json')).catch(() => false));
+
+    // Master should be untouched
+    const masterManifest = JSON.parse(await fs.readFile(path.join(masterDir, 'manifest.json'), 'utf8'));
+    assert.strictEqual(masterManifest.version, 3);
+
+    await fs.rm(TEST_DIR, { recursive: true, force: true });
+});
+
 test('Atomic Save - Zero Data Loss on Sequential Saves', async (t) => {
     await ensureDir(TEST_DIR);
     const mapName = 'perf_test';

@@ -2,28 +2,46 @@ import * as PIXI from 'pixi.js';
 import { getTileColor, getLayerColor } from './TileColors.js';
 import { CHUNK_SIZE } from '../core/MapState.js';
 
+/**
+ * Renders the tile map using PixiJS v8.
+ *
+ * Render pipeline (per frame, only when dirty):
+ *   1. Tile layer   — one Graphics object per chunk, redrawn on `state:changed`
+ *   2. Entity layer — spawn points (gold star) and warps (blue diamond)
+ *
+ * Layer Z-order (back to front): tileLayer → entityLayer
+ */
 export class MapRenderer {
+    /**
+     * @param {HTMLElement} container - DOM element the PIXI canvas is appended to
+     * @param {EventBus|null} bus
+     * @param {MapState} state
+     * @param {ItemRegistry} items
+     */
     constructor(container, bus, state, items) {
         this.container = container;
         this.bus = bus;
         this.state = state;
         this.items = items;
         this.app = new PIXI.Application();
-        
+
         this.tileLayer = new PIXI.Container();
         this.entityLayer = new PIXI.Container();
-        this.gridLayer = new PIXI.Graphics();
-        
-        this.chunkGraphics = new Map(); // id -> Graphics
+
+        this.chunkGraphics = new Map(); // chunkId -> PIXI.Graphics
         this.tileSize = 32;
-        
+
         this._needsRedraw = true;
-        
+
         if (this.bus) {
             this.bus.on('state:changed', () => this._needsRedraw = true);
         }
     }
 
+    /**
+     * Create and mount the PIXI application into `this.container`, then start the render loop.
+     * Must be called once before the renderer is usable.
+     */
     async init() {
         console.log('[DEBUG] MapRenderer.init() starting...');
         try {
@@ -37,16 +55,19 @@ export class MapRenderer {
             console.error('[DEBUG] PIXI app.init FAILED:', e);
             throw e;
         }
-        
+
         this.container.appendChild(this.app.canvas);
-        
+
         this.app.stage.addChild(this.tileLayer);
         this.app.stage.addChild(this.entityLayer);
-        this.app.stage.addChild(this.gridLayer);
-        
+
         this.startLoop();
     }
 
+    /**
+     * Register the per-frame ticker callback. Renders only when `_needsRedraw` is true,
+     * avoiding unnecessary GPU work on idle frames.
+     */
     startLoop() {
         this.app.ticker.add(() => {
             if (this._needsRedraw) {
@@ -56,14 +77,23 @@ export class MapRenderer {
         });
     }
 
+    /** Redraw all chunks and entities. */
     render() {
         for (const [id, chunk] of this.state.chunks) {
             this._renderChunk(id, chunk);
         }
         this._renderEntities();
-        this._renderGrid();
     }
 
+    /**
+     * Redraw a single chunk into its cached Graphics object.
+     * Creates the Graphics on first call for this chunk ID.
+     *
+     * Rendering order per tile: base color → decoration → pickup dot → zone → warp overlay.
+     *
+     * @param {string} id - Chunk ID in "chunk_X_Y" format
+     * @param {object} chunk - Chunk data from MapState
+     */
     _renderChunk(id, chunk) {
         if (!this.chunkGraphics.has(id)) {
             const g = new PIXI.Graphics();
@@ -114,8 +144,14 @@ export class MapRenderer {
         }
     }
 
+    /**
+     * Rebuild the entity layer from the current manifest.
+     *   - Spawn points → gold 5-pointed star
+     *   - Warps        → blue diamond (matches LAYER_COLORS.warp)
+     */
     _renderEntities() {
         this.entityLayer.removeChildren();
+
         const spawnPoints = this.state.manifest.spawnPoints || [];
         spawnPoints.forEach(p => {
             const g = new PIXI.Graphics();
@@ -123,12 +159,24 @@ export class MapRenderer {
              .fill(0xffcc00);
             this.entityLayer.addChild(g);
         });
+
+        const warps = this.state.manifest.warps || [];
+        warps.forEach(w => {
+            const g = new PIXI.Graphics();
+            const cx = w.x * this.tileSize + 16;
+            const cy = w.y * this.tileSize + 16;
+            g.poly([cx, cy - 10, cx + 10, cy, cx, cy + 10, cx - 10, cy])
+             .fill(0x118ab2);
+            this.entityLayer.addChild(g);
+        });
     }
 
-    _renderGrid() {
-        this.gridLayer.clear();
-    }
-
+    /**
+     * Convert a world-space (PixiJS stage) coordinate to tile indices.
+     * @param {number} worldX
+     * @param {number} worldY
+     * @returns {{ tx: number, ty: number }}
+     */
     worldToTile(worldX, worldY) {
         return {
             tx: Math.floor(worldX / this.tileSize),

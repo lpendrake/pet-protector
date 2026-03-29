@@ -1,3 +1,23 @@
+/**
+ * Express server for the map-maker editor. Runs independently of the Vite dev server.
+ * Handles all map persistence (auto-save, master save, deploy) and metadata queries.
+ *
+ * File layout (relative to /maps/):
+ *   <name>/          — master save (promoted on Ctrl+S)
+ *   <name>_tmp/      — active edits (written every 5s by auto-save)
+ *   <name>_old/      — previous master (retained for one save cycle as a crash backup)
+ *   <name>_old_del/  — outgoing old backup (deleted at the start and end of each save)
+ *
+ * Deploy copies master → /web/maps/<name>/ so the game can read it.
+ *
+ * API routes:
+ *   POST /api/create-map    — create a new empty map
+ *   POST /api/auto-save     — write state to _tmp
+ *   POST /api/save-master   — atomic promotion of _tmp → master with version bump
+ *   POST /api/deploy        — copy master to web/maps/
+ *   GET  /api/maps          — list all maps with version and deploy status
+ *   GET  /api/load-map/:name — load map data (prefers _tmp over master)
+ */
 import express from 'express';
 import cors from 'cors';
 import fs from 'fs/promises';
@@ -128,29 +148,28 @@ app.post('/api/auto-save', async (req, res) => {
     }
 });
 
-// Deploy sync
+// Deploy: copy master to web/maps/
 app.post('/api/deploy', async (req, res) => {
-    const { mapName, deploy } = req.body;
+    const { name: mapName } = req.body;
+    if (!mapName) return res.status(400).send('Map name required');
+
     const srcDir = path.join(MAPS_DIR, mapName);
     const destDir = path.join(DEPLOY_DIR, mapName);
 
     try {
-        if (deploy) {
-            await ensureDir(destDir);
-            await ensureDir(path.join(destDir, 'chunks'));
-            const files = await fs.readdir(srcDir, { recursive: true });
-            for (const file of files) {
-                const src = path.join(srcDir, file);
-                const dest = path.join(destDir, file);
-                const stat = await fs.stat(src);
-                if (stat.isDirectory()) {
-                    await ensureDir(dest);
-                } else {
-                    await fs.copyFile(src, dest);
-                }
+        await fs.rm(destDir, { recursive: true, force: true });
+        await ensureDir(destDir);
+
+        const files = await fs.readdir(srcDir, { recursive: true });
+        for (const file of files) {
+            const src = path.join(srcDir, file);
+            const dest = path.join(destDir, file);
+            const stat = await fs.stat(src);
+            if (stat.isDirectory()) {
+                await ensureDir(dest);
+            } else {
+                await fs.copyFile(src, dest);
             }
-        } else {
-            await fs.rm(destDir, { recursive: true, force: true });
         }
         res.json({ success: true });
     } catch (err) {
@@ -158,6 +177,8 @@ app.post('/api/deploy', async (req, res) => {
     }
 });
 
+// List all maps: reads /maps/, groups _tmp/_old variants by base name,
+// checks /web/maps/ for deployed version.
 app.get('/api/maps', async (req, res) => {
     try {
         await ensureDir(MAPS_DIR);
@@ -217,11 +238,13 @@ app.post('/api/create-map', async (req, res) => {
     }
 });
 
+// Load map: prefers _tmp (active edits) over master.
+// Returns { mapName, manifest, chunks } — chunks is a flat object keyed by chunk ID.
 app.get('/api/load-map/:name', async (req, res) => {
     const { name } = req.params;
     const masterDir = path.join(MAPS_DIR, name);
     const tmpDir = path.join(MAPS_DIR, `${name}_tmp`);
-    
+
     // Favor tmp if it exists (active edits), otherwise master
     let targetDir = tmpDir;
     try {

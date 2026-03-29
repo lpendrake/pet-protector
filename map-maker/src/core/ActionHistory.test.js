@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert';
 import { MapState } from './MapState.js';
 import { ActionHistory } from './ActionHistory.js';
-import { PaintTileAction } from './Actions.js';
+import { PaintTileAction, BatchPaintAction } from './Actions.js';
 
 test('ActionHistory - push executes action and adds to stack', () => {
     const state = new MapState();
@@ -49,6 +49,52 @@ test('ActionHistory - respects maxSize limit', () => {
     history.push(mockAction, {});
     history.push(mockAction, {});
     history.push(mockAction, {});
-    
+
     assert.strictEqual(history.undoStack.length, 2);
+});
+
+test('BatchPaintAction - execute paints all tiles', () => {
+    const state = new MapState();
+    const batch = new BatchPaintAction([
+        { x: 0, y: 0, layer: 'base', newValue: 'grass_v1', oldValue: 'empty' },
+        { x: 1, y: 0, layer: 'base', newValue: 'grass_v1', oldValue: 'empty' },
+        { x: 2, y: 0, layer: 'base', newValue: 'grass_v1', oldValue: 'empty' },
+    ]);
+    state.applyAction(batch);
+
+    assert.strictEqual(state.getTileData(0, 0).base, 'grass_v1');
+    assert.strictEqual(state.getTileData(1, 0).base, 'grass_v1');
+    assert.strictEqual(state.getTileData(2, 0).base, 'grass_v1');
+});
+
+test('BatchPaintAction - undo restores all tiles to prior state', () => {
+    const state = new MapState();
+    state.setTileData(0, 0, 'base', 'rock_v1');
+    state.setTileData(1, 0, 'base', 'rock_v1');
+
+    const batch = new BatchPaintAction([
+        { x: 0, y: 0, layer: 'base', newValue: 'grass_v1', oldValue: 'rock_v1' },
+        { x: 1, y: 0, layer: 'base', newValue: 'grass_v1', oldValue: 'rock_v1' },
+    ]);
+    state.applyAction(batch);
+    state.undo();
+
+    assert.strictEqual(state.getTileData(0, 0).base, 'rock_v1');
+    assert.strictEqual(state.getTileData(1, 0).base, 'rock_v1');
+});
+
+test('BatchPaintAction - entire batch is one undo step', () => {
+    const state = new MapState();
+    const batch = new BatchPaintAction([
+        { x: 0, y: 0, layer: 'base', newValue: 'grass_v1', oldValue: 'empty' },
+        { x: 1, y: 0, layer: 'base', newValue: 'grass_v1', oldValue: 'empty' },
+        { x: 2, y: 0, layer: 'base', newValue: 'grass_v1', oldValue: 'empty' },
+    ]);
+    state.applyAction(batch);
+
+    assert.strictEqual(state.history.undoStack.length, 1);
+    state.undo();
+    assert.strictEqual(state.history.undoStack.length, 0);
+    assert.strictEqual(state.getTileData(0, 0).base, 'empty');
+    assert.strictEqual(state.getTileData(2, 0).base, 'empty');
 });
