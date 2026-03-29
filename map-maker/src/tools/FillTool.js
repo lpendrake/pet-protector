@@ -1,9 +1,24 @@
 import { Tool } from './BrushTool.js';
-import { PaintTileAction } from '../core/Actions.js';
+import { BatchPaintAction } from '../core/Actions.js';
 
+/**
+ * Safety limit on flood fill area. Prevents runaway fills on large open maps.
+ * If exceeded, the fill is aborted entirely (no partial fills) and a 'fill:error'
+ * event is emitted so the UI can show a toast.
+ */
 const MAX_FILL_TILES = 10000;
 
+/**
+ * Flood-fills a contiguous area of matching tiles using BFS.
+ * Works transparently across chunk boundaries — chunks are an implementation
+ * detail, not a constraint on the fill area.
+ *
+ * The entire fill is wrapped in a single BatchPaintAction so the whole
+ * operation undoes in one Ctrl+Z.
+ */
 export class FillTool extends Tool {
+    static shortcut = 'f';
+
     constructor(state, bus) {
         super(state);
         this.bus = bus;
@@ -20,14 +35,14 @@ export class FillTool extends Tool {
         const queue = [{ x: tx, y: ty }];
         const visited = new Set();
         visited.add(`${tx},${ty}`);
-        
+
         const toPaint = [];
 
         while (queue.length > 0) {
             if (visited.size > MAX_FILL_TILES) {
                 if (this.bus) {
-                    this.bus.emit('fill:error', { 
-                        message: `Fill area too large (> ${MAX_FILL_TILES} tiles). Paint a border first.` 
+                    this.bus.emit('fill:error', {
+                        message: `Fill area too large (> ${MAX_FILL_TILES} tiles). Paint a border first.`
                     });
                 }
                 return;
@@ -53,9 +68,8 @@ export class FillTool extends Tool {
             }
         }
 
-        // Apply all at once (optimally we'd use a single BatchPaintAction, but for now individual actions are undoable)
-        toPaint.forEach(p => {
-            this.state.applyAction(new PaintTileAction(p.x, p.y, layer, newValue, targetValue));
-        });
+        this.state.applyAction(new BatchPaintAction(
+            toPaint.map(p => ({ x: p.x, y: p.y, layer, newValue, oldValue: targetValue }))
+        ));
     }
 }

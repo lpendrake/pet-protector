@@ -9,18 +9,19 @@ import { SidebarUI } from './ui/SidebarUI.js';
 import { StatusBar } from './ui/StatusBar.js';
 import { PropertyPanel } from './ui/PropertyPanel.js';
 import { PersistenceClient } from './persistence/PersistenceClient.js';
+import { ShortcutManager } from './core/ShortcutManager.js';
 
 const bus = new EventBus();
 const state = new MapState(bus);
 const items = ItemRegistryInstance;
 const tiles = TileDefs;
-const tools = new ToolManager(bus, state);
+const tools = new ToolManager(bus, state, tiles);
 const renderer = new MapRenderer(document.getElementById('viewport-container'), bus, state, items);
 const viewport = new Viewport(renderer);
-const sidebar = new SidebarUI(bus, state, items, tiles);
+const persistence = new PersistenceClient(bus, state, 'http://localhost:3001');
+const sidebar = new SidebarUI(bus, state, items, tiles, persistence);
 const statusBar = new StatusBar(bus);
 const propertyPanel = new PropertyPanel(bus, state);
-const persistence = new PersistenceClient(bus, state, 'http://localhost:3001');
 
 async function start() {
     try {
@@ -47,6 +48,11 @@ async function start() {
     };
     
     window.onmouseup = () => tools.onPointerUp();
+
+    const shortcuts = new ShortcutManager();
+    shortcuts.registerCoreShortcuts(state, bus);
+    tools.registerShortcuts(shortcuts);
+    shortcuts.attach();
 
     // Specific wiring
     bus.on('viewport:snap', (pos) => {

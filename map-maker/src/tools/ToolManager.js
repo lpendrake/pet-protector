@@ -5,22 +5,38 @@ import { SpawnerTool } from './SpawnerTool.js';
 import { WarpTool } from './WarpTool.js';
 import { ZoneTool } from './ZoneTool.js';
 
+/**
+ * Owns all pointer input and delegates to the currently active tool.
+ * Also wires tile/item selection events to configure the brush tool.
+ *
+ * Listens to:
+ *   'tile:selected'  → switches to brush, sets layer:'base', value:<tileId>
+ *   'item:selected'  → switches to brush, sets layer:'pickup', value:<itemId>
+ *   'tool:changed'   → activates the named tool
+ *
+ * Emits:
+ *   'tool:active' → after a tool switch, with the new tool name
+ */
 export class ToolManager {
-    constructor(bus, state) {
+    /**
+     * @param {EventBus|null} bus
+     * @param {MapState} state
+     * @param {TileDefs|null} [tileDefs=null] - Passed to WarpTool for walkability checks
+     */
+    constructor(bus, state, tileDefs = null) {
         this.bus = bus;
         this.state = state;
         this.tools = new Map();
-        
-        // Register default tools
-        this.tools.set('brush', new BrushTool(state));
-        this.tools.set('erase', new EraseTool(state));
-        this.tools.set('fill', new FillTool(state, bus));
+
+        this.tools.set('brush',   new BrushTool(state));
+        this.tools.set('erase',   new EraseTool(state));
+        this.tools.set('fill',    new FillTool(state, bus));
         this.tools.set('spawner', new SpawnerTool(state));
-        this.tools.set('warp', new WarpTool(state));
-        this.tools.set('zone', new ZoneTool(state));
-        
+        this.tools.set('warp',    new WarpTool(state, tileDefs));
+        this.tools.set('zone',    new ZoneTool(state));
+
         this.activeTool = this.tools.get('brush');
-        
+
         if (this.bus) {
             this.bus.on('tile:selected', (id) => {
                 this.setTool('brush');
@@ -34,6 +50,11 @@ export class ToolManager {
         }
     }
 
+    /**
+     * Activate a tool by name. Emits 'tool:active' on success.
+     * Silent no-op if the name is not registered.
+     * @param {string} name - Key in the tools Map (e.g. 'brush', 'erase')
+     */
     setTool(name) {
         if (this.tools.has(name)) {
             this.activeTool = this.tools.get(name);
@@ -41,15 +62,27 @@ export class ToolManager {
         }
     }
 
+    /** @param {number} tx - Tile X coordinate */
     onPointerDown(tx, ty) {
         this.activeTool.onDown(tx, ty);
     }
 
+    /** @param {number} tx - Tile X coordinate */
     onPointerMove(tx, ty) {
         this.activeTool.onMove(tx, ty);
     }
 
     onPointerUp() {
         this.activeTool.onUp();
+    }
+
+    /**
+     * Register each tool's declared keyboard shortcut with a ShortcutManager.
+     * Tools with `static shortcut = ''` are skipped. Tools with `static shortcut = null`
+     * will cause ShortcutManager to throw (missing declaration).
+     * @param {ShortcutManager} shortcutManager
+     */
+    registerShortcuts(shortcutManager) {
+        shortcutManager.registerToolShortcuts(this);
     }
 }
