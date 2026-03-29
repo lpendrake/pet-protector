@@ -20,9 +20,10 @@ This tool is built on a modular, event-driven architecture. Follow these pattern
 ### 2. A New Tool
 1. Create `src/tools/MyTool.js` (extend `Tool` from `BrushTool.js`).
 2. Implement `onDown(tx, ty)`, `onMove(tx, ty)`, `onUp()`.
-3. Register it in `src/tools/ToolManager.js` constructor.
-4. Add a button in `index.html` with `id="tool-mytool"`.
-5. `SidebarUI.js` will auto-wire the click handler if the ID matches the `tool-*` pattern.
+3. Declare `static shortcut = 'x'` on the class (or `''` for no shortcut). **Required** — the completeness test will fail loudly if omitted.
+4. Register it in `src/tools/ToolManager.js` constructor: `this.tools.set('mytool', new MyTool(state))`.
+5. Add a button in `index.html` with `id="tool-mytool"`. `SidebarUI.js` auto-wires it via the `tool-*` convention.
+6. Run `npm test` — shortcut collision and completeness tests will catch any issues before the browser.
 
 ### 3. A New Event
 1. Choose a descriptive name (e.g., `selection:cleared`).

@@ -1,8 +1,24 @@
+/**
+ * Item categories — determines which tile layer an item occupies.
+ *   PICKUP:     consumable items the pet can interact with (placed on the 'pickup' layer)
+ *   DECORATION: permanent scenery objects (placed on the 'decoration' layer)
+ */
 export const CATEGORIES = {
     PICKUP: 'pickup',
     DECORATION: 'decoration'
 };
 
+/**
+ * Registry of all placeable items (pickups and decorations).
+ *
+ * Currently hardcoded. See implementation_plan.md for the planned migration
+ * to a data-driven item_defs.json (analogous to tile_defs.json).
+ *
+ * Item `effects` apply when the pet interacts with the item in-game.
+ * Keys map to the pet's stats: `nutrition`, `hydration`, `energy`.
+ * Values are percentage points (0–100 scale) added to the corresponding stat.
+ * Negative values are allowed (e.g. an apple reducing hydration slightly).
+ */
 export class ItemRegistry {
     constructor() {
         this.items = {
@@ -41,17 +57,26 @@ export class ItemRegistry {
         };
     }
 
+    /**
+     * @param {string} id
+     * @returns {Object|undefined}
+     */
     getItem(id) {
         return this.items[id];
     }
 
+    /**
+     * @param {string} category - CATEGORIES.PICKUP or CATEGORIES.DECORATION
+     */
     getItemsByCategory(category) {
         return Object.values(this.items).filter(i => i.category === category);
     }
 
+    /** Returns all items regardless of category. */
     getAllItems() {
         return Object.values(this.items);
     }
 }
 
+/** Singleton — import this, not the class directly. */
 export const ItemRegistryInstance = new ItemRegistry();

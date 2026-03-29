@@ -95,22 +95,24 @@ The game engine will be updated to fetch chunks dynamically based on camera posi
 - [x] Initialize `map-maker` directory and structure
 - [x] Implement atomic safe save system (Old_Del -> Old -> Master) + Version Bumping
 - [x] Implement unit tests for save/versioning logic
-- [x] Implement Action History (Undo/Redo)
-- [ ] Implement asset-ready `item_defs.json` and basic editor (Currently hardcoded)
+- [x] Implement Action History (Undo/Redo) — logic complete; keyboard shortcuts (Ctrl+Z/Y) added
+- [ ] Implement asset-ready `item_defs.json` and basic editor (ItemRegistry is hardcoded JS)
 - [x] Implement chunked map state management
 
 ## UI Implementation (The Map Maker)
 - [x] Build map viewport (panning/zooming)
-- [x] Implement Tile Palette (Populated and selectable)
+- [x] Implement Tile Palette (Populated, selectable, distinct colors + labels per tile type)
 - [x] Implement Item Palette (Populated and selectable)
-- [ ] Implement Painting Tools (Brush verified, Fill/Erase pending)
-- [x] Implement Zone Editor (Painting verified)
-- [x] Implement Transition Point (Warp) Editor (Verified placement and properties)
+- [x] Implement Painting Tools — Brush/Fill/Erase all working; brush button wired; tool keyboard shortcuts B/E/F/S/W/Z added
+- [x] Implement Zone Editor — paints zone layer; zone definition auto-added to manifest on first use
+- [x] Implement Transition Point (Warp) Editor — placement + name + targetMap + targetPos X/Y all editable
 - [x] Implement Multiple Spawn Point Editor (Verified placement)
-- [x] Implement "Search & Snap" navigation (Sidebar list verified)
-- [x] Implement Deployed Maps Manager (Sidebar UI verified)
+- [x] Implement "Search & Snap" navigation (Sidebar list, click to snap viewport)
+- [x] Implement Deployed Maps Manager — shows all maps with version/deploy status; Deploy button wired to server
 - [x] Add "Time since last save" status indicator (Verified working)
+- [x] Keyboard shortcuts — Ctrl+Z/Y (undo/redo), Ctrl+S (save master), B/E/F/S/W/Z (tools); blocked during text input
 
 ## Persistence & Integration
-- [ ] Implement Save/Load functionality (JSON export/import)
-- [ ] Design migration path for the main game to support the new format
+- [x] Server-based Save/Load — auto-save to _tmp, promote to master, load on startup
+- [ ] File export/import — download/upload map as JSON for sharing or backup
+- [ ] Design migration path for the main game to support the new chunked format
