@@ -1,11 +1,6421 @@
 {
-  "empty": { "name": "Empty", "category": "system", "walkable": true },
-  "grass_v1": { "name": "Grass", "category": "natural", "walkable": true },
-  "forest_v1": { "name": "Forest", "category": "natural", "walkable": true },
-  "dirt_path": { "name": "Dirt Path", "category": "path", "walkable": true },
-  "water_shallow": { "name": "Shallow Water", "category": "water", "walkable": false },
-  "water_deep": { "name": "Deep Water", "category": "water", "walkable": false },
-  "rock_v1": { "name": "Rock", "category": "natural", "walkable": false },
-  "cave_v1": { "name": "Cave floor", "category": "dungeon", "walkable": true },
-  "ruins_v1": { "name": "Ruins", "category": "dungeon", "walkable": true }
+  "_config": {
+    "assetBase": "./assets/craftpix-net-189510-grassland-top-down-tileset-pixel-art/PNG/",
+    "tileSize": 16
+  },
+  "empty": {
+    "name": "Empty",
+    "category": "system",
+    "walkable": true
+  },
+  "ground_grass_1_0": {
+    "name": "ground_grass 1,0",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 1,
+      "row": 0
+    }
+  },
+  "ground_grass_2_0": {
+    "name": "ground_grass 2,0",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 2,
+      "row": 0
+    }
+  },
+  "ground_grass_3_0": {
+    "name": "ground_grass 3,0",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 3,
+      "row": 0
+    }
+  },
+  "ground_grass_4_0": {
+    "name": "ground_grass 4,0",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 4,
+      "row": 0
+    }
+  },
+  "ground_grass_5_0": {
+    "name": "ground_grass 5,0",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 5,
+      "row": 0
+    }
+  },
+  "ground_grass_17_0": {
+    "name": "ground_grass 17,0",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 17,
+      "row": 0
+    }
+  },
+  "ground_grass_18_0": {
+    "name": "ground_grass 18,0",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 18,
+      "row": 0
+    }
+  },
+  "ground_grass_24_0": {
+    "name": "ground_grass 24,0",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 24,
+      "row": 0
+    }
+  },
+  "ground_grass_25_0": {
+    "name": "ground_grass 25,0",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 25,
+      "row": 0
+    }
+  },
+  "ground_grass_26_0": {
+    "name": "ground_grass 26,0",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 26,
+      "row": 0
+    }
+  },
+  "ground_grass_27_0": {
+    "name": "ground_grass 27,0",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 27,
+      "row": 0
+    }
+  },
+  "ground_grass_28_0": {
+    "name": "ground_grass 28,0",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 28,
+      "row": 0
+    }
+  },
+  "ground_grass_31_0": {
+    "name": "ground_grass 31,0",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 31,
+      "row": 0
+    }
+  },
+  "ground_grass_33_0": {
+    "name": "ground_grass 33,0",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 33,
+      "row": 0
+    }
+  },
+  "ground_grass_34_0": {
+    "name": "ground_grass 34,0",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 34,
+      "row": 0
+    }
+  },
+  "ground_grass_50_0": {
+    "name": "ground_grass 50,0",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 50,
+      "row": 0
+    }
+  },
+  "ground_grass_51_0": {
+    "name": "ground_grass 51,0",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 51,
+      "row": 0
+    }
+  },
+  "ground_grass_52_0": {
+    "name": "ground_grass 52,0",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 52,
+      "row": 0
+    }
+  },
+  "ground_grass_1_1": {
+    "name": "ground_grass 1,1",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 1,
+      "row": 1
+    }
+  },
+  "ground_grass_2_1": {
+    "name": "ground_grass 2,1",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 2,
+      "row": 1
+    }
+  },
+  "ground_grass_3_1": {
+    "name": "ground_grass 3,1",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 3,
+      "row": 1
+    }
+  },
+  "ground_grass_4_1": {
+    "name": "ground_grass 4,1",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 4,
+      "row": 1
+    }
+  },
+  "ground_grass_5_1": {
+    "name": "ground_grass 5,1",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 5,
+      "row": 1
+    }
+  },
+  "ground_grass_6_1": {
+    "name": "ground_grass 6,1",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 6,
+      "row": 1
+    }
+  },
+  "ground_grass_17_1": {
+    "name": "ground_grass 17,1",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 17,
+      "row": 1
+    }
+  },
+  "ground_grass_18_1": {
+    "name": "ground_grass 18,1",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 18,
+      "row": 1
+    }
+  },
+  "ground_grass_24_1": {
+    "name": "ground_grass 24,1",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 24,
+      "row": 1
+    }
+  },
+  "ground_grass_25_1": {
+    "name": "ground_grass 25,1",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 25,
+      "row": 1
+    }
+  },
+  "ground_grass_26_1": {
+    "name": "ground_grass 26,1",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 26,
+      "row": 1
+    }
+  },
+  "ground_grass_27_1": {
+    "name": "ground_grass 27,1",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 27,
+      "row": 1
+    }
+  },
+  "ground_grass_28_1": {
+    "name": "ground_grass 28,1",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 28,
+      "row": 1
+    }
+  },
+  "ground_grass_30_1": {
+    "name": "ground_grass 30,1",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 30,
+      "row": 1
+    }
+  },
+  "ground_grass_31_1": {
+    "name": "ground_grass 31,1",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 31,
+      "row": 1
+    }
+  },
+  "ground_grass_34_1": {
+    "name": "ground_grass 34,1",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 34,
+      "row": 1
+    }
+  },
+  "ground_grass_1_2": {
+    "name": "ground_grass 1,2",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 1,
+      "row": 2
+    }
+  },
+  "ground_grass_2_2": {
+    "name": "ground_grass 2,2",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 2,
+      "row": 2
+    }
+  },
+  "ground_grass_3_2": {
+    "name": "ground_grass 3,2",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 3,
+      "row": 2
+    }
+  },
+  "ground_grass_8_2": {
+    "name": "ground_grass 8,2",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 8,
+      "row": 2
+    }
+  },
+  "ground_grass_9_2": {
+    "name": "ground_grass 9,2",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 9,
+      "row": 2
+    }
+  },
+  "ground_grass_11_2": {
+    "name": "ground_grass 11,2",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 11,
+      "row": 2
+    }
+  },
+  "ground_grass_12_2": {
+    "name": "ground_grass 12,2",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 12,
+      "row": 2
+    }
+  },
+  "ground_grass_24_2": {
+    "name": "ground_grass 24,2",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 24,
+      "row": 2
+    }
+  },
+  "ground_grass_25_2": {
+    "name": "ground_grass 25,2",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 25,
+      "row": 2
+    }
+  },
+  "ground_grass_26_2": {
+    "name": "ground_grass 26,2",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 26,
+      "row": 2
+    }
+  },
+  "ground_grass_27_2": {
+    "name": "ground_grass 27,2",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 27,
+      "row": 2
+    }
+  },
+  "ground_grass_1_3": {
+    "name": "ground_grass 1,3",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 1,
+      "row": 3
+    }
+  },
+  "ground_grass_2_3": {
+    "name": "ground_grass 2,3",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 2,
+      "row": 3
+    }
+  },
+  "ground_grass_11_3": {
+    "name": "ground_grass 11,3",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 11,
+      "row": 3
+    }
+  },
+  "ground_grass_12_3": {
+    "name": "ground_grass 12,3",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 12,
+      "row": 3
+    }
+  },
+  "ground_grass_14_3": {
+    "name": "ground_grass 14,3",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 14,
+      "row": 3
+    }
+  },
+  "ground_grass_15_3": {
+    "name": "ground_grass 15,3",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 15,
+      "row": 3
+    }
+  },
+  "ground_grass_24_3": {
+    "name": "ground_grass 24,3",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 24,
+      "row": 3
+    }
+  },
+  "ground_grass_26_3": {
+    "name": "ground_grass 26,3",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 26,
+      "row": 3
+    }
+  },
+  "ground_grass_27_3": {
+    "name": "ground_grass 27,3",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 27,
+      "row": 3
+    }
+  },
+  "ground_grass_28_3": {
+    "name": "ground_grass 28,3",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 28,
+      "row": 3
+    }
+  },
+  "ground_grass_40_3": {
+    "name": "ground_grass 40,3",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 40,
+      "row": 3
+    }
+  },
+  "ground_grass_47_3": {
+    "name": "ground_grass 47,3",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 47,
+      "row": 3
+    }
+  },
+  "ground_grass_48_3": {
+    "name": "ground_grass 48,3",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 48,
+      "row": 3
+    }
+  },
+  "ground_grass_1_4": {
+    "name": "ground_grass 1,4",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 1,
+      "row": 4
+    }
+  },
+  "ground_grass_2_4": {
+    "name": "ground_grass 2,4",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 2,
+      "row": 4
+    }
+  },
+  "ground_grass_4_4": {
+    "name": "ground_grass 4,4",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 4,
+      "row": 4
+    }
+  },
+  "ground_grass_8_4": {
+    "name": "ground_grass 8,4",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 8,
+      "row": 4
+    }
+  },
+  "ground_grass_9_4": {
+    "name": "ground_grass 9,4",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 9,
+      "row": 4
+    }
+  },
+  "ground_grass_11_4": {
+    "name": "ground_grass 11,4",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 11,
+      "row": 4
+    }
+  },
+  "ground_grass_12_4": {
+    "name": "ground_grass 12,4",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 12,
+      "row": 4
+    }
+  },
+  "ground_grass_24_4": {
+    "name": "ground_grass 24,4",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 24,
+      "row": 4
+    }
+  },
+  "ground_grass_25_4": {
+    "name": "ground_grass 25,4",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 25,
+      "row": 4
+    }
+  },
+  "ground_grass_26_4": {
+    "name": "ground_grass 26,4",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 26,
+      "row": 4
+    }
+  },
+  "ground_grass_38_4": {
+    "name": "ground_grass 38,4",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 38,
+      "row": 4
+    }
+  },
+  "ground_grass_40_4": {
+    "name": "ground_grass 40,4",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 40,
+      "row": 4
+    }
+  },
+  "ground_grass_50_4": {
+    "name": "ground_grass 50,4",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 50,
+      "row": 4
+    }
+  },
+  "ground_grass_51_4": {
+    "name": "ground_grass 51,4",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 51,
+      "row": 4
+    }
+  },
+  "ground_grass_8_5": {
+    "name": "ground_grass 8,5",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 8,
+      "row": 5
+    }
+  },
+  "ground_grass_9_5": {
+    "name": "ground_grass 9,5",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 9,
+      "row": 5
+    }
+  },
+  "ground_grass_11_5": {
+    "name": "ground_grass 11,5",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 11,
+      "row": 5
+    }
+  },
+  "ground_grass_12_5": {
+    "name": "ground_grass 12,5",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 12,
+      "row": 5
+    }
+  },
+  "ground_grass_17_5": {
+    "name": "ground_grass 17,5",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 17,
+      "row": 5
+    }
+  },
+  "ground_grass_18_5": {
+    "name": "ground_grass 18,5",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 18,
+      "row": 5
+    }
+  },
+  "ground_grass_16_7": {
+    "name": "ground_grass 16,7",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 16,
+      "row": 7
+    }
+  },
+  "ground_grass_42_7": {
+    "name": "ground_grass 42,7",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 42,
+      "row": 7
+    }
+  },
+  "ground_grass_43_7": {
+    "name": "ground_grass 43,7",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 43,
+      "row": 7
+    }
+  },
+  "ground_grass_46_7": {
+    "name": "ground_grass 46,7",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 46,
+      "row": 7
+    }
+  },
+  "ground_grass_47_7": {
+    "name": "ground_grass 47,7",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 47,
+      "row": 7
+    }
+  },
+  "ground_grass_48_7": {
+    "name": "ground_grass 48,7",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 48,
+      "row": 7
+    }
+  },
+  "ground_grass_49_7": {
+    "name": "ground_grass 49,7",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 49,
+      "row": 7
+    }
+  },
+  "ground_grass_50_7": {
+    "name": "ground_grass 50,7",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 50,
+      "row": 7
+    }
+  },
+  "ground_grass_2_8": {
+    "name": "ground_grass 2,8",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 2,
+      "row": 8
+    }
+  },
+  "ground_grass_9_8": {
+    "name": "ground_grass 9,8",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 9,
+      "row": 8
+    }
+  },
+  "ground_grass_16_8": {
+    "name": "ground_grass 16,8",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 16,
+      "row": 8
+    }
+  },
+  "ground_grass_29_8": {
+    "name": "ground_grass 29,8",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 29,
+      "row": 8
+    }
+  },
+  "ground_grass_30_8": {
+    "name": "ground_grass 30,8",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 30,
+      "row": 8
+    }
+  },
+  "ground_grass_40_8": {
+    "name": "ground_grass 40,8",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 40,
+      "row": 8
+    }
+  },
+  "ground_grass_41_8": {
+    "name": "ground_grass 41,8",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 41,
+      "row": 8
+    }
+  },
+  "ground_grass_47_8": {
+    "name": "ground_grass 47,8",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 47,
+      "row": 8
+    }
+  },
+  "ground_grass_49_8": {
+    "name": "ground_grass 49,8",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 49,
+      "row": 8
+    }
+  },
+  "ground_grass_50_8": {
+    "name": "ground_grass 50,8",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 50,
+      "row": 8
+    }
+  },
+  "ground_grass_29_9": {
+    "name": "ground_grass 29,9",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 29,
+      "row": 9
+    }
+  },
+  "ground_grass_30_9": {
+    "name": "ground_grass 30,9",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 30,
+      "row": 9
+    }
+  },
+  "ground_grass_39_9": {
+    "name": "ground_grass 39,9",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 39,
+      "row": 9
+    }
+  },
+  "ground_grass_40_9": {
+    "name": "ground_grass 40,9",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 40,
+      "row": 9
+    }
+  },
+  "ground_grass_41_9": {
+    "name": "ground_grass 41,9",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 41,
+      "row": 9
+    }
+  },
+  "ground_grass_46_9": {
+    "name": "ground_grass 46,9",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 46,
+      "row": 9
+    }
+  },
+  "ground_grass_47_9": {
+    "name": "ground_grass 47,9",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 47,
+      "row": 9
+    }
+  },
+  "ground_grass_48_9": {
+    "name": "ground_grass 48,9",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 48,
+      "row": 9
+    }
+  },
+  "ground_grass_27_10": {
+    "name": "ground_grass 27,10",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 27,
+      "row": 10
+    }
+  },
+  "ground_grass_28_10": {
+    "name": "ground_grass 28,10",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 28,
+      "row": 10
+    }
+  },
+  "ground_grass_29_10": {
+    "name": "ground_grass 29,10",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 29,
+      "row": 10
+    }
+  },
+  "ground_grass_47_10": {
+    "name": "ground_grass 47,10",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 47,
+      "row": 10
+    }
+  },
+  "ground_grass_27_11": {
+    "name": "ground_grass 27,11",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 27,
+      "row": 11
+    }
+  },
+  "ground_grass_28_11": {
+    "name": "ground_grass 28,11",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 28,
+      "row": 11
+    }
+  },
+  "ground_grass_39_11": {
+    "name": "ground_grass 39,11",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 39,
+      "row": 11
+    }
+  },
+  "ground_grass_40_11": {
+    "name": "ground_grass 40,11",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 40,
+      "row": 11
+    }
+  },
+  "ground_grass_46_11": {
+    "name": "ground_grass 46,11",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 46,
+      "row": 11
+    }
+  },
+  "ground_grass_17_12": {
+    "name": "ground_grass 17,12",
+    "category": "natural",
+    "walkable": true,
+    "sprite": {
+      "sheet": "ground_grasss.webp",
+      "col": 17,
+      "row": 12
+    }
+  },
+  "water_coasts_2_1": {
+    "name": "water_coasts 2,1",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 2,
+      "row": 1
+    }
+  },
+  "water_coasts_3_1": {
+    "name": "water_coasts 3,1",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 3,
+      "row": 1
+    }
+  },
+  "water_coasts_4_1": {
+    "name": "water_coasts 4,1",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 4,
+      "row": 1
+    }
+  },
+  "water_coasts_5_1": {
+    "name": "water_coasts 5,1",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 5,
+      "row": 1
+    }
+  },
+  "water_coasts_6_1": {
+    "name": "water_coasts 6,1",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 6,
+      "row": 1
+    }
+  },
+  "water_coasts_7_1": {
+    "name": "water_coasts 7,1",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 7,
+      "row": 1
+    }
+  },
+  "water_coasts_13_1": {
+    "name": "water_coasts 13,1",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 13,
+      "row": 1
+    }
+  },
+  "water_coasts_14_1": {
+    "name": "water_coasts 14,1",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 14,
+      "row": 1
+    }
+  },
+  "water_coasts_15_1": {
+    "name": "water_coasts 15,1",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 15,
+      "row": 1
+    }
+  },
+  "water_coasts_16_1": {
+    "name": "water_coasts 16,1",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 16,
+      "row": 1
+    }
+  },
+  "water_coasts_17_1": {
+    "name": "water_coasts 17,1",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 17,
+      "row": 1
+    }
+  },
+  "water_coasts_18_1": {
+    "name": "water_coasts 18,1",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 18,
+      "row": 1
+    }
+  },
+  "water_coasts_19_1": {
+    "name": "water_coasts 19,1",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 19,
+      "row": 1
+    }
+  },
+  "water_coasts_30_1": {
+    "name": "water_coasts 30,1",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 30,
+      "row": 1
+    }
+  },
+  "water_coasts_31_1": {
+    "name": "water_coasts 31,1",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 31,
+      "row": 1
+    }
+  },
+  "water_coasts_1_2": {
+    "name": "water_coasts 1,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 1,
+      "row": 2
+    }
+  },
+  "water_coasts_2_2": {
+    "name": "water_coasts 2,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 2,
+      "row": 2
+    }
+  },
+  "water_coasts_3_2": {
+    "name": "water_coasts 3,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 3,
+      "row": 2
+    }
+  },
+  "water_coasts_4_2": {
+    "name": "water_coasts 4,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 4,
+      "row": 2
+    }
+  },
+  "water_coasts_5_2": {
+    "name": "water_coasts 5,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 5,
+      "row": 2
+    }
+  },
+  "water_coasts_6_2": {
+    "name": "water_coasts 6,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 6,
+      "row": 2
+    }
+  },
+  "water_coasts_12_2": {
+    "name": "water_coasts 12,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 12,
+      "row": 2
+    }
+  },
+  "water_coasts_13_2": {
+    "name": "water_coasts 13,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 13,
+      "row": 2
+    }
+  },
+  "water_coasts_14_2": {
+    "name": "water_coasts 14,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 14,
+      "row": 2
+    }
+  },
+  "water_coasts_15_2": {
+    "name": "water_coasts 15,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 15,
+      "row": 2
+    }
+  },
+  "water_coasts_16_2": {
+    "name": "water_coasts 16,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 16,
+      "row": 2
+    }
+  },
+  "water_coasts_17_2": {
+    "name": "water_coasts 17,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 17,
+      "row": 2
+    }
+  },
+  "water_coasts_18_2": {
+    "name": "water_coasts 18,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 18,
+      "row": 2
+    }
+  },
+  "water_coasts_19_2": {
+    "name": "water_coasts 19,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 19,
+      "row": 2
+    }
+  },
+  "water_coasts_30_2": {
+    "name": "water_coasts 30,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 30,
+      "row": 2
+    }
+  },
+  "water_coasts_31_2": {
+    "name": "water_coasts 31,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 31,
+      "row": 2
+    }
+  },
+  "water_coasts_33_2": {
+    "name": "water_coasts 33,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 33,
+      "row": 2
+    }
+  },
+  "water_coasts_34_2": {
+    "name": "water_coasts 34,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 34,
+      "row": 2
+    }
+  },
+  "water_coasts_36_2": {
+    "name": "water_coasts 36,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 36,
+      "row": 2
+    }
+  },
+  "water_coasts_37_2": {
+    "name": "water_coasts 37,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 37,
+      "row": 2
+    }
+  },
+  "water_coasts_2_3": {
+    "name": "water_coasts 2,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 2,
+      "row": 3
+    }
+  },
+  "water_coasts_3_3": {
+    "name": "water_coasts 3,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 3,
+      "row": 3
+    }
+  },
+  "water_coasts_4_3": {
+    "name": "water_coasts 4,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 4,
+      "row": 3
+    }
+  },
+  "water_coasts_14_3": {
+    "name": "water_coasts 14,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 14,
+      "row": 3
+    }
+  },
+  "water_coasts_18_3": {
+    "name": "water_coasts 18,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 18,
+      "row": 3
+    }
+  },
+  "water_coasts_19_3": {
+    "name": "water_coasts 19,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 19,
+      "row": 3
+    }
+  },
+  "water_coasts_25_3": {
+    "name": "water_coasts 25,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 25,
+      "row": 3
+    }
+  },
+  "water_coasts_28_3": {
+    "name": "water_coasts 28,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 28,
+      "row": 3
+    }
+  },
+  "water_coasts_30_3": {
+    "name": "water_coasts 30,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 30,
+      "row": 3
+    }
+  },
+  "water_coasts_31_3": {
+    "name": "water_coasts 31,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 31,
+      "row": 3
+    }
+  },
+  "water_coasts_33_3": {
+    "name": "water_coasts 33,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 33,
+      "row": 3
+    }
+  },
+  "water_coasts_34_3": {
+    "name": "water_coasts 34,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 34,
+      "row": 3
+    }
+  },
+  "water_coasts_36_3": {
+    "name": "water_coasts 36,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 36,
+      "row": 3
+    }
+  },
+  "water_coasts_37_3": {
+    "name": "water_coasts 37,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 37,
+      "row": 3
+    }
+  },
+  "water_coasts_2_4": {
+    "name": "water_coasts 2,4",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 2,
+      "row": 4
+    }
+  },
+  "water_coasts_3_4": {
+    "name": "water_coasts 3,4",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 3,
+      "row": 4
+    }
+  },
+  "water_coasts_13_4": {
+    "name": "water_coasts 13,4",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 13,
+      "row": 4
+    }
+  },
+  "water_coasts_14_4": {
+    "name": "water_coasts 14,4",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 14,
+      "row": 4
+    }
+  },
+  "water_coasts_30_4": {
+    "name": "water_coasts 30,4",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 30,
+      "row": 4
+    }
+  },
+  "water_coasts_31_4": {
+    "name": "water_coasts 31,4",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 31,
+      "row": 4
+    }
+  },
+  "water_coasts_36_4": {
+    "name": "water_coasts 36,4",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 36,
+      "row": 4
+    }
+  },
+  "water_coasts_37_4": {
+    "name": "water_coasts 37,4",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 37,
+      "row": 4
+    }
+  },
+  "water_coasts_2_5": {
+    "name": "water_coasts 2,5",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 2,
+      "row": 5
+    }
+  },
+  "water_coasts_3_5": {
+    "name": "water_coasts 3,5",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 3,
+      "row": 5
+    }
+  },
+  "water_coasts_6_5": {
+    "name": "water_coasts 6,5",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 6,
+      "row": 5
+    }
+  },
+  "water_coasts_8_5": {
+    "name": "water_coasts 8,5",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 8,
+      "row": 5
+    }
+  },
+  "water_coasts_17_5": {
+    "name": "water_coasts 17,5",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 17,
+      "row": 5
+    }
+  },
+  "water_coasts_24_5": {
+    "name": "water_coasts 24,5",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 24,
+      "row": 5
+    }
+  },
+  "water_coasts_25_5": {
+    "name": "water_coasts 25,5",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Water_coasts.webp",
+      "col": 25,
+      "row": 5
+    }
+  },
+  "water_detilazation_6_1": {
+    "name": "water_detilazation 6,1",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 6,
+      "row": 1
+    }
+  },
+  "water_detilazation_7_1": {
+    "name": "water_detilazation 7,1",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 7,
+      "row": 1
+    }
+  },
+  "water_detilazation_8_1": {
+    "name": "water_detilazation 8,1",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 8,
+      "row": 1
+    }
+  },
+  "water_detilazation_29_1": {
+    "name": "water_detilazation 29,1",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 29,
+      "row": 1
+    }
+  },
+  "water_detilazation_1_2": {
+    "name": "water_detilazation 1,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 1,
+      "row": 2
+    }
+  },
+  "water_detilazation_2_2": {
+    "name": "water_detilazation 2,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 2,
+      "row": 2
+    }
+  },
+  "water_detilazation_3_2": {
+    "name": "water_detilazation 3,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 3,
+      "row": 2
+    }
+  },
+  "water_detilazation_4_2": {
+    "name": "water_detilazation 4,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 4,
+      "row": 2
+    }
+  },
+  "water_detilazation_5_2": {
+    "name": "water_detilazation 5,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 5,
+      "row": 2
+    }
+  },
+  "water_detilazation_6_2": {
+    "name": "water_detilazation 6,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 6,
+      "row": 2
+    }
+  },
+  "water_detilazation_7_2": {
+    "name": "water_detilazation 7,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 7,
+      "row": 2
+    }
+  },
+  "water_detilazation_8_2": {
+    "name": "water_detilazation 8,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 8,
+      "row": 2
+    }
+  },
+  "water_detilazation_29_2": {
+    "name": "water_detilazation 29,2",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 29,
+      "row": 2
+    }
+  },
+  "water_detilazation_1_3": {
+    "name": "water_detilazation 1,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 1,
+      "row": 3
+    }
+  },
+  "water_detilazation_2_3": {
+    "name": "water_detilazation 2,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 2,
+      "row": 3
+    }
+  },
+  "water_detilazation_3_3": {
+    "name": "water_detilazation 3,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 3,
+      "row": 3
+    }
+  },
+  "water_detilazation_4_3": {
+    "name": "water_detilazation 4,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 4,
+      "row": 3
+    }
+  },
+  "water_detilazation_5_3": {
+    "name": "water_detilazation 5,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 5,
+      "row": 3
+    }
+  },
+  "water_detilazation_6_3": {
+    "name": "water_detilazation 6,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 6,
+      "row": 3
+    }
+  },
+  "water_detilazation_7_3": {
+    "name": "water_detilazation 7,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 7,
+      "row": 3
+    }
+  },
+  "water_detilazation_8_3": {
+    "name": "water_detilazation 8,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 8,
+      "row": 3
+    }
+  },
+  "water_detilazation_29_3": {
+    "name": "water_detilazation 29,3",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 29,
+      "row": 3
+    }
+  },
+  "water_detilazation_10_5": {
+    "name": "water_detilazation 10,5",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 10,
+      "row": 5
+    }
+  },
+  "water_detilazation_11_5": {
+    "name": "water_detilazation 11,5",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 11,
+      "row": 5
+    }
+  },
+  "water_detilazation_9_9": {
+    "name": "water_detilazation 9,9",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 9,
+      "row": 9
+    }
+  },
+  "water_detilazation_10_9": {
+    "name": "water_detilazation 10,9",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 10,
+      "row": 9
+    }
+  },
+  "water_detilazation_11_9": {
+    "name": "water_detilazation 11,9",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 11,
+      "row": 9
+    }
+  },
+  "water_detilazation_12_9": {
+    "name": "water_detilazation 12,9",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 12,
+      "row": 9
+    }
+  },
+  "water_detilazation_9_10": {
+    "name": "water_detilazation 9,10",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 9,
+      "row": 10
+    }
+  },
+  "water_detilazation_10_10": {
+    "name": "water_detilazation 10,10",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 10,
+      "row": 10
+    }
+  },
+  "water_detilazation_11_10": {
+    "name": "water_detilazation 11,10",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 11,
+      "row": 10
+    }
+  },
+  "water_detilazation_12_10": {
+    "name": "water_detilazation 12,10",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 12,
+      "row": 10
+    }
+  },
+  "water_detilazation_13_10": {
+    "name": "water_detilazation 13,10",
+    "category": "water",
+    "walkable": false,
+    "sprite": {
+      "sheet": "water_detilazation.webp",
+      "col": 13,
+      "row": 10
+    }
+  },
+  "trees_rocks_0_0": {
+    "name": "trees_rocks 0,0",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 0
+    }
+  },
+  "trees_rocks_1_0": {
+    "name": "trees_rocks 1,0",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 0
+    }
+  },
+  "trees_rocks_2_0": {
+    "name": "trees_rocks 2,0",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 0
+    }
+  },
+  "trees_rocks_3_0": {
+    "name": "trees_rocks 3,0",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 0
+    }
+  },
+  "trees_rocks_4_0": {
+    "name": "trees_rocks 4,0",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 0
+    }
+  },
+  "trees_rocks_5_0": {
+    "name": "trees_rocks 5,0",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 0
+    }
+  },
+  "trees_rocks_6_0": {
+    "name": "trees_rocks 6,0",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 0
+    }
+  },
+  "trees_rocks_7_0": {
+    "name": "trees_rocks 7,0",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 0
+    }
+  },
+  "trees_rocks_8_0": {
+    "name": "trees_rocks 8,0",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 0
+    }
+  },
+  "trees_rocks_9_0": {
+    "name": "trees_rocks 9,0",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 0
+    }
+  },
+  "trees_rocks_10_0": {
+    "name": "trees_rocks 10,0",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 10,
+      "row": 0
+    }
+  },
+  "trees_rocks_11_0": {
+    "name": "trees_rocks 11,0",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 0
+    }
+  },
+  "trees_rocks_13_0": {
+    "name": "trees_rocks 13,0",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 0
+    }
+  },
+  "trees_rocks_14_0": {
+    "name": "trees_rocks 14,0",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 0
+    }
+  },
+  "trees_rocks_15_0": {
+    "name": "trees_rocks 15,0",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 15,
+      "row": 0
+    }
+  },
+  "trees_rocks_0_1": {
+    "name": "trees_rocks 0,1",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 1
+    }
+  },
+  "trees_rocks_1_1": {
+    "name": "trees_rocks 1,1",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 1
+    }
+  },
+  "trees_rocks_2_1": {
+    "name": "trees_rocks 2,1",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 1
+    }
+  },
+  "trees_rocks_3_1": {
+    "name": "trees_rocks 3,1",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 1
+    }
+  },
+  "trees_rocks_4_1": {
+    "name": "trees_rocks 4,1",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 1
+    }
+  },
+  "trees_rocks_5_1": {
+    "name": "trees_rocks 5,1",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 1
+    }
+  },
+  "trees_rocks_6_1": {
+    "name": "trees_rocks 6,1",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 1
+    }
+  },
+  "trees_rocks_7_1": {
+    "name": "trees_rocks 7,1",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 1
+    }
+  },
+  "trees_rocks_8_1": {
+    "name": "trees_rocks 8,1",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 1
+    }
+  },
+  "trees_rocks_9_1": {
+    "name": "trees_rocks 9,1",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 1
+    }
+  },
+  "trees_rocks_10_1": {
+    "name": "trees_rocks 10,1",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 10,
+      "row": 1
+    }
+  },
+  "trees_rocks_11_1": {
+    "name": "trees_rocks 11,1",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 1
+    }
+  },
+  "trees_rocks_12_1": {
+    "name": "trees_rocks 12,1",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 1
+    }
+  },
+  "trees_rocks_13_1": {
+    "name": "trees_rocks 13,1",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 1
+    }
+  },
+  "trees_rocks_14_1": {
+    "name": "trees_rocks 14,1",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 1
+    }
+  },
+  "trees_rocks_15_1": {
+    "name": "trees_rocks 15,1",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 15,
+      "row": 1
+    }
+  },
+  "trees_rocks_0_2": {
+    "name": "trees_rocks 0,2",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 2
+    }
+  },
+  "trees_rocks_1_2": {
+    "name": "trees_rocks 1,2",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 2
+    }
+  },
+  "trees_rocks_2_2": {
+    "name": "trees_rocks 2,2",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 2
+    }
+  },
+  "trees_rocks_3_2": {
+    "name": "trees_rocks 3,2",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 2
+    }
+  },
+  "trees_rocks_4_2": {
+    "name": "trees_rocks 4,2",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 2
+    }
+  },
+  "trees_rocks_5_2": {
+    "name": "trees_rocks 5,2",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 2
+    }
+  },
+  "trees_rocks_6_2": {
+    "name": "trees_rocks 6,2",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 2
+    }
+  },
+  "trees_rocks_7_2": {
+    "name": "trees_rocks 7,2",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 2
+    }
+  },
+  "trees_rocks_8_2": {
+    "name": "trees_rocks 8,2",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 2
+    }
+  },
+  "trees_rocks_9_2": {
+    "name": "trees_rocks 9,2",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 2
+    }
+  },
+  "trees_rocks_10_2": {
+    "name": "trees_rocks 10,2",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 10,
+      "row": 2
+    }
+  },
+  "trees_rocks_11_2": {
+    "name": "trees_rocks 11,2",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 2
+    }
+  },
+  "trees_rocks_12_2": {
+    "name": "trees_rocks 12,2",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 2
+    }
+  },
+  "trees_rocks_13_2": {
+    "name": "trees_rocks 13,2",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 2
+    }
+  },
+  "trees_rocks_14_2": {
+    "name": "trees_rocks 14,2",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 2
+    }
+  },
+  "trees_rocks_15_2": {
+    "name": "trees_rocks 15,2",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 15,
+      "row": 2
+    }
+  },
+  "trees_rocks_0_3": {
+    "name": "trees_rocks 0,3",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 3
+    }
+  },
+  "trees_rocks_1_3": {
+    "name": "trees_rocks 1,3",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 3
+    }
+  },
+  "trees_rocks_2_3": {
+    "name": "trees_rocks 2,3",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 3
+    }
+  },
+  "trees_rocks_3_3": {
+    "name": "trees_rocks 3,3",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 3
+    }
+  },
+  "trees_rocks_4_3": {
+    "name": "trees_rocks 4,3",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 3
+    }
+  },
+  "trees_rocks_5_3": {
+    "name": "trees_rocks 5,3",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 3
+    }
+  },
+  "trees_rocks_6_3": {
+    "name": "trees_rocks 6,3",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 3
+    }
+  },
+  "trees_rocks_7_3": {
+    "name": "trees_rocks 7,3",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 3
+    }
+  },
+  "trees_rocks_8_3": {
+    "name": "trees_rocks 8,3",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 3
+    }
+  },
+  "trees_rocks_9_3": {
+    "name": "trees_rocks 9,3",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 3
+    }
+  },
+  "trees_rocks_10_3": {
+    "name": "trees_rocks 10,3",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 10,
+      "row": 3
+    }
+  },
+  "trees_rocks_11_3": {
+    "name": "trees_rocks 11,3",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 3
+    }
+  },
+  "trees_rocks_12_3": {
+    "name": "trees_rocks 12,3",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 3
+    }
+  },
+  "trees_rocks_13_3": {
+    "name": "trees_rocks 13,3",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 3
+    }
+  },
+  "trees_rocks_14_3": {
+    "name": "trees_rocks 14,3",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 3
+    }
+  },
+  "trees_rocks_15_3": {
+    "name": "trees_rocks 15,3",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 15,
+      "row": 3
+    }
+  },
+  "trees_rocks_0_4": {
+    "name": "trees_rocks 0,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 4
+    }
+  },
+  "trees_rocks_1_4": {
+    "name": "trees_rocks 1,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 4
+    }
+  },
+  "trees_rocks_2_4": {
+    "name": "trees_rocks 2,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 4
+    }
+  },
+  "trees_rocks_3_4": {
+    "name": "trees_rocks 3,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 4
+    }
+  },
+  "trees_rocks_4_4": {
+    "name": "trees_rocks 4,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 4
+    }
+  },
+  "trees_rocks_5_4": {
+    "name": "trees_rocks 5,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 4
+    }
+  },
+  "trees_rocks_6_4": {
+    "name": "trees_rocks 6,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 4
+    }
+  },
+  "trees_rocks_8_4": {
+    "name": "trees_rocks 8,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 4
+    }
+  },
+  "trees_rocks_9_4": {
+    "name": "trees_rocks 9,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 4
+    }
+  },
+  "trees_rocks_10_4": {
+    "name": "trees_rocks 10,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 10,
+      "row": 4
+    }
+  },
+  "trees_rocks_11_4": {
+    "name": "trees_rocks 11,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 4
+    }
+  },
+  "trees_rocks_13_4": {
+    "name": "trees_rocks 13,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 4
+    }
+  },
+  "trees_rocks_14_4": {
+    "name": "trees_rocks 14,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 4
+    }
+  },
+  "trees_rocks_15_4": {
+    "name": "trees_rocks 15,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 15,
+      "row": 4
+    }
+  },
+  "trees_rocks_0_5": {
+    "name": "trees_rocks 0,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 5
+    }
+  },
+  "trees_rocks_1_5": {
+    "name": "trees_rocks 1,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 5
+    }
+  },
+  "trees_rocks_2_5": {
+    "name": "trees_rocks 2,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 5
+    }
+  },
+  "trees_rocks_3_5": {
+    "name": "trees_rocks 3,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 5
+    }
+  },
+  "trees_rocks_4_5": {
+    "name": "trees_rocks 4,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 5
+    }
+  },
+  "trees_rocks_5_5": {
+    "name": "trees_rocks 5,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 5
+    }
+  },
+  "trees_rocks_6_5": {
+    "name": "trees_rocks 6,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 5
+    }
+  },
+  "trees_rocks_7_5": {
+    "name": "trees_rocks 7,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 5
+    }
+  },
+  "trees_rocks_8_5": {
+    "name": "trees_rocks 8,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 5
+    }
+  },
+  "trees_rocks_9_5": {
+    "name": "trees_rocks 9,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 5
+    }
+  },
+  "trees_rocks_10_5": {
+    "name": "trees_rocks 10,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 10,
+      "row": 5
+    }
+  },
+  "trees_rocks_11_5": {
+    "name": "trees_rocks 11,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 5
+    }
+  },
+  "trees_rocks_12_5": {
+    "name": "trees_rocks 12,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 5
+    }
+  },
+  "trees_rocks_13_5": {
+    "name": "trees_rocks 13,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 5
+    }
+  },
+  "trees_rocks_14_5": {
+    "name": "trees_rocks 14,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 5
+    }
+  },
+  "trees_rocks_15_5": {
+    "name": "trees_rocks 15,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 15,
+      "row": 5
+    }
+  },
+  "trees_rocks_0_6": {
+    "name": "trees_rocks 0,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 6
+    }
+  },
+  "trees_rocks_1_6": {
+    "name": "trees_rocks 1,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 6
+    }
+  },
+  "trees_rocks_2_6": {
+    "name": "trees_rocks 2,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 6
+    }
+  },
+  "trees_rocks_3_6": {
+    "name": "trees_rocks 3,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 6
+    }
+  },
+  "trees_rocks_4_6": {
+    "name": "trees_rocks 4,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 6
+    }
+  },
+  "trees_rocks_5_6": {
+    "name": "trees_rocks 5,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 6
+    }
+  },
+  "trees_rocks_6_6": {
+    "name": "trees_rocks 6,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 6
+    }
+  },
+  "trees_rocks_7_6": {
+    "name": "trees_rocks 7,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 6
+    }
+  },
+  "trees_rocks_8_6": {
+    "name": "trees_rocks 8,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 6
+    }
+  },
+  "trees_rocks_9_6": {
+    "name": "trees_rocks 9,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 6
+    }
+  },
+  "trees_rocks_10_6": {
+    "name": "trees_rocks 10,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 10,
+      "row": 6
+    }
+  },
+  "trees_rocks_11_6": {
+    "name": "trees_rocks 11,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 6
+    }
+  },
+  "trees_rocks_12_6": {
+    "name": "trees_rocks 12,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 6
+    }
+  },
+  "trees_rocks_13_6": {
+    "name": "trees_rocks 13,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 6
+    }
+  },
+  "trees_rocks_14_6": {
+    "name": "trees_rocks 14,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 6
+    }
+  },
+  "trees_rocks_15_6": {
+    "name": "trees_rocks 15,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 15,
+      "row": 6
+    }
+  },
+  "trees_rocks_0_7": {
+    "name": "trees_rocks 0,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 7
+    }
+  },
+  "trees_rocks_1_7": {
+    "name": "trees_rocks 1,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 7
+    }
+  },
+  "trees_rocks_2_7": {
+    "name": "trees_rocks 2,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 7
+    }
+  },
+  "trees_rocks_3_7": {
+    "name": "trees_rocks 3,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 7
+    }
+  },
+  "trees_rocks_4_7": {
+    "name": "trees_rocks 4,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 7
+    }
+  },
+  "trees_rocks_5_7": {
+    "name": "trees_rocks 5,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 7
+    }
+  },
+  "trees_rocks_6_7": {
+    "name": "trees_rocks 6,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 7
+    }
+  },
+  "trees_rocks_7_7": {
+    "name": "trees_rocks 7,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 7
+    }
+  },
+  "trees_rocks_8_7": {
+    "name": "trees_rocks 8,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 7
+    }
+  },
+  "trees_rocks_9_7": {
+    "name": "trees_rocks 9,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 7
+    }
+  },
+  "trees_rocks_10_7": {
+    "name": "trees_rocks 10,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 10,
+      "row": 7
+    }
+  },
+  "trees_rocks_11_7": {
+    "name": "trees_rocks 11,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 7
+    }
+  },
+  "trees_rocks_12_7": {
+    "name": "trees_rocks 12,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 7
+    }
+  },
+  "trees_rocks_13_7": {
+    "name": "trees_rocks 13,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 7
+    }
+  },
+  "trees_rocks_14_7": {
+    "name": "trees_rocks 14,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 7
+    }
+  },
+  "trees_rocks_15_7": {
+    "name": "trees_rocks 15,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 15,
+      "row": 7
+    }
+  },
+  "trees_rocks_0_8": {
+    "name": "trees_rocks 0,8",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 8
+    }
+  },
+  "trees_rocks_1_8": {
+    "name": "trees_rocks 1,8",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 8
+    }
+  },
+  "trees_rocks_2_8": {
+    "name": "trees_rocks 2,8",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 8
+    }
+  },
+  "trees_rocks_3_8": {
+    "name": "trees_rocks 3,8",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 8
+    }
+  },
+  "trees_rocks_4_8": {
+    "name": "trees_rocks 4,8",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 8
+    }
+  },
+  "trees_rocks_5_8": {
+    "name": "trees_rocks 5,8",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 8
+    }
+  },
+  "trees_rocks_6_8": {
+    "name": "trees_rocks 6,8",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 8
+    }
+  },
+  "trees_rocks_7_8": {
+    "name": "trees_rocks 7,8",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 8
+    }
+  },
+  "trees_rocks_8_8": {
+    "name": "trees_rocks 8,8",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 8
+    }
+  },
+  "trees_rocks_9_8": {
+    "name": "trees_rocks 9,8",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 8
+    }
+  },
+  "trees_rocks_10_8": {
+    "name": "trees_rocks 10,8",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 10,
+      "row": 8
+    }
+  },
+  "trees_rocks_11_8": {
+    "name": "trees_rocks 11,8",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 8
+    }
+  },
+  "trees_rocks_12_8": {
+    "name": "trees_rocks 12,8",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 8
+    }
+  },
+  "trees_rocks_13_8": {
+    "name": "trees_rocks 13,8",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 8
+    }
+  },
+  "trees_rocks_14_8": {
+    "name": "trees_rocks 14,8",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 8
+    }
+  },
+  "trees_rocks_15_8": {
+    "name": "trees_rocks 15,8",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 15,
+      "row": 8
+    }
+  },
+  "trees_rocks_0_9": {
+    "name": "trees_rocks 0,9",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 9
+    }
+  },
+  "trees_rocks_1_9": {
+    "name": "trees_rocks 1,9",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 9
+    }
+  },
+  "trees_rocks_2_9": {
+    "name": "trees_rocks 2,9",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 9
+    }
+  },
+  "trees_rocks_3_9": {
+    "name": "trees_rocks 3,9",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 9
+    }
+  },
+  "trees_rocks_4_9": {
+    "name": "trees_rocks 4,9",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 9
+    }
+  },
+  "trees_rocks_5_9": {
+    "name": "trees_rocks 5,9",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 9
+    }
+  },
+  "trees_rocks_6_9": {
+    "name": "trees_rocks 6,9",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 9
+    }
+  },
+  "trees_rocks_7_9": {
+    "name": "trees_rocks 7,9",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 9
+    }
+  },
+  "trees_rocks_8_9": {
+    "name": "trees_rocks 8,9",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 9
+    }
+  },
+  "trees_rocks_9_9": {
+    "name": "trees_rocks 9,9",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 9
+    }
+  },
+  "trees_rocks_10_9": {
+    "name": "trees_rocks 10,9",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 10,
+      "row": 9
+    }
+  },
+  "trees_rocks_11_9": {
+    "name": "trees_rocks 11,9",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 9
+    }
+  },
+  "trees_rocks_12_9": {
+    "name": "trees_rocks 12,9",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 9
+    }
+  },
+  "trees_rocks_13_9": {
+    "name": "trees_rocks 13,9",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 9
+    }
+  },
+  "trees_rocks_14_9": {
+    "name": "trees_rocks 14,9",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 9
+    }
+  },
+  "trees_rocks_15_9": {
+    "name": "trees_rocks 15,9",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 15,
+      "row": 9
+    }
+  },
+  "trees_rocks_0_10": {
+    "name": "trees_rocks 0,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 10
+    }
+  },
+  "trees_rocks_1_10": {
+    "name": "trees_rocks 1,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 10
+    }
+  },
+  "trees_rocks_2_10": {
+    "name": "trees_rocks 2,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 10
+    }
+  },
+  "trees_rocks_3_10": {
+    "name": "trees_rocks 3,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 10
+    }
+  },
+  "trees_rocks_4_10": {
+    "name": "trees_rocks 4,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 10
+    }
+  },
+  "trees_rocks_5_10": {
+    "name": "trees_rocks 5,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 10
+    }
+  },
+  "trees_rocks_6_10": {
+    "name": "trees_rocks 6,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 10
+    }
+  },
+  "trees_rocks_7_10": {
+    "name": "trees_rocks 7,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 10
+    }
+  },
+  "trees_rocks_8_10": {
+    "name": "trees_rocks 8,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 10
+    }
+  },
+  "trees_rocks_9_10": {
+    "name": "trees_rocks 9,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 10
+    }
+  },
+  "trees_rocks_10_10": {
+    "name": "trees_rocks 10,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 10,
+      "row": 10
+    }
+  },
+  "trees_rocks_11_10": {
+    "name": "trees_rocks 11,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 10
+    }
+  },
+  "trees_rocks_12_10": {
+    "name": "trees_rocks 12,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 10
+    }
+  },
+  "trees_rocks_13_10": {
+    "name": "trees_rocks 13,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 10
+    }
+  },
+  "trees_rocks_14_10": {
+    "name": "trees_rocks 14,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 10
+    }
+  },
+  "trees_rocks_15_10": {
+    "name": "trees_rocks 15,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 15,
+      "row": 10
+    }
+  },
+  "trees_rocks_0_11": {
+    "name": "trees_rocks 0,11",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 11
+    }
+  },
+  "trees_rocks_1_11": {
+    "name": "trees_rocks 1,11",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 11
+    }
+  },
+  "trees_rocks_2_11": {
+    "name": "trees_rocks 2,11",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 11
+    }
+  },
+  "trees_rocks_3_11": {
+    "name": "trees_rocks 3,11",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 11
+    }
+  },
+  "trees_rocks_4_11": {
+    "name": "trees_rocks 4,11",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 11
+    }
+  },
+  "trees_rocks_5_11": {
+    "name": "trees_rocks 5,11",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 11
+    }
+  },
+  "trees_rocks_6_11": {
+    "name": "trees_rocks 6,11",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 11
+    }
+  },
+  "trees_rocks_7_11": {
+    "name": "trees_rocks 7,11",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 11
+    }
+  },
+  "trees_rocks_8_11": {
+    "name": "trees_rocks 8,11",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 11
+    }
+  },
+  "trees_rocks_9_11": {
+    "name": "trees_rocks 9,11",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 11
+    }
+  },
+  "trees_rocks_10_11": {
+    "name": "trees_rocks 10,11",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 10,
+      "row": 11
+    }
+  },
+  "trees_rocks_11_11": {
+    "name": "trees_rocks 11,11",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 11
+    }
+  },
+  "trees_rocks_12_11": {
+    "name": "trees_rocks 12,11",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 11
+    }
+  },
+  "trees_rocks_13_11": {
+    "name": "trees_rocks 13,11",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 11
+    }
+  },
+  "trees_rocks_14_11": {
+    "name": "trees_rocks 14,11",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 11
+    }
+  },
+  "trees_rocks_15_11": {
+    "name": "trees_rocks 15,11",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 15,
+      "row": 11
+    }
+  },
+  "trees_rocks_0_12": {
+    "name": "trees_rocks 0,12",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 12
+    }
+  },
+  "trees_rocks_1_12": {
+    "name": "trees_rocks 1,12",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 12
+    }
+  },
+  "trees_rocks_2_12": {
+    "name": "trees_rocks 2,12",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 12
+    }
+  },
+  "trees_rocks_3_12": {
+    "name": "trees_rocks 3,12",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 12
+    }
+  },
+  "trees_rocks_4_12": {
+    "name": "trees_rocks 4,12",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 12
+    }
+  },
+  "trees_rocks_8_12": {
+    "name": "trees_rocks 8,12",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 12
+    }
+  },
+  "trees_rocks_9_12": {
+    "name": "trees_rocks 9,12",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 12
+    }
+  },
+  "trees_rocks_10_12": {
+    "name": "trees_rocks 10,12",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 10,
+      "row": 12
+    }
+  },
+  "trees_rocks_12_12": {
+    "name": "trees_rocks 12,12",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 12
+    }
+  },
+  "trees_rocks_14_12": {
+    "name": "trees_rocks 14,12",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 12
+    }
+  },
+  "trees_rocks_15_12": {
+    "name": "trees_rocks 15,12",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 15,
+      "row": 12
+    }
+  },
+  "trees_rocks_0_13": {
+    "name": "trees_rocks 0,13",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 13
+    }
+  },
+  "trees_rocks_1_13": {
+    "name": "trees_rocks 1,13",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 13
+    }
+  },
+  "trees_rocks_2_13": {
+    "name": "trees_rocks 2,13",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 13
+    }
+  },
+  "trees_rocks_3_13": {
+    "name": "trees_rocks 3,13",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 13
+    }
+  },
+  "trees_rocks_4_13": {
+    "name": "trees_rocks 4,13",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 13
+    }
+  },
+  "trees_rocks_5_13": {
+    "name": "trees_rocks 5,13",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 13
+    }
+  },
+  "trees_rocks_8_13": {
+    "name": "trees_rocks 8,13",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 13
+    }
+  },
+  "trees_rocks_9_13": {
+    "name": "trees_rocks 9,13",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 13
+    }
+  },
+  "trees_rocks_10_13": {
+    "name": "trees_rocks 10,13",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 10,
+      "row": 13
+    }
+  },
+  "trees_rocks_11_13": {
+    "name": "trees_rocks 11,13",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 13
+    }
+  },
+  "trees_rocks_12_13": {
+    "name": "trees_rocks 12,13",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 13
+    }
+  },
+  "trees_rocks_13_13": {
+    "name": "trees_rocks 13,13",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 13
+    }
+  },
+  "trees_rocks_14_13": {
+    "name": "trees_rocks 14,13",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 13
+    }
+  },
+  "trees_rocks_15_13": {
+    "name": "trees_rocks 15,13",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 15,
+      "row": 13
+    }
+  },
+  "trees_rocks_0_14": {
+    "name": "trees_rocks 0,14",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 14
+    }
+  },
+  "trees_rocks_1_14": {
+    "name": "trees_rocks 1,14",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 14
+    }
+  },
+  "trees_rocks_2_14": {
+    "name": "trees_rocks 2,14",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 14
+    }
+  },
+  "trees_rocks_3_14": {
+    "name": "trees_rocks 3,14",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 14
+    }
+  },
+  "trees_rocks_4_14": {
+    "name": "trees_rocks 4,14",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 14
+    }
+  },
+  "trees_rocks_5_14": {
+    "name": "trees_rocks 5,14",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 14
+    }
+  },
+  "trees_rocks_6_14": {
+    "name": "trees_rocks 6,14",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 14
+    }
+  },
+  "trees_rocks_8_14": {
+    "name": "trees_rocks 8,14",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 14
+    }
+  },
+  "trees_rocks_9_14": {
+    "name": "trees_rocks 9,14",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 14
+    }
+  },
+  "trees_rocks_10_14": {
+    "name": "trees_rocks 10,14",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 10,
+      "row": 14
+    }
+  },
+  "trees_rocks_11_14": {
+    "name": "trees_rocks 11,14",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 14
+    }
+  },
+  "trees_rocks_12_14": {
+    "name": "trees_rocks 12,14",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 14
+    }
+  },
+  "trees_rocks_13_14": {
+    "name": "trees_rocks 13,14",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 14
+    }
+  },
+  "trees_rocks_14_14": {
+    "name": "trees_rocks 14,14",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 14
+    }
+  },
+  "trees_rocks_15_14": {
+    "name": "trees_rocks 15,14",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 15,
+      "row": 14
+    }
+  },
+  "trees_rocks_0_15": {
+    "name": "trees_rocks 0,15",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 15
+    }
+  },
+  "trees_rocks_1_15": {
+    "name": "trees_rocks 1,15",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 15
+    }
+  },
+  "trees_rocks_2_15": {
+    "name": "trees_rocks 2,15",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 15
+    }
+  },
+  "trees_rocks_3_15": {
+    "name": "trees_rocks 3,15",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 15
+    }
+  },
+  "trees_rocks_14_15": {
+    "name": "trees_rocks 14,15",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 15
+    }
+  },
+  "trees_rocks_15_15": {
+    "name": "trees_rocks 15,15",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 15,
+      "row": 15
+    }
+  },
+  "trees_rocks_0_16": {
+    "name": "trees_rocks 0,16",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 16
+    }
+  },
+  "trees_rocks_1_16": {
+    "name": "trees_rocks 1,16",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 16
+    }
+  },
+  "trees_rocks_2_16": {
+    "name": "trees_rocks 2,16",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 16
+    }
+  },
+  "trees_rocks_3_16": {
+    "name": "trees_rocks 3,16",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 16
+    }
+  },
+  "trees_rocks_4_16": {
+    "name": "trees_rocks 4,16",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 16
+    }
+  },
+  "trees_rocks_5_16": {
+    "name": "trees_rocks 5,16",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 16
+    }
+  },
+  "trees_rocks_6_16": {
+    "name": "trees_rocks 6,16",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 16
+    }
+  },
+  "trees_rocks_7_16": {
+    "name": "trees_rocks 7,16",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 16
+    }
+  },
+  "trees_rocks_0_17": {
+    "name": "trees_rocks 0,17",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 17
+    }
+  },
+  "trees_rocks_1_17": {
+    "name": "trees_rocks 1,17",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 17
+    }
+  },
+  "trees_rocks_2_17": {
+    "name": "trees_rocks 2,17",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 17
+    }
+  },
+  "trees_rocks_3_17": {
+    "name": "trees_rocks 3,17",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 17
+    }
+  },
+  "trees_rocks_4_17": {
+    "name": "trees_rocks 4,17",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 17
+    }
+  },
+  "trees_rocks_5_17": {
+    "name": "trees_rocks 5,17",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 17
+    }
+  },
+  "trees_rocks_6_17": {
+    "name": "trees_rocks 6,17",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 17
+    }
+  },
+  "trees_rocks_7_17": {
+    "name": "trees_rocks 7,17",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 17
+    }
+  },
+  "trees_rocks_0_18": {
+    "name": "trees_rocks 0,18",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 18
+    }
+  },
+  "trees_rocks_1_18": {
+    "name": "trees_rocks 1,18",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 18
+    }
+  },
+  "trees_rocks_2_18": {
+    "name": "trees_rocks 2,18",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 18
+    }
+  },
+  "trees_rocks_3_18": {
+    "name": "trees_rocks 3,18",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 18
+    }
+  },
+  "trees_rocks_4_18": {
+    "name": "trees_rocks 4,18",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 18
+    }
+  },
+  "trees_rocks_5_18": {
+    "name": "trees_rocks 5,18",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 18
+    }
+  },
+  "trees_rocks_6_18": {
+    "name": "trees_rocks 6,18",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 18
+    }
+  },
+  "trees_rocks_7_18": {
+    "name": "trees_rocks 7,18",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 18
+    }
+  },
+  "trees_rocks_7_19": {
+    "name": "trees_rocks 7,19",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 19
+    }
+  },
+  "trees_rocks_12_19": {
+    "name": "trees_rocks 12,19",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 19
+    }
+  },
+  "trees_rocks_11_24": {
+    "name": "trees_rocks 11,24",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 24
+    }
+  },
+  "trees_rocks_12_24": {
+    "name": "trees_rocks 12,24",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 24
+    }
+  },
+  "trees_rocks_13_24": {
+    "name": "trees_rocks 13,24",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 24
+    }
+  },
+  "trees_rocks_8_25": {
+    "name": "trees_rocks 8,25",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 25
+    }
+  },
+  "trees_rocks_9_25": {
+    "name": "trees_rocks 9,25",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 25
+    }
+  },
+  "trees_rocks_11_25": {
+    "name": "trees_rocks 11,25",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 25
+    }
+  },
+  "trees_rocks_12_25": {
+    "name": "trees_rocks 12,25",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 25
+    }
+  },
+  "trees_rocks_13_25": {
+    "name": "trees_rocks 13,25",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 25
+    }
+  },
+  "trees_rocks_14_25": {
+    "name": "trees_rocks 14,25",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 25
+    }
+  },
+  "trees_rocks_2_26": {
+    "name": "trees_rocks 2,26",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 26
+    }
+  },
+  "trees_rocks_3_26": {
+    "name": "trees_rocks 3,26",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 26
+    }
+  },
+  "trees_rocks_4_26": {
+    "name": "trees_rocks 4,26",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 26
+    }
+  },
+  "trees_rocks_8_26": {
+    "name": "trees_rocks 8,26",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 26
+    }
+  },
+  "trees_rocks_9_26": {
+    "name": "trees_rocks 9,26",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 26
+    }
+  },
+  "trees_rocks_10_26": {
+    "name": "trees_rocks 10,26",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 10,
+      "row": 26
+    }
+  },
+  "trees_rocks_11_26": {
+    "name": "trees_rocks 11,26",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 26
+    }
+  },
+  "trees_rocks_12_26": {
+    "name": "trees_rocks 12,26",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 26
+    }
+  },
+  "trees_rocks_13_26": {
+    "name": "trees_rocks 13,26",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 26
+    }
+  },
+  "trees_rocks_14_26": {
+    "name": "trees_rocks 14,26",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 26
+    }
+  },
+  "trees_rocks_0_27": {
+    "name": "trees_rocks 0,27",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 27
+    }
+  },
+  "trees_rocks_1_27": {
+    "name": "trees_rocks 1,27",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 27
+    }
+  },
+  "trees_rocks_2_27": {
+    "name": "trees_rocks 2,27",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 27
+    }
+  },
+  "trees_rocks_3_27": {
+    "name": "trees_rocks 3,27",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 27
+    }
+  },
+  "trees_rocks_4_27": {
+    "name": "trees_rocks 4,27",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 27
+    }
+  },
+  "trees_rocks_6_27": {
+    "name": "trees_rocks 6,27",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 27
+    }
+  },
+  "trees_rocks_7_27": {
+    "name": "trees_rocks 7,27",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 27
+    }
+  },
+  "trees_rocks_9_27": {
+    "name": "trees_rocks 9,27",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 27
+    }
+  },
+  "trees_rocks_10_27": {
+    "name": "trees_rocks 10,27",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 10,
+      "row": 27
+    }
+  },
+  "trees_rocks_11_27": {
+    "name": "trees_rocks 11,27",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 27
+    }
+  },
+  "trees_rocks_12_27": {
+    "name": "trees_rocks 12,27",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 27
+    }
+  },
+  "trees_rocks_13_27": {
+    "name": "trees_rocks 13,27",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 27
+    }
+  },
+  "trees_rocks_14_27": {
+    "name": "trees_rocks 14,27",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 27
+    }
+  },
+  "trees_rocks_0_28": {
+    "name": "trees_rocks 0,28",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 28
+    }
+  },
+  "trees_rocks_1_28": {
+    "name": "trees_rocks 1,28",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 28
+    }
+  },
+  "trees_rocks_2_28": {
+    "name": "trees_rocks 2,28",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 28
+    }
+  },
+  "trees_rocks_3_28": {
+    "name": "trees_rocks 3,28",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 28
+    }
+  },
+  "trees_rocks_4_28": {
+    "name": "trees_rocks 4,28",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 28
+    }
+  },
+  "trees_rocks_5_28": {
+    "name": "trees_rocks 5,28",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 28
+    }
+  },
+  "trees_rocks_6_28": {
+    "name": "trees_rocks 6,28",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 28
+    }
+  },
+  "trees_rocks_7_28": {
+    "name": "trees_rocks 7,28",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 28
+    }
+  },
+  "trees_rocks_8_28": {
+    "name": "trees_rocks 8,28",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 28
+    }
+  },
+  "trees_rocks_9_28": {
+    "name": "trees_rocks 9,28",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 28
+    }
+  },
+  "trees_rocks_10_28": {
+    "name": "trees_rocks 10,28",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 10,
+      "row": 28
+    }
+  },
+  "trees_rocks_11_28": {
+    "name": "trees_rocks 11,28",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 28
+    }
+  },
+  "trees_rocks_12_28": {
+    "name": "trees_rocks 12,28",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 28
+    }
+  },
+  "trees_rocks_13_28": {
+    "name": "trees_rocks 13,28",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 28
+    }
+  },
+  "trees_rocks_14_28": {
+    "name": "trees_rocks 14,28",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 28
+    }
+  },
+  "trees_rocks_15_28": {
+    "name": "trees_rocks 15,28",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 15,
+      "row": 28
+    }
+  },
+  "trees_rocks_0_29": {
+    "name": "trees_rocks 0,29",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 29
+    }
+  },
+  "trees_rocks_1_29": {
+    "name": "trees_rocks 1,29",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 29
+    }
+  },
+  "trees_rocks_2_29": {
+    "name": "trees_rocks 2,29",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 29
+    }
+  },
+  "trees_rocks_3_29": {
+    "name": "trees_rocks 3,29",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 29
+    }
+  },
+  "trees_rocks_4_29": {
+    "name": "trees_rocks 4,29",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 29
+    }
+  },
+  "trees_rocks_5_29": {
+    "name": "trees_rocks 5,29",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 29
+    }
+  },
+  "trees_rocks_6_29": {
+    "name": "trees_rocks 6,29",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 29
+    }
+  },
+  "trees_rocks_7_29": {
+    "name": "trees_rocks 7,29",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 29
+    }
+  },
+  "trees_rocks_8_29": {
+    "name": "trees_rocks 8,29",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 29
+    }
+  },
+  "trees_rocks_9_29": {
+    "name": "trees_rocks 9,29",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 29
+    }
+  },
+  "trees_rocks_10_29": {
+    "name": "trees_rocks 10,29",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 10,
+      "row": 29
+    }
+  },
+  "trees_rocks_11_29": {
+    "name": "trees_rocks 11,29",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 29
+    }
+  },
+  "trees_rocks_12_29": {
+    "name": "trees_rocks 12,29",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 29
+    }
+  },
+  "trees_rocks_13_29": {
+    "name": "trees_rocks 13,29",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 29
+    }
+  },
+  "trees_rocks_14_29": {
+    "name": "trees_rocks 14,29",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 29
+    }
+  },
+  "trees_rocks_15_29": {
+    "name": "trees_rocks 15,29",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 15,
+      "row": 29
+    }
+  },
+  "trees_rocks_0_30": {
+    "name": "trees_rocks 0,30",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 0,
+      "row": 30
+    }
+  },
+  "trees_rocks_1_30": {
+    "name": "trees_rocks 1,30",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 1,
+      "row": 30
+    }
+  },
+  "trees_rocks_2_30": {
+    "name": "trees_rocks 2,30",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 2,
+      "row": 30
+    }
+  },
+  "trees_rocks_3_30": {
+    "name": "trees_rocks 3,30",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 30
+    }
+  },
+  "trees_rocks_4_30": {
+    "name": "trees_rocks 4,30",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 30
+    }
+  },
+  "trees_rocks_5_30": {
+    "name": "trees_rocks 5,30",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 30
+    }
+  },
+  "trees_rocks_6_30": {
+    "name": "trees_rocks 6,30",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 30
+    }
+  },
+  "trees_rocks_7_30": {
+    "name": "trees_rocks 7,30",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 30
+    }
+  },
+  "trees_rocks_8_30": {
+    "name": "trees_rocks 8,30",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 30
+    }
+  },
+  "trees_rocks_10_30": {
+    "name": "trees_rocks 10,30",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 10,
+      "row": 30
+    }
+  },
+  "trees_rocks_11_30": {
+    "name": "trees_rocks 11,30",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 11,
+      "row": 30
+    }
+  },
+  "trees_rocks_12_30": {
+    "name": "trees_rocks 12,30",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 30
+    }
+  },
+  "trees_rocks_13_30": {
+    "name": "trees_rocks 13,30",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 30
+    }
+  },
+  "trees_rocks_14_30": {
+    "name": "trees_rocks 14,30",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 14,
+      "row": 30
+    }
+  },
+  "trees_rocks_3_31": {
+    "name": "trees_rocks 3,31",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 31
+    }
+  },
+  "trees_rocks_4_31": {
+    "name": "trees_rocks 4,31",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 31
+    }
+  },
+  "trees_rocks_5_31": {
+    "name": "trees_rocks 5,31",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 31
+    }
+  },
+  "trees_rocks_6_31": {
+    "name": "trees_rocks 6,31",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 31
+    }
+  },
+  "trees_rocks_7_31": {
+    "name": "trees_rocks 7,31",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 31
+    }
+  },
+  "trees_rocks_8_31": {
+    "name": "trees_rocks 8,31",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 31
+    }
+  },
+  "trees_rocks_9_31": {
+    "name": "trees_rocks 9,31",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 31
+    }
+  },
+  "trees_rocks_12_31": {
+    "name": "trees_rocks 12,31",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 31
+    }
+  },
+  "trees_rocks_13_31": {
+    "name": "trees_rocks 13,31",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 31
+    }
+  },
+  "trees_rocks_3_32": {
+    "name": "trees_rocks 3,32",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 32
+    }
+  },
+  "trees_rocks_4_32": {
+    "name": "trees_rocks 4,32",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 32
+    }
+  },
+  "trees_rocks_5_32": {
+    "name": "trees_rocks 5,32",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 32
+    }
+  },
+  "trees_rocks_6_32": {
+    "name": "trees_rocks 6,32",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 6,
+      "row": 32
+    }
+  },
+  "trees_rocks_7_32": {
+    "name": "trees_rocks 7,32",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 7,
+      "row": 32
+    }
+  },
+  "trees_rocks_8_32": {
+    "name": "trees_rocks 8,32",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 8,
+      "row": 32
+    }
+  },
+  "trees_rocks_9_32": {
+    "name": "trees_rocks 9,32",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 9,
+      "row": 32
+    }
+  },
+  "trees_rocks_12_32": {
+    "name": "trees_rocks 12,32",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 12,
+      "row": 32
+    }
+  },
+  "trees_rocks_13_32": {
+    "name": "trees_rocks 13,32",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 13,
+      "row": 32
+    }
+  },
+  "trees_rocks_3_33": {
+    "name": "trees_rocks 3,33",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 3,
+      "row": 33
+    }
+  },
+  "trees_rocks_4_33": {
+    "name": "trees_rocks 4,33",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 4,
+      "row": 33
+    }
+  },
+  "trees_rocks_5_33": {
+    "name": "trees_rocks 5,33",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Trees_rocks.webp",
+      "col": 5,
+      "row": 33
+    }
+  },
+  "details_0_0": {
+    "name": "details 0,0",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 0,
+      "row": 0
+    }
+  },
+  "details_2_0": {
+    "name": "details 2,0",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 2,
+      "row": 0
+    }
+  },
+  "details_10_0": {
+    "name": "details 10,0",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 10,
+      "row": 0
+    }
+  },
+  "details_11_0": {
+    "name": "details 11,0",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 11,
+      "row": 0
+    }
+  },
+  "details_1_1": {
+    "name": "details 1,1",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 1,
+      "row": 1
+    }
+  },
+  "details_3_1": {
+    "name": "details 3,1",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 3,
+      "row": 1
+    }
+  },
+  "details_10_1": {
+    "name": "details 10,1",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 10,
+      "row": 1
+    }
+  },
+  "details_11_1": {
+    "name": "details 11,1",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 11,
+      "row": 1
+    }
+  },
+  "details_0_2": {
+    "name": "details 0,2",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 0,
+      "row": 2
+    }
+  },
+  "details_1_2": {
+    "name": "details 1,2",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 1,
+      "row": 2
+    }
+  },
+  "details_0_3": {
+    "name": "details 0,3",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 0,
+      "row": 3
+    }
+  },
+  "details_1_3": {
+    "name": "details 1,3",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 1,
+      "row": 3
+    }
+  },
+  "details_0_4": {
+    "name": "details 0,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 0,
+      "row": 4
+    }
+  },
+  "details_1_4": {
+    "name": "details 1,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 1,
+      "row": 4
+    }
+  },
+  "details_2_4": {
+    "name": "details 2,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 2,
+      "row": 4
+    }
+  },
+  "details_3_4": {
+    "name": "details 3,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 3,
+      "row": 4
+    }
+  },
+  "details_4_4": {
+    "name": "details 4,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 4,
+      "row": 4
+    }
+  },
+  "details_5_4": {
+    "name": "details 5,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 5,
+      "row": 4
+    }
+  },
+  "details_6_4": {
+    "name": "details 6,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 6,
+      "row": 4
+    }
+  },
+  "details_10_4": {
+    "name": "details 10,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 10,
+      "row": 4
+    }
+  },
+  "details_11_4": {
+    "name": "details 11,4",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 11,
+      "row": 4
+    }
+  },
+  "details_0_5": {
+    "name": "details 0,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 0,
+      "row": 5
+    }
+  },
+  "details_1_5": {
+    "name": "details 1,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 1,
+      "row": 5
+    }
+  },
+  "details_2_5": {
+    "name": "details 2,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 2,
+      "row": 5
+    }
+  },
+  "details_3_5": {
+    "name": "details 3,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 3,
+      "row": 5
+    }
+  },
+  "details_4_5": {
+    "name": "details 4,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 4,
+      "row": 5
+    }
+  },
+  "details_5_5": {
+    "name": "details 5,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 5,
+      "row": 5
+    }
+  },
+  "details_7_5": {
+    "name": "details 7,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 7,
+      "row": 5
+    }
+  },
+  "details_8_5": {
+    "name": "details 8,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 8,
+      "row": 5
+    }
+  },
+  "details_10_5": {
+    "name": "details 10,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 10,
+      "row": 5
+    }
+  },
+  "details_11_5": {
+    "name": "details 11,5",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 11,
+      "row": 5
+    }
+  },
+  "details_3_6": {
+    "name": "details 3,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 3,
+      "row": 6
+    }
+  },
+  "details_4_6": {
+    "name": "details 4,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 4,
+      "row": 6
+    }
+  },
+  "details_5_6": {
+    "name": "details 5,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 5,
+      "row": 6
+    }
+  },
+  "details_6_6": {
+    "name": "details 6,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 6,
+      "row": 6
+    }
+  },
+  "details_11_6": {
+    "name": "details 11,6",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 11,
+      "row": 6
+    }
+  },
+  "details_3_7": {
+    "name": "details 3,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 3,
+      "row": 7
+    }
+  },
+  "details_4_7": {
+    "name": "details 4,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 4,
+      "row": 7
+    }
+  },
+  "details_5_7": {
+    "name": "details 5,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 5,
+      "row": 7
+    }
+  },
+  "details_6_7": {
+    "name": "details 6,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 6,
+      "row": 7
+    }
+  },
+  "details_9_7": {
+    "name": "details 9,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 9,
+      "row": 7
+    }
+  },
+  "details_10_7": {
+    "name": "details 10,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 10,
+      "row": 7
+    }
+  },
+  "details_11_7": {
+    "name": "details 11,7",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 11,
+      "row": 7
+    }
+  },
+  "details_9_8": {
+    "name": "details 9,8",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 9,
+      "row": 8
+    }
+  },
+  "details_10_8": {
+    "name": "details 10,8",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 10,
+      "row": 8
+    }
+  },
+  "details_11_8": {
+    "name": "details 11,8",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 11,
+      "row": 8
+    }
+  },
+  "details_9_9": {
+    "name": "details 9,9",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 9,
+      "row": 9
+    }
+  },
+  "details_10_9": {
+    "name": "details 10,9",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 10,
+      "row": 9
+    }
+  },
+  "details_11_9": {
+    "name": "details 11,9",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 11,
+      "row": 9
+    }
+  },
+  "details_0_10": {
+    "name": "details 0,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 0,
+      "row": 10
+    }
+  },
+  "details_7_10": {
+    "name": "details 7,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 7,
+      "row": 10
+    }
+  },
+  "details_8_10": {
+    "name": "details 8,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 8,
+      "row": 10
+    }
+  },
+  "details_10_10": {
+    "name": "details 10,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 10,
+      "row": 10
+    }
+  },
+  "details_11_10": {
+    "name": "details 11,10",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 11,
+      "row": 10
+    }
+  },
+  "details_0_11": {
+    "name": "details 0,11",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 0,
+      "row": 11
+    }
+  },
+  "details_1_11": {
+    "name": "details 1,11",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 1,
+      "row": 11
+    }
+  },
+  "details_5_11": {
+    "name": "details 5,11",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 5,
+      "row": 11
+    }
+  },
+  "details_0_12": {
+    "name": "details 0,12",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 0,
+      "row": 12
+    }
+  },
+  "details_1_12": {
+    "name": "details 1,12",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 1,
+      "row": 12
+    }
+  },
+  "details_2_12": {
+    "name": "details 2,12",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 2,
+      "row": 12
+    }
+  },
+  "details_3_12": {
+    "name": "details 3,12",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 3,
+      "row": 12
+    }
+  },
+  "details_4_12": {
+    "name": "details 4,12",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 4,
+      "row": 12
+    }
+  },
+  "details_5_12": {
+    "name": "details 5,12",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 5,
+      "row": 12
+    }
+  },
+  "details_11_12": {
+    "name": "details 11,12",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 11,
+      "row": 12
+    }
+  },
+  "details_0_13": {
+    "name": "details 0,13",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 0,
+      "row": 13
+    }
+  },
+  "details_1_13": {
+    "name": "details 1,13",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 1,
+      "row": 13
+    }
+  },
+  "details_2_13": {
+    "name": "details 2,13",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 2,
+      "row": 13
+    }
+  },
+  "details_3_13": {
+    "name": "details 3,13",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 3,
+      "row": 13
+    }
+  },
+  "details_4_13": {
+    "name": "details 4,13",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 4,
+      "row": 13
+    }
+  },
+  "details_5_13": {
+    "name": "details 5,13",
+    "category": "decoration",
+    "walkable": false,
+    "sprite": {
+      "sheet": "Details.webp",
+      "col": 5,
+      "row": 13
+    }
+  }
 }

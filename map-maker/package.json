@@ -9,10 +9,13 @@
     "dev:all": "concurrently \"npm run server\" \"npm run dev\"",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node --test src/**/*.test.js"
+    "test": "node --test src/**/*.test.js",
+    "import:tmx": "node src/scripts/import-tmx.js",
+    "convert:avif": "node src/scripts/convert-assets.js"
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
+    "sharp": "^0.34.5",
     "vite": "^8.0.0"
   },
   "dependencies": {

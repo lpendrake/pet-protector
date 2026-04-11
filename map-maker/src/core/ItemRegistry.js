@@ -40,7 +40,8 @@ export class ItemRegistry {
                 id: 'tree_oak',
                 name: 'Oak Tree',
                 emoji: '🌳',
-                category: CATEGORIES.DECORATION
+                category: CATEGORIES.DECORATION,
+                sprite: { file: 'Objects_separated/Tree1.png' }
             },
             'table_wood': {
                 id: 'table_wood',
@@ -52,7 +53,8 @@ export class ItemRegistry {
                 id: 'rock_large',
                 name: 'Large Rock',
                 emoji: '🪨',
-                category: CATEGORIES.DECORATION
+                category: CATEGORIES.DECORATION,
+                sprite: { file: 'Objects_separated/Rpck_grass1.png' }
             }
         };
     }

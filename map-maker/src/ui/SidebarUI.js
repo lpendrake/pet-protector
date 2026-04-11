@@ -121,7 +121,7 @@ export class SidebarUI {
             el.title = item.name;
             el.innerText = item.emoji || '📦';
             el.onclick = () => {
-                this._clearActive('.tile-item');
+                this._clearActive('#item-grid .tile-item');
                 el.classList.add('active');
                 this.bus.emit('item:selected', item.id);
             };
@@ -131,7 +131,7 @@ export class SidebarUI {
 
     /** Wire click handlers for each tool button. Emits 'tool:changed' on click. */
     setupEntityTools() {
-        const tools = ['brush', 'spawner', 'warp', 'zone', 'fill', 'erase'];
+        const tools = ['brush', 'erase', 'fill', 'select', 'spawner', 'warp', 'zone'];
         tools.forEach(tool => {
             const el = document.getElementById(`tool-${tool}`);
             if (el) {
@@ -149,7 +149,10 @@ export class SidebarUI {
      * @param {string} tool - Tool name (e.g. 'brush', 'erase')
      */
     _setActiveTool(tool) {
-        document.querySelectorAll('.tile-item').forEach(el => el.classList.remove('active'));
+        ['brush', 'erase', 'fill', 'select', 'spawner', 'warp', 'zone'].forEach(t => {
+            const btn = document.getElementById(`tool-${t}`);
+            if (btn) btn.classList.remove('active');
+        });
         const el = document.getElementById(`tool-${tool}`);
         if (el) el.classList.add('active');
     }

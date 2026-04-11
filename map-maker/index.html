@@ -17,17 +17,8 @@
         --border: #333;
       }
       body { margin: 0; padding: 0; overflow: hidden; background: var(--bg-dark); font-family: 'Inter', system-ui, sans-serif; color: var(--text); }
-      #app { display: flex; width: 100vw; height: 100vh; }
-      #sidebar { 
-        width: 280px; 
-        background: var(--bg-panel); 
-        border-right: 1px solid var(--border); 
-        display: flex; 
-        flex-direction: column; 
-        box-shadow: 10px 0 20px rgba(0,0,0,0.5);
-        z-index: 10;
-      }
-      #viewport-container { flex: 1; position: relative; background: #111; }
+      #app { width: 100vw; height: 100vh; }
+      #viewport-container { width: 100%; height: 100%; position: relative; background: #111; overflow: hidden; }
       #status-bar { 
         position: absolute; bottom: 0; left: 0; right: 0; 
         background: rgba(13, 13, 15, 0.9); 
@@ -81,9 +72,7 @@
         width: 100%;
         box-sizing: border-box;
       }
-        box-sizing: border-box;
-      }
-      
+
       #toast-container {
         position: fixed; top: 20px; right: 20px; z-index: 1000;
         display: flex; flex-direction: column; gap: 10px;
@@ -99,45 +88,6 @@
   </head>
   <body>
     <div id="app">
-      <div id="sidebar">
-        <div class="palette-section">
-          <button id="save-master-btn" style="width: 100%; padding: 10px; background: #3d8c40; color: white; border: none; cursor: pointer; font-weight: bold;">SAVE MASTER (PROMOTES TMP)</button>
-        </div>
-        <div class="palette-section" id="ground-palette">
-          <div class="palette-title">Ground Tiles</div>
-          <div id="selected-tile-name" style="font-size: 12px; margin-bottom: 5px; color: #aaa;">Selected: Grassland</div>
-          <div class="tile-grid" id="ground-grid"></div>
-        </div>
-        <div class="palette-section" id="item-palette">
-          <div class="palette-title">Items</div>
-          <div class="tile-grid" id="item-grid"></div>
-        </div>
-        <div class="palette-section" id="entity-palette">
-          <div class="palette-title">Entity Tools</div>
-          <div id="entity-tools" class="tile-grid">
-            <div class="tile-item" id="tool-brush" title="Brush (B): Paint single tiles">🖌️</div>
-            <div class="tile-item" id="tool-erase" title="Eraser (E): Remove tiles/entities">🧹</div>
-            <div class="tile-item" id="tool-fill" title="Fill (F): Flood fill area">🪣</div>
-            <div class="tile-item" id="tool-spawner" title="Spawner (S): Place player start">🚩</div>
-            <div class="tile-item" id="tool-warp" title="Warp (W): Map transition">🌀</div>
-            <div class="tile-item" id="tool-zone" title="Zone (Z): Define special areas">🗺️</div>
-          </div>
-        </div>
-        <div class="palette-section" id="property-editor">
-          <div class="palette-title">Properties</div>
-          <div id="property-panel" style="font-size: 11px;">
-            <p style="color: #666;">No entity selected</p>
-          </div>
-        </div>
-        <div class="palette-section" id="navigation">
-          <div class="palette-title">Search & Snap</div>
-          <div id="entity-list" style="max-height: 150px; overflow-y: auto;"></div>
-        </div>
-        <div class="palette-section" id="maps-manager">
-          <div class="palette-title">Deployed Maps Manager</div>
-          <div id="maps-list" style="font-size: 11px;"></div>
-        </div>
-      </div>
       <div id="viewport-container">
         <div id="status-bar">
           <div class="status-item">

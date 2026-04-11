@@ -26,11 +26,22 @@ export class TileDefs {
     }
 
     /**
+     * Returns the asset configuration block from tile_defs.json.
+     * @returns {{ assetBase: string, tileSize: number } | undefined}
+     */
+    getConfig() {
+        return this.tiles._config;
+    }
+
+    /**
      * Returns all tile definitions as an array, each with its id injected.
+     * Skips internal keys (prefixed with '_') such as _config.
      * @returns {Array<{ id: string, name: string, category: string, walkable: boolean }>}
      */
     getAllTiles() {
-        return Object.entries(this.tiles).map(([id, data]) => ({ id, ...data }));
+        return Object.entries(this.tiles)
+            .filter(([id]) => !id.startsWith('_'))
+            .map(([id, data]) => ({ id, ...data }));
     }
 
     /**

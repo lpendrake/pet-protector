@@ -117,6 +117,7 @@ map-maker/
 │   │   ├── BrushTool.js            # [NEW] Single-tile and drag painting
 │   │   ├── EraseTool.js            # [NEW] Reset tile to default
 │   │   ├── FillTool.js             # [NEW] Flood-fill algorithm
+│   │   ├── SelectTool.js           # [NEW] Tile inspector + entity selection
 │   │   ├── SpawnerTool.js          # [NEW] Place spawner entity
 │   │   ├── WarpTool.js             # [NEW] Place warp entity
 │   │   └── ZoneTool.js             # [NEW] Paint zone overlay
@@ -157,20 +158,24 @@ A minimal pub/sub system. Every module communicates through this.
 
 | Event | Payload | Emitted by |
 |-------|---------|------------|
-| `tool:changed` | `string` (tool name) | SidebarUI, ShortcutManager — **request** to switch tool |
+| `tool:changed` | `string` (tool name) | ToolPickerPanel, ShortcutManager — **request** to switch tool |
 | `tool:active` | `string` (tool name) | ToolManager — **confirmation** after switch completes |
-| `tile:selected` | `string` (tileId) | SidebarUI |
-| `item:selected` | `string` (itemId) | SidebarUI |
+| `tile:selected` | `string` (tileId) | PalettePanel |
+| `item:selected` | `string` (itemId) | PalettePanel |
 | `state:changed` | `{ type, ... }` | MapState |
-| `entity:selected` | entity object | SidebarUI |
-| `save:requested` | — | SidebarUI, ShortcutManager |
+| `entity:selected` | entity object | EntityNavigator |
+| `save:requested` | — | Toolbar, ShortcutManager |
 | `save:completed` | `{ version, type: 'auto'\|'master' }` | PersistenceClient |
 | `save:error` | `{ message }` | PersistenceClient |
 | `map:created` | `{ name }` | PersistenceClient |
 | `map:loaded` | `{ name }` | PersistenceClient |
-| `viewport:snap` | `{ x, y }` | SidebarUI |
+| `map:renamed` | `{ oldName, newName }` | PersistenceClient |
+| `viewport:snap` | `{ x, y }` | EntityNavigator |
 | `cursor:moved` | `{ tx, ty }` | main.js (on mousemove) |
 | `fill:error` | `{ message }` | FillTool |
+| `tile:inspected` | `{ tx, ty, tileData, entities }` | SelectTool |
+| `erase:layer-changed` | `string` (layer name) | PropertyPanel (erase picker) |
+| `toast:show` | `{ message, type }` | Any panel — cross-cutting notification |
 
 ---
 
@@ -246,7 +251,9 @@ Central keyboard shortcut registry. Replaces the hardcoded `keydown` block that 
 - `setTool(name)` — emits `tool:active` after switching (this is the confirmation; `tool:changed` is the request).
 - `onPointerDown(tx, ty)`, `onPointerMove(tx, ty)`, `onPointerUp()` — delegate to the active tool.
 - `registerShortcuts(shortcutManager)` — delegates to `shortcutManager.registerToolShortcuts(this)`.
-- Subscribes to `tile:selected` and `item:selected` to configure the brush tool.
+- Subscribes to `tile:selected` to configure brush + fill (does NOT auto-switch tool).
+- Subscribes to `item:selected` to configure brush (does NOT auto-switch tool).
+- Subscribes to `erase:layer-changed` to configure erase tool's target layer.
 
 ---
 
@@ -255,6 +262,12 @@ Central keyboard shortcut registry. Replaces the hardcoded `keydown` block that 
 - [onDown(tx, ty)](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/tools/EraseTool.js#5-8) — paints single tile via `state.applyAction(new PaintTileAction(...))`.
 - [onMove(tx, ty)](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/tools/ZoneTool.js#16-19) — same (drag painting).
 - Handles both `base` (ground) and `item` layers based on configuration.
+
+---
+
+#### [NEW] [SelectTool.js](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/tools/SelectTool.js)
+
+Click a tile to inspect all layers and entities. Emits `tile:inspected` with `{ tx, ty, tileData, entities }`. Entity discovery is generic: scans all manifest arrays by (x, y) coordinate — new entity types are automatically included. Shortcut: `v`. Point-only (no drag).
 
 ---
 
@@ -298,12 +311,15 @@ Mostly kept as-is. Takes `canvas` directly in [init()](file:///c:/Users/lauri/Do
 
 ---
 
-#### [NEW] [SidebarUI.js](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/ui/SidebarUI.js)
+#### [REPLACED] SidebarUI.js → Floating Window System (Steps 14-19)
 
-- Accepts [(bus, state, itemRegistry)](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/core/EventBus.test.js#16-17).
-- [init()](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/rendering/Viewport.js#10-16) — populates ground palette, item palette, entity tool buttons.
-- Emits `tile:selected`, `item:selected`, `tool:changed`, `entity:selected`, `viewport:snap`, `save:requested`.
-- Subscribes to `state:changed` to refresh entity list.
+The fixed sidebar has been replaced by floating panels:
+- **Toolbar** (`src/ui/Toolbar.js`) — compact draggable button bar
+- **ToolPickerPanel** (`src/ui/ToolPickerPanel.js`) — hover-open tool grid, emits `tool:changed`
+- **PalettePanel** (`src/ui/PalettePanel.js`) — hover-open tile+item grid, emits `tile:selected`, `item:selected`
+- **EntityNavigator** (`src/ui/EntityNavigator.js`) — per-type entity browser, emits `entity:selected`, `viewport:snap`
+- **MapsManagerPanel** (`src/ui/MapsManagerPanel.js`) — map list + deploy
+- **ToastManager** (`src/ui/ToastManager.js`) — cross-cutting notifications
 
 ---
 
@@ -336,11 +352,13 @@ Mostly kept as-is. Takes `canvas` directly in [init()](file:///c:/Users/lauri/Do
 - [saveMaster()](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/persistence/PersistenceClient.js#53-68) — POSTs to `/api/save-master`, emits `save:completed`.
 - [listMaps()](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/persistence/PersistenceClient.js#74-78) — GETs `/api/maps`, returns array.
 - `deploy(mapName, enabled)` — POSTs to `/api/deploy`.
+- `renameMap(oldName, newName)` — POSTs to `/api/rename-map`, updates `state.mapName` if current map, emits `map:renamed`.
 
 #### Server API additions needed in [server.js](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/server/server.js):
 
 - `POST /api/create-map` — creates empty `<name>_tmp/` with default manifest and one empty chunk.
 - `GET /api/load-map/:name` — returns `{ manifest, chunks }` from the master directory (or `_tmp` if no master).
+- `POST /api/rename-map` — renames master, `_tmp`, and `_old` directories; validates name format; 409 on conflicts.
 
 ---
 
@@ -517,23 +535,227 @@ Each phase should be implemented as a separate task. The implementing model shou
 | 5 | All Tools | `tools/*.js`, [tools/ToolManager.test.js](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/tools/ToolManager.test.js) | MapState, Actions, ItemRegistry |
 | 6 | TileColors + Viewport | [rendering/TileColors.js](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/rendering/TileColors.js), [rendering/Viewport.js](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/rendering/Viewport.js) | Nothing |
 | 7 | MapRenderer | [rendering/MapRenderer.js](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/rendering/MapRenderer.js) | EventBus, MapState, TileColors |
-| 8 | SidebarUI + PropertyPanel + StatusBar | `ui/*.js` | EventBus, MapState, ItemRegistry |
+| 8 | ~~SidebarUI~~ + PropertyPanel + StatusBar | `ui/*.js` — SidebarUI replaced by floating panels (Steps 14-19) | EventBus, MapState, ItemRegistry |
 | 9 | PersistenceClient | [persistence/PersistenceClient.js](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/persistence/PersistenceClient.js) | EventBus, MapState |
 | 10 | main.js + index.html + style.css | Wiring | Everything |
 | 11 | Full browser verification | — | Everything |
+| 12 | Polish & bug fixes | Various | Everything |
+| 13 | Select tool + layer-targeted erase | `tools/SelectTool.js`, `tools/EraseTool.js`, `ui/PropertyPanel.js` | Everything |
+| 14 | FloatingWindow base + CSS | `ui/FloatingWindow.js`, `style.css` | Nothing (new foundation) |
+| 15 | Toolbar + ToastManager | `ui/Toolbar.js`, `ui/ToastManager.js`, `main.js` | Step 14 |
+| 16 | ToolPickerPanel + PalettePanel | `ui/ToolPickerPanel.js`, `ui/PalettePanel.js` | Steps 14-15 |
+| 17 | EntityNavigator + MapsManagerPanel | `ui/EntityNavigator.js`, `ui/MapsManagerPanel.js` | Steps 14-15 |
+| 18 | PropertyPanel refactor | `ui/PropertyPanel.js` | Step 14 |
+| 19 | Remove sidebar + cleanup | `index.html`, `SidebarUI.js` (delete), `CONTRIBUTING.md` | Steps 14-18 |
 
 > [!CAUTION]
 > **Do not skip browser verification.** The last 3 sessions have repeatedly marked things as "done" without confirming they work. Each phase that touches rendering or UI **must** be opened in the browser and tested interactively before proceeding.
 
 ---
 ## Step 12: Polish & Bug Fixes
-- [ ] **Smooth Painting**: Implement Bresenham's line algorithm in [BrushTool.js](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/tools/BrushTool.js) to fill gaps when moving the mouse quickly.
+- [x] **Smooth Painting**: Bresenham's line algorithm implemented in BrushTool.js.
 - [x] **Layer Rendering**: `warp` and `zone` tiles render as semi-transparent overlays with a border. Warp and spawn point entities rendered as distinct icons (diamond / star) in the entity layer.
 - [x] **Save Stability**: `copy + delete` fallback implemented in [server.js](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/server/server.js) for Windows `EPERM` on rename.
 - [x] **Deploy bug**: `/api/deploy` was reading `{ mapName, deploy }` but client sends `{ name }` — always took the delete branch. Fixed to read `name` and always copy.
 - [x] **Coordinate readout**: StatusBar displays `Cursor: (x, y)` via `cursor:moved` event.
-- [ ] **Zone selector UI**: ZoneTool currently only paints `'active_zone'`. A zone name/ID selector is needed in the sidebar so multiple distinct named zones can be painted on the same map.
-- [ ] **UI Polish**: Descriptive tooltips on palette items. Improved tool icons in entity palette.
+- [x] **Tool/tile selection decoupling**: Selecting a palette tile no longer force-switches to brush. Fill tool config stays in sync.
+- [x] **Erase hover bug**: EraseTool now requires pointer down before erasing on move.
+- [ ] **Zone selector UI**: ZoneTool currently only paints `'active_zone'`. Entire zone system needs redesign — see ROADMAP.md.
+- [ ] **UI Polish**: ~~Descriptive tooltips on palette items. Improved tool icons in entity palette.~~ **Subsumed by Step 14-19 floating window migration** — tooltips will be added to new toolbar/panels instead.
+- [ ] **Select/erase UX improvements**: Deferred to after Step 18 (PropertyPanel refactor).
+
+## Step 13: Select Tool & Layer-Targeted Erase
+- [x] **SelectTool** (`src/tools/SelectTool.js`): Click tile → emits `tile:inspected` with tile data + all manifest entities at that coordinate. Generic manifest scan (future entity types auto-included). Shortcut: `V`.
+- [x] **Layer-targeted erase** (`src/tools/EraseTool.js`): Erase targets a single configured layer. Safe no-op when no layer selected. PropertyPanel shows layer picker when erase is active.
+- [x] **PropertyPanel rewrite** (`src/ui/PropertyPanel.js`): Three views — erase layer picker, tile inspector (with per-layer delete + expandable entity fields), entity editor (from entity list). `ENTITY_TILE_LAYER` map for entity→tile cleanup on delete.
+- [x] **Event wiring**: `tile:inspected` (SelectTool → PropertyPanel), `erase:layer-changed` (PropertyPanel → ToolManager → EraseTool).
+- [x] **Tests**: 23 tests in ToolManager.test.js covering all new behaviour.
+
+---
+
+### Phase 7: Floating Window UI (replaces fixed sidebar with Paint.NET-style floating panels)
+
+---
+
+## Step 14: FloatingWindow Base + CSS
+
+#### [NEW] `src/ui/FloatingWindow.js`
+
+Base class for all floating panels. Handles drag, close, pin, z-stacking, and viewport clamping.
+
+**Constructor:** `{ id, title, parent, x, y, width, pinnable, closable, onClose }`
+
+**DOM structure:**
+```html
+<div class="fw" id="fw-{id}">
+  <div class="fw-titlebar">
+    <span class="fw-title">Title</span>
+    <div class="fw-controls">
+      <button class="fw-pin">📌</button>   <!-- if pinnable -->
+      <button class="fw-close">✕</button>  <!-- if closable -->
+    </div>
+  </div>
+  <div class="fw-body"></div>
+</div>
+```
+
+**Behaviors:**
+- **Drag** — `mousedown` on titlebar starts drag, `mousemove` updates position (clamped to parent bounds), `mouseup` ends. `e.stopPropagation()` prevents canvas panning.
+- **Z-stacking** — static counter starting at 200. `bringToFront()` increments and applies.
+- **Pin** — toggles `_pinned` boolean. When pinned: close button hidden, pin icon highlighted.
+- **Viewport clamping** — `x = clamp(0, parentW - elW)`, same for y.
+- **localStorage** — save `{ x, y, open }` to `fw-pos-{id}` on drag end. Restore on construction.
+
+**API:** `open()`, `close()`, `toggle()`, `destroy()`, `setContent(el)`, `bringToFront()`, `isPinned()`, `setPosition(x, y)`, `getPosition()`
+
+#### CSS additions to `src/style.css`
+
+Add `.fw`, `.fw-titlebar`, `.fw-body`, `.fw-controls`, `.fw-pin`, `.fw-close`, `.toolbar`, `.toolbar-btn` classes. Semi-transparent backgrounds with `backdrop-filter: blur(8px)`.
+
+- [ ] FloatingWindow.js created with full API
+- [ ] CSS classes added to style.css
+- [ ] Smoke test: instantiate from browser console, verify drag + close + z-stacking
+
+---
+
+## Step 15: Toolbar + ToastManager
+
+#### [NEW] `src/ui/Toolbar.js`
+
+Draggable horizontal button bar (~36x36px icons). Not a FloatingWindow subclass — simpler, no titlebar, drag anywhere on bar. Default position: `(10, 10)`.
+
+**Buttons:**
+1. **Tool** `🖌️` — shows current tool icon. Mouseenter opens ToolPickerPanel.
+2. **Placeables** `🟩` — shows selected tile color/item. Mouseenter opens PalettePanel.
+3. **Entities** `📍` — hover/click shows dropdown of entity type categories. Clicking a category opens/toggles an EntityNavigator window.
+4. **Maps** `🗺️` — click toggles MapsManagerPanel.
+5. **Save** `💾` — click emits `save:requested`.
+
+**Hover-to-open pattern:** Track `mouseenter`/`mouseleave` on both button and popup. On `mouseleave`, start 200ms timer. Cancel if `mouseenter` fires before expiry.
+
+**Listens to:** `tool:active` (update tool icon), `tile:selected` / `item:selected` (update placeables icon)
+
+#### [NEW] `src/ui/ToastManager.js`
+
+Extracted from SidebarUI. Owns `#toast-container`. Listens to `fill:error`, `save:error`, and `toast:show`.
+
+- [ ] ToastManager.js created — extract `showToast` logic from SidebarUI
+- [ ] Toolbar.js created — draggable button bar with save wired to `save:requested`
+- [ ] Both added to main.js alongside existing sidebar (coexist temporarily)
+- [ ] Verify: toolbar appears, save button works, toasts still show
+
+---
+
+## Step 16: ToolPickerPanel + PalettePanel
+
+#### [NEW] `src/ui/ToolPickerPanel.js`
+
+FloatingWindow containing a grid of 7 tool buttons. Emits `tool:changed`. Listens to `tool:active` for active highlight. Hover-managed by Toolbar (not directly closable by user).
+
+#### [NEW] `src/ui/PalettePanel.js`
+
+FloatingWindow with two sections: "Ground Tiles" grid + "Items" grid. Emits `tile:selected`, `item:selected`. Logic extracted from `SidebarUI.renderGroundPalette()` and `renderItemPalette()`. Hover-managed by Toolbar.
+
+- [ ] ToolPickerPanel.js created — tool grid with active highlight
+- [ ] PalettePanel.js created — tile + item grids
+- [ ] Hover-to-open wired from Toolbar with 200ms delay-close
+- [ ] Tool/palette sections removed from `#sidebar` in index.html
+- [ ] Verify: hover tool button → picker appears, select tool → picker closes, tiles still paintable
+
+---
+
+## Step 17: EntityNavigator + MapsManagerPanel
+
+#### [NEW] `src/ui/EntityNavigator.js`
+
+Per-type floating window for browsing entities. Constructor: `(bus, state, parent, entityType)`. Multiple can be open simultaneously (one per type: warps, spawnPoints, zones, items).
+
+**Window layout:**
+```
+┌─ Warps ──────────────── [✕] ┐
+│ [🔍 Search by name/ID...  ] │
+│ ─────────────────────────── │
+│  warp_1 (3,7)    [edit] [⊕] │
+│  warp_2 (10,2)   [edit] [⊕] │
+└─────────────────────────────┘
+```
+
+- **Search box** — filters by name, ID, or (for items) type. Case-insensitive substring match.
+- **Edit action** — emits `entity:selected` to open in PropertyPanel
+- **Locate action** (⊕/reticle) — emits `viewport:snap` only
+- Listens to `state:changed` to rebuild (re-applies search filter)
+
+**Entities dropdown** on Toolbar: hover/click shows popup listing type categories (Warps, Spawners, Zones, Items). Clicking creates/toggles an EntityNavigator for that type.
+
+#### [NEW] `src/ui/MapsManagerPanel.js`
+
+FloatingWindow with map list, deploy, rename, create, and load. Listens to `save:completed`, `map:loaded`, `map:created`, `map:renamed`.
+
+- **New Map bar** — input + "New" button, validates name format
+- **Map rows** — click label to load, ✎ to inline-rename, Deploy button
+- **Current map** highlighted with ▶ prefix and blue text
+- **Inline rename** — replaces row with input + ✓/✕ buttons, Enter/Escape keys
+- Save success toast via ToastManager listening to `save:completed` (master only)
+
+- [ ] EntityNavigator.js created — per-type window with search + edit/locate
+- [ ] Entities dropdown added to Toolbar
+- [ ] MapsManagerPanel.js created
+- [ ] Entity list + maps manager sections removed from `#sidebar`
+- [ ] Verify: open Warps navigator, search filters, locate snaps viewport, edit opens property panel
+
+---
+
+## Step 18: PropertyPanel Refactor
+
+#### [REWRITE] `src/ui/PropertyPanel.js`
+
+Becomes a **factory** for property FloatingWindow instances with pin-and-open-multiple support.
+
+- Maintains `Map<string, FloatingWindow>` keyed by target ID (e.g. `"tile-3-7"`, `"entity-warps-warp_1"`)
+- On `entity:selected` or `tile:inspected`:
+  1. Existing window for this target → `bringToFront()`
+  2. Unpinned window exists → reuse (update content + title)
+  3. All pinned or none → create new FloatingWindow with `pinnable: true`
+- Erase layer picker → temporary property window titled "Erase Target", auto-closes when tool changes away from erase
+- Rendering methods (`_renderEntityEditor`, `_renderTileInspector`, `_renderErasePicker`) stay, targeting FloatingWindow body elements
+
+- [ ] PropertyPanel refactored to FloatingWindow factory
+- [ ] Pin-and-open-multiple working
+- [ ] Erase picker as auto-closing property window
+- [ ] `#property-panel` / `#property-editor` removed from index.html
+- [ ] Verify: select tile → window appears, pin it, select another → second window
+
+---
+
+## Step 19: Remove Sidebar + Cleanup
+
+- [ ] Delete `#sidebar` from index.html
+- [ ] Delete `src/ui/SidebarUI.js`
+- [ ] Remove `#sidebar` CSS from style.css and index.html
+- [ ] Change `#app` layout (no longer needs flex for sidebar)
+- [ ] Update CONTRIBUTING.md — "How to Add a New Tool" references ToolPickerPanel instead of SidebarUI
+- [ ] Update event table emitter columns (SidebarUI → PalettePanel/ToolPickerPanel/etc.)
+- [ ] Full verification: all tools, all panels, all shortcuts, save/load cycle
+
+---
+
+### Phase 8: Asset System — Sprite-Based Tile Rendering
+
+Replace colored rectangles and emoji rendering with actual pixel art sprites from spritesheets.
+
+**Detailed plan:** [asset_system_plan.md](asset_system_plan.md)
+
+**Summary:**
+1. TMX import script — auto-generates `tile_defs.json` from the Tiled example map
+2. Extended tile def schema — `sprite: { sheet, col, row }` or `sprite: { file }` per tile
+3. SpriteAtlas loader — central texture cache, loads spritesheets once, provides `Texture` by tile ID
+4. Tile size 32→16 + sprite rendering — PixiJS Sprites replace Graphics.rect().fill(), nearest-neighbor scaling
+5. Palette sprite previews — actual tile art instead of colored squares
+6. Item/decoration sprites — actual art instead of emojis and colored overlays
+
+**Key design decision:** Tile IDs are semantic (`ground_grass_5_3`). Maps store IDs, not coordinates. Swapping art packs = changing tile def mappings, not map data.
+
+---
 
 ## Extensibility Guide
 
@@ -544,7 +766,7 @@ This tool will grow over time. Future sessions will add features we can't predic
 1. Create `src/tools/MyTool.js` extending `Tool` from `BrushTool.js`. Implement `onDown(tx, ty)`, `onMove(tx, ty)`, `onUp()`.
 2. Declare `static shortcut = 'x'` (or `''` for no shortcut). The completeness test will fail with a clear error if this is missing.
 3. Register it in [ToolManager.js](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/tools/ToolManager.js) constructor: `this.tools.set('mytool', new MyTool(state))`.
-4. Add a button in [index.html](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/index.html) with `id="tool-mytool"`. SidebarUI auto-wires it via the `tool-*` convention.
+4. Add the tool to the `TOOLS` array in `src/ui/ToolPickerPanel.js` with its name, icon emoji, and label text.
 5. Write tests in [src/tools/ToolManager.test.js](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/tools/ToolManager.test.js).
 6. Run `npm test` — the shortcut completeness tests will catch any collision or missing declaration.
 7. Verify in browser.
@@ -562,7 +784,7 @@ This tool will grow over time. Future sessions will add features we can't predic
 1. Add the array to [MapState](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/core/State.js#5-80) constructor's manifest: `this.manifest.myEntities = []`.
 2. Add [addEntity](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/core/MapState.js#90-98) / [removeEntity](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/core/MapState.js#99-107) cases in [MapState.js](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/core/MapState.js).
 3. Create a tool in `src/tools/MyEntityTool.js`.
-4. Update [SidebarUI.js](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/ui/SidebarUI.js) [refreshEntityList()](file:///c:/Users/lauri/Documents/Repos/random-stuff/pet-protector/map-maker/src/ui/SidebarUI.js#81-102) to include the new type.
+4. Add the type to the `TYPE_LABELS` and `TYPE_ICONS` maps in `src/ui/EntityNavigator.js` and the `types` array in `Toolbar._buildEntitiesDropdown()`.
 5. Update `MapRenderer._renderEntities()` to draw it.
 
 ### How to Add a New Event

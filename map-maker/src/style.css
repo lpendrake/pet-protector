@@ -10,20 +10,8 @@
 }
 
 body { margin: 0; padding: 0; overflow: hidden; background: var(--bg-dark); font-family: 'Inter', system-ui, sans-serif; color: var(--text); }
-#app { display: flex; width: 100vw; height: 100vh; }
-
-#sidebar { 
-  width: 300px; 
-  background: var(--bg-panel); 
-  border-right: 1px solid var(--border); 
-  display: flex; 
-  flex-direction: column; 
-  box-shadow: 10px 0 20px rgba(0,0,0,0.5);
-  z-index: 10;
-  overflow-y: auto;
-}
-
-#viewport-container { flex: 1; position: relative; background: #111; overflow: hidden; }
+#app { width: 100vw; height: 100vh; }
+#viewport-container { width: 100%; height: 100%; position: relative; background: #111; overflow: hidden; }
 
 #status-bar { 
   position: absolute; bottom: 0; left: 0; right: 0; 
@@ -86,4 +74,110 @@ button:active { transform: translateY(0); }
 }
 #entity-list div:hover {
   background: var(--bg-hover);
+}
+
+/* ── Floating Window ───────────────────────────────────────────────── */
+
+.fw {
+  position: absolute;
+  background: rgba(26, 26, 29, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  display: none;
+  flex-direction: column;
+  min-width: 120px;
+  z-index: 200;
+  overflow: hidden;
+}
+.fw.fw-visible { display: flex; }
+
+.fw-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: rgba(0,0,0,0.3);
+  cursor: grab;
+  user-select: none;
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+.fw-titlebar.fw-dragging { cursor: grabbing; }
+
+.fw-title { flex: 1; pointer-events: none; }
+
+.fw-controls { display: flex; gap: 4px; align-items: center; }
+.fw-controls button {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  line-height: 1;
+  transition: background 0.15s, color 0.15s;
+}
+.fw-controls button:hover {
+  background: var(--bg-hover);
+  color: var(--text);
+  filter: none;
+  transform: none;
+}
+.fw-pin.fw-pin-active { color: var(--accent); }
+
+.fw-body {
+  padding: 10px;
+  overflow-y: auto;
+  max-height: 400px;
+  flex: 1;
+}
+
+/* ── Toolbar ───────────────────────────────────────────────────────── */
+
+.toolbar {
+  position: absolute;
+  display: flex;
+  gap: 4px;
+  padding: 6px;
+  background: rgba(26, 26, 29, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  z-index: 300;
+  cursor: grab;
+  user-select: none;
+}
+.toolbar.toolbar-dragging { cursor: grabbing; }
+
+.toolbar-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-hover);
+  border: 2px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.15s;
+  padding: 0;
+  line-height: 1;
+}
+.toolbar-btn:hover {
+  background: #3a3a40;
+  transform: scale(1.08);
+  filter: none;
+}
+.toolbar-btn.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
 }

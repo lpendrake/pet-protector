@@ -1008,977 +1008,13 @@
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "dirt_path",
         "item": null,
         "zone": null,
         "warp": null
       },
       {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      }
-    ],
-    [
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      }
-    ],
-    [
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      }
-    ],
-    [
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": "warp_1774503396639"
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": "warp_1774503367601"
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      }
-    ],
-    [
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      }
-    ],
-    [
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
+        "base": "dirt_path",
         "item": null,
         "zone": null,
         "warp": null
@@ -2126,9 +1162,973 @@
         "item": null,
         "zone": null,
         "warp": null
+      }
+    ],
+    [
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
       },
       {
         "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      }
+    ],
+    [
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      }
+    ],
+    [
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      }
+    ],
+    [
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      }
+    ],
+    [
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
         "item": null,
         "zone": null,
         "warp": null
@@ -2238,7 +2238,19 @@
         "warp": null
       },
       {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
         "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
         "item": null,
         "zone": null,
         "warp": null
@@ -2292,37 +2304,26 @@
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "forest_v1",
         "item": null,
         "zone": null,
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "forest_v1",
         "item": null,
         "zone": null,
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "forest_v1",
         "item": null,
         "zone": null,
-        "warp": null
+        "warp": null,
+        "pickup": null
       },
       {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
+        "base": "forest_v1",
         "item": null,
         "zone": null,
         "warp": null
@@ -2372,10 +2373,12 @@
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "water_shallow",
         "item": null,
         "zone": null,
-        "warp": null
+        "warp": null,
+        "decoration": null,
+        "pickup": null
       },
       {
         "base": "grass_v1",
@@ -2444,7 +2447,13 @@
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
         "item": null,
         "zone": null,
         "warp": null
@@ -2492,225 +2501,25 @@
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "forest_v1",
         "item": null,
         "zone": null,
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "forest_v1",
         "item": null,
         "zone": null,
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "forest_v1",
         "item": null,
         "zone": null,
         "warp": null
       },
       {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      }
-    ],
-    [
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
+        "base": "forest_v1",
         "item": null,
         "zone": null,
         "warp": null
@@ -2814,6 +2623,202 @@
         "warp": null
       },
       {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      }
+    ],
+    [
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null,
+        "decoration": null,
+        "pickup": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
         "base": "grass_v1",
         "item": null,
         "zone": null,
@@ -2832,7 +2837,37 @@
         "warp": null
       },
       {
-        "base": "water_shallow",
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
         "item": null,
         "zone": null,
         "warp": null
@@ -2856,55 +2891,25 @@
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "forest_v1",
         "item": null,
         "zone": null,
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "forest_v1",
         "item": null,
         "zone": null,
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "forest_v1",
         "item": null,
         "zone": null,
         "warp": null
       },
       {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
+        "base": "forest_v1",
         "item": null,
         "zone": null,
         "warp": null
@@ -3014,6 +3019,574 @@
         "warp": null
       },
       {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      }
+    ],
+    [
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null,
+        "decoration": null,
+        "pickup": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      }
+    ],
+    [
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null,
+        "decoration": null,
+        "pickup": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      }
+    ],
+    [
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null,
+        "decoration": null,
+        "pickup": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null,
+        "decoration": null,
+        "pickup": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": "active_zone",
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null,
+        "decoration": null,
+        "pickup": null
+      },
+      {
         "base": "water_shallow",
         "item": null,
         "zone": null,
@@ -3050,6 +3623,92 @@
         "warp": null
       },
       {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      }
+    ],
+    [
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
         "base": "grass_v1",
         "item": null,
         "zone": null,
@@ -3063,6 +3722,150 @@
       },
       {
         "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null,
+        "decoration": null,
+        "pickup": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null,
+        "decoration": null,
+        "pickup": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null,
+        "decoration": null,
+        "pickup": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null,
+        "pickup": null,
+        "decoration": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null,
+        "decoration": null,
+        "pickup": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null,
+        "decoration": null,
+        "pickup": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
         "item": null,
         "zone": null,
         "warp": null
@@ -3148,870 +3951,68 @@
         "warp": null
       },
       {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      }
-    ],
-    [
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      }
-    ],
-    [
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      }
-    ],
-    [
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      }
-    ],
-    [
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
         "base": "water_shallow",
         "item": null,
         "zone": null,
-        "warp": null
+        "warp": null,
+        "decoration": null,
+        "pickup": null
       },
       {
         "base": "water_shallow",
         "item": null,
         "zone": null,
-        "warp": null
+        "warp": null,
+        "decoration": null,
+        "pickup": null
       },
       {
         "base": "water_shallow",
         "item": null,
         "zone": null,
-        "warp": null
+        "warp": null,
+        "decoration": null,
+        "pickup": null
       },
       {
         "base": "water_shallow",
         "item": null,
         "zone": null,
-        "warp": null
+        "warp": null,
+        "pickup": null,
+        "decoration": null
       },
       {
         "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
         "item": null,
         "zone": null,
-        "warp": null
+        "warp": null,
+        "pickup": null,
+        "decoration": null
       },
       {
         "base": "water_shallow",
         "item": null,
         "zone": null,
-        "warp": null
+        "warp": null,
+        "decoration": null,
+        "pickup": null
       },
       {
         "base": "water_shallow",
         "item": null,
         "zone": null,
-        "warp": null
+        "warp": null,
+        "decoration": null,
+        "pickup": null
       },
       {
         "base": "water_shallow",
         "item": null,
         "zone": null,
-        "warp": null
+        "warp": null,
+        "decoration": null,
+        "pickup": null
       },
       {
         "base": "water_shallow",
@@ -4021,158 +4022,18 @@
       },
       {
         "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      }
-    ],
-    [
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
         "item": null,
         "zone": null,
         "warp": null
       },
       {
         "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
         "item": null,
         "zone": null,
         "warp": null
       },
       {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
         "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
         "item": null,
         "zone": null,
         "warp": null
@@ -4203,12 +4064,6 @@
       },
       {
         "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
         "item": null,
         "zone": null,
         "warp": null
@@ -4226,25 +4081,19 @@
         "warp": null
       },
       {
-        "base": "grass_v1",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "grass_v1",
+        "base": "forest_v1",
         "item": null,
         "zone": null,
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "forest_v1",
         "item": null,
         "zone": null,
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "dirt_path",
         "item": null,
         "zone": null,
         "warp": null
@@ -4350,26 +4199,32 @@
       {
         "base": "water_shallow",
         "item": null,
-        "zone": null,
+        "zone": "active_zone",
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "water_shallow",
         "item": null,
         "zone": null,
-        "warp": null
+        "warp": null,
+        "decoration": null,
+        "pickup": null
       },
       {
-        "base": "grass_v1",
+        "base": "water_shallow",
         "item": null,
         "zone": null,
-        "warp": null
+        "warp": null,
+        "decoration": null,
+        "pickup": null
       },
       {
-        "base": "grass_v1",
+        "base": "water_shallow",
         "item": null,
         "zone": null,
-        "warp": null
+        "warp": null,
+        "decoration": null,
+        "pickup": null
       },
       {
         "base": "water_shallow",
@@ -4402,24 +4257,6 @@
         "warp": null
       },
       {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
         "base": "grass_v1",
         "item": null,
         "zone": null,
@@ -4438,13 +4275,31 @@
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "forest_v1",
         "item": null,
         "zone": null,
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
         "item": null,
         "zone": null,
         "warp": null
@@ -4548,78 +4403,6 @@
         "warp": null
       },
       {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
-        "base": "water_shallow",
-        "item": null,
-        "zone": null,
-        "warp": null
-      },
-      {
         "base": "grass_v1",
         "item": null,
         "zone": null,
@@ -4638,19 +4421,103 @@
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null,
+        "decoration": null,
+        "pickup": null
+      },
+      {
+        "base": "water_shallow",
         "item": null,
         "zone": null,
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null,
+        "decoration": null,
+        "pickup": null
+      },
+      {
+        "base": "water_shallow",
         "item": null,
         "zone": null,
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null,
+        "decoration": null,
+        "pickup": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null,
+        "decoration": null,
+        "pickup": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null,
+        "decoration": null,
+        "pickup": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null,
+        "decoration": null,
+        "pickup": null
+      },
+      {
+        "base": "forest_v1",
         "item": null,
         "zone": null,
         "warp": null
@@ -4808,6 +4675,74 @@
         "warp": null
       },
       {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "forest_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      }
+    ],
+    [
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
         "base": "grass_v1",
         "item": null,
         "zone": null,
@@ -4839,6 +4774,132 @@
       },
       {
         "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "water_shallow",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "grass_v1",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
+        "item": null,
+        "zone": null,
+        "warp": null
+      },
+      {
+        "base": "dirt_path",
         "item": null,
         "zone": null,
         "warp": null
@@ -5032,7 +5093,7 @@
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "dirt_path",
         "item": null,
         "zone": null,
         "warp": null
@@ -5226,7 +5287,7 @@
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "dirt_path",
         "item": null,
         "zone": null,
         "warp": null
@@ -5420,13 +5481,13 @@
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "dirt_path",
         "item": null,
         "zone": null,
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "dirt_path",
         "item": null,
         "zone": null,
         "warp": null
@@ -5620,7 +5681,7 @@
         "warp": null
       },
       {
-        "base": "grass_v1",
+        "base": "dirt_path",
         "item": null,
         "zone": null,
         "warp": null

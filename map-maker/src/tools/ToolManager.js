@@ -1,6 +1,7 @@
 import { BrushTool } from './BrushTool.js';
 import { EraseTool } from './EraseTool.js';
 import { FillTool } from './FillTool.js';
+import { SelectTool } from './SelectTool.js';
 import { SpawnerTool } from './SpawnerTool.js';
 import { WarpTool } from './WarpTool.js';
 import { ZoneTool } from './ZoneTool.js';
@@ -10,9 +11,10 @@ import { ZoneTool } from './ZoneTool.js';
  * Also wires tile/item selection events to configure the brush tool.
  *
  * Listens to:
- *   'tile:selected'  → switches to brush, sets layer:'base', value:<tileId>
- *   'item:selected'  → switches to brush, sets layer:'pickup', value:<itemId>
- *   'tool:changed'   → activates the named tool
+ *   'tile:selected'       → configures brush + fill with the selected tile
+ *   'item:selected'       → configures brush with the selected item
+ *   'tool:changed'        → activates the named tool
+ *   'erase:layer-changed' → sets the erase tool's target layer
  *
  * Emits:
  *   'tool:active' → after a tool switch, with the new tool name
@@ -31,6 +33,7 @@ export class ToolManager {
         this.tools.set('brush',   new BrushTool(state));
         this.tools.set('erase',   new EraseTool(state));
         this.tools.set('fill',    new FillTool(state, bus));
+        this.tools.set('select',  new SelectTool(state, bus));
         this.tools.set('spawner', new SpawnerTool(state));
         this.tools.set('warp',    new WarpTool(state, tileDefs));
         this.tools.set('zone',    new ZoneTool(state));
@@ -39,14 +42,16 @@ export class ToolManager {
 
         if (this.bus) {
             this.bus.on('tile:selected', (id) => {
-                this.setTool('brush');
-                this.activeTool.setConfig({ layer: 'base', value: id });
+                this.tools.get('brush').setConfig({ layer: 'base', value: id });
+                this.tools.get('fill').setConfig({ layer: 'base', value: id });
             });
             this.bus.on('item:selected', (id) => {
-                this.setTool('brush');
-                this.activeTool.setConfig({ layer: 'pickup', value: id });
+                this.tools.get('brush').setConfig({ layer: 'pickup', value: id });
             });
             this.bus.on('tool:changed', (name) => this.setTool(name));
+            this.bus.on('erase:layer-changed', (layer) => {
+                this.tools.get('erase').setConfig({ layer });
+            });
         }
     }
 

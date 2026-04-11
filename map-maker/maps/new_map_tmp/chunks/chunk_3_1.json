@@ -997,7 +997,7 @@
         "warp": null
       },
       {
-        "base": "empty",
+        "base": "grass_v1",
         "decoration": null,
         "pickup": null,
         "zone": null,

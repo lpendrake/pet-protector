@@ -11,11 +11,12 @@
  * Deploy copies master → /web/maps/<name>/ so the game can read it.
  *
  * API routes:
- *   POST /api/create-map    — create a new empty map
- *   POST /api/auto-save     — write state to _tmp
- *   POST /api/save-master   — atomic promotion of _tmp → master with version bump
- *   POST /api/deploy        — copy master to web/maps/
- *   GET  /api/maps          — list all maps with version and deploy status
+ *   POST /api/create-map     — create a new empty map
+ *   POST /api/auto-save      — write state to _tmp
+ *   POST /api/save-master    — atomic promotion of _tmp → master with version bump
+ *   POST /api/deploy         — copy master to web/maps/
+ *   POST /api/rename-map     — rename a map (master, _tmp, _old directories)
+ *   GET  /api/maps           — list all maps with version and deploy status
  *   GET  /api/load-map/:name — load map data (prefers _tmp over master)
  */
 import express from 'express';
@@ -235,6 +236,48 @@ app.post('/api/create-map', async (req, res) => {
         res.json({ success: true, name });
     } catch (err) {
         res.status(500).send(err.message);
+    }
+});
+
+// Rename a map: renames master, _tmp, and _old directories to the new name.
+// Also updates state.mapName inside each manifest so auto-save writes to the new name.
+app.post('/api/rename-map', async (req, res) => {
+    const { oldName, newName } = req.body;
+    if (!oldName || !newName) return res.status(400).send('oldName and newName required');
+    if (oldName === newName) return res.json({ success: true });
+    if (!/^[a-zA-Z0-9_-]+$/.test(newName)) return res.status(400).send('Invalid map name (alphanumeric, hyphens, underscores only)');
+
+    const suffixes = ['', '_tmp', '_old'];
+    try {
+        // Check new name doesn't already exist
+        for (const suffix of suffixes) {
+            try {
+                await fs.access(path.join(MAPS_DIR, `${newName}${suffix}`));
+                return res.status(409).json({ success: false, error: `"${newName}" already exists` });
+            } catch { /* good — doesn't exist */ }
+        }
+
+        // Rename each directory that exists
+        for (const suffix of suffixes) {
+            const src = path.join(MAPS_DIR, `${oldName}${suffix}`);
+            const dest = path.join(MAPS_DIR, `${newName}${suffix}`);
+            try {
+                await fs.access(src);
+                await fs.rename(src, dest);
+                // Update mapName inside the manifest
+                const manifestPath = path.join(dest, 'manifest.json');
+                try {
+                    const manifest = JSON.parse(await fs.readFile(manifestPath, 'utf8'));
+                    manifest.mapName = newName;
+                    await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
+                } catch { /* no manifest yet — fine */ }
+            } catch { /* directory doesn't exist — skip */ }
+        }
+
+        res.json({ success: true });
+    } catch (err) {
+        console.error('Rename failed:', err);
+        res.status(500).json({ success: false, error: err.message });
     }
 });
 

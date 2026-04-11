@@ -13,6 +13,7 @@
  *   'save:completed' ({ version, type: 'auto'|'master' }) → on successful save
  *   'map:created'    ({ name }) → after createMap()
  *   'map:loaded'     ({ name }) → after loadMap()
+ *   'map:renamed'    ({ oldName, newName }) → after renameMap()
  */
 export class PersistenceClient {
     /**
@@ -88,7 +89,7 @@ export class PersistenceClient {
     /**
      * Promote the current state to the master directory via the server's atomic save logic.
      * On success the server bumps the version number and returns it.
-     * On failure emits 'save:error' so SidebarUI can show a toast.
+     * On failure emits 'save:error' so ToastManager can show a toast.
      */
     async saveMaster() {
         const payload = this.state.serialize();
@@ -120,6 +121,27 @@ export class PersistenceClient {
     startAutoSave(intervalMs = 5000) {
         if (this.autoSaveInterval) clearInterval(this.autoSaveInterval);
         this.autoSaveInterval = setInterval(() => this.autoSave(), intervalMs);
+    }
+
+    /**
+     * Rename a map on the server. If the renamed map is the currently loaded map,
+     * updates state.mapName so subsequent saves go to the right place.
+     * @param {string} oldName
+     * @param {string} newName
+     */
+    async renameMap(oldName, newName) {
+        const response = await fetch(`${this.serverUrl}/api/rename-map`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ oldName, newName })
+        });
+        const data = await response.json();
+        if (!response.ok || !data.success) throw new Error(data.error || `Server returned ${response.status}`);
+        if (this.state.mapName === oldName) {
+            this.state.mapName = newName;
+        }
+        if (this.bus) this.bus.emit('map:renamed', { oldName, newName });
+        return data;
     }
 
     /**
