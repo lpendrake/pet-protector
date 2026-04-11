@@ -1,0 +1,24 @@
+{
+  "version": 3,
+  "spawnPoints": [
+    {
+      "id": "spawn_1774502739739",
+      "name": "Spawner 9739",
+      "x": 38,
+      "y": 16
+    },
+    {
+      "id": "spawn_1774502744836",
+      "name": "Spawner 4836",
+      "x": 38,
+      "y": 16
+    }
+  ],
+  "zones": [
+    {
+      "id": "active_zone",
+      "name": "Zone 1"
+    }
+  ],
+  "warps": []
+}
